@@ -104,7 +104,7 @@ p {
   right: 0;
   bottom: 0;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   background: var(--surface);
   border-top: 1px solid var(--border);
   padding-bottom: env(safe-area-inset-bottom);
@@ -486,4 +486,92 @@ fieldset {
 .switches {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+
+/* 参照 */
+.summary-box {
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.table-wrap {
+  overflow-x: auto;
+  margin: 0.25rem 0;
+}
+.ref-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9375rem;
+}
+.ref-table caption {
+  text-align: left;
+  font-weight: 700;
+  padding-bottom: 0.25rem;
+}
+.ref-table th,
+.ref-table td {
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.45rem;
+  text-align: left;
+  vertical-align: top;
+}
+.ref-table thead th {
+  background: var(--track);
+}
+.ref-table tbody th {
+  font-weight: 700;
+  white-space: nowrap;
+}
+.dose {
+  border-top: 1px solid var(--border);
+  padding: 0.4rem 0;
+}
+.dose:first-child {
+  border-top: none;
+}
+.dose-main {
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+.qa {
+  border-top: 1px dashed var(--border);
+  margin-top: 0.5rem;
+  padding-top: 0.4rem;
+}
+input[type='search'] {
+  font: inherit;
+  min-height: 48px;
+}
+/* 4列以上の表は、狭い画面では1行ずつの塊に組み替える */
+@media (max-width: 560px) {
+  .ref-table.stack thead {
+    display: none;
+  }
+  .ref-table.stack,
+  .ref-table.stack tbody,
+  .ref-table.stack tr,
+  .ref-table.stack th,
+  .ref-table.stack td {
+    display: block;
+    width: 100%;
+  }
+  .ref-table.stack tr {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-bottom: 0.4rem;
+  }
+  .ref-table.stack th,
+  .ref-table.stack td {
+    border: none;
+    white-space: normal;
+  }
+  .ref-table.stack tbody th {
+    background: var(--track);
+  }
+  .ref-table.stack td::before {
+    content: attr(data-label) '：';
+    font-weight: 700;
+  }
 }

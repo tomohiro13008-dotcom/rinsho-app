@@ -13,11 +13,13 @@ export const LIMITS = {
 
 export function makeValidators(schemas) {
   const ajv = new Ajv({ allErrors: true, strict: false });
-  for (const s of [schemas.source, schemas.review]) ajv.addSchema(s);
+  for (const s of [schemas.source, schemas.review, schemas.table, schemas.verification]) ajv.addSchema(s);
   return {
     card: ajv.compile(schemas.card),
     drill: ajv.compile(schemas.drill),
     specialty: ajv.compile(schemas.specialty),
+    topic: ajv.compile(schemas.topic),
+    drug: ajv.compile(schemas.drug),
   };
 }
 
@@ -30,7 +32,7 @@ function schemaErrors(validate, obj) {
  * @param {{registry: any, cards: {file: string, data: any}[], drills: {file: string, data: any}[], specialties: {file: string, data: any}[], validators: any}} input
  * @returns {{file: string, level: 'error'|'warn', msg: string}[]}
  */
-export function checkAll({ registry, cards, drills, specialties, validators }) {
+export function checkAll({ registry, cards, drills, specialties, topics = [], drugs = [], validators }) {
   const out = [];
   const err = (file, msg) => out.push({ file, level: 'error', msg });
   const warn = (file, msg) => out.push({ file, level: 'warn', msg });
@@ -113,5 +115,71 @@ export function checkAll({ registry, cards, drills, specialties, validators }) {
     if ((s.sources ?? []).length === 0) blank(file, '出典が空');
   }
 
+  checkReference({ registry, cards, topics, drugs, validators, err, warn });
   return out;
+}
+
+function checkTable(file, where, t, err, warn) {
+  if (!t) return;
+  t.rows.forEach((r, i) => {
+    if (r.length !== t.columns.length) err(file, `${where}: 表の${i + 1}行目の列数（${r.length}）が見出し（${t.columns.length}）と違う`);
+    if (r.some((c) => c.trim() === '')) warn(file, `${where}: 表の${i + 1}行目に空のセルがある`);
+  });
+}
+
+function checkIndexes(file, where, idx, sources, err) {
+  for (const i of idx ?? []) if (i >= sources.length) err(file, `${where}: 出典の番号 ${i} がない（出典は${sources.length}件）`);
+}
+
+/** 参照セクション（参照項目と薬）の点検 */
+function checkReference({ registry, cards, topics, drugs, validators, err, warn }) {
+  const fieldIds = new Set((registry.fields ?? []).map((f) => f.id));
+  const cardIds = new Set(cards.map((c) => c.data.id));
+  const topicIds = new Set();
+  const drugIds = new Set();
+  for (const { file, data } of topics) {
+    if (topicIds.has(data.id)) err(file, `参照項目の id が重複: ${data.id}`);
+    topicIds.add(data.id);
+  }
+  for (const { file, data } of drugs) {
+    if (drugIds.has(data.id)) err(file, `薬の id が重複: ${data.id}`);
+    drugIds.add(data.id);
+  }
+
+  for (const { file, data: t } of topics) {
+    for (const m of schemaErrors(validators.topic, t)) err(file, `形: ${m}`);
+    if (!file.endsWith(`${t.id}.json`)) warn(file, `ファイル名と id が違う: ${t.id}`);
+    const blank = (t.review?.level ?? 0) === 0 ? warn : err;
+    if (!fieldIds.has(t.field)) err(file, `分野が一覧にない: ${t.field}`);
+    if ((t.summary ?? []).length === 0) blank(file, '要約が空');
+    if ((t.points ?? []).length === 0) blank(file, 'ポイントが空');
+    if ((t.sources ?? []).length === 0) blank(file, '出典が空');
+    for (const line of [...(t.summary ?? []), ...(t.points ?? [])])
+      if (line.length > LIMITS.lineChars) warn(file, `要約・ポイントの1行が${LIMITS.lineChars}字を超える: 「${line.slice(0, 20)}…」`);
+    for (const sec of t.sections ?? []) {
+      checkTable(file, `節「${sec.title}」`, sec.table, err, warn);
+      checkIndexes(file, `節「${sec.title}」`, sec.sourceIndexes, t.sources ?? [], err);
+      if (!!sec.question !== !!sec.answer) err(file, `節「${sec.title}」: 確認問題の問いと答えの片方しかない`);
+    }
+    for (const id of t.cards ?? []) if (!cardIds.has(id)) err(file, `カードが見つからない: ${id}`);
+    for (const id of t.drugs ?? []) if (!drugIds.has(id)) err(file, `薬が見つからない: ${id}`);
+    for (const id of t.related ?? []) if (!topicIds.has(id)) err(file, `参照項目が見つからない: ${id}`);
+  }
+
+  for (const { file, data: d } of drugs) {
+    for (const m of schemaErrors(validators.drug, d)) err(file, `形: ${m}`);
+    if (!file.endsWith(`${d.id}.json`)) warn(file, `ファイル名と id が違う: ${d.id}`);
+    const blank = (d.review?.level ?? 0) === 0 ? warn : err;
+    if ((d.brands ?? []).length === 0) blank(file, '商品名が空');
+    if ((d.doses ?? []).length === 0) blank(file, '用法用量が空');
+    if ((d.sources ?? []).length === 0) blank(file, '出典が空');
+    if (!(d.sources ?? []).some((s) => s.type === 'label')) blank(file, '添付文書（type: label）の出典がない');
+    (d.doses ?? []).forEach((r, i) => {
+      checkIndexes(file, `用法用量${i + 1}`, r.sourceIndexes, d.sources ?? [], err);
+      if ((r.sourceIndexes ?? []).length === 0) blank(file, `用法用量${i + 1}（${r.indication}）に出典の番号がない`);
+    });
+    checkTable(file, '体重別の表', d.weightTable, err, warn);
+    if (d.weightTable && !d.weightTable.note) warn(file, '体重別の表に注記（誰がどう作ったか）がない');
+    for (const id of d.topics ?? []) if (!topicIds.has(id)) err(file, `参照項目が見つからない: ${id}`);
+  }
 }

@@ -1,6 +1,6 @@
 // 現場モード：状態の大ボタン → カード。全文をすぐ見せ、何も問わない。開いた記録だけ残す。
 import { useEffect } from 'preact/hooks';
-import { cardById, cardsForState, commonCards, equipmentLabel, registry, sceneLabel, stateLabel } from '../content';
+import { cardById, cardsForState, commonCards, equipmentLabel, registry, sceneLabel, stateLabel, topicsForCard } from '../content';
 import { Disclaimer, Icon, Lines, ReviewBadge, Section, Sources } from '../components';
 import { resolveStep } from '../logic/facility';
 import { addLookup } from '../store/db';
@@ -169,6 +169,17 @@ export function CardBody({ card, profile, showAllTiers = false }: { card: Card; 
       {profile.notes.trim() ? (
         <Section title="自施設メモ">
           <p class="prewrap">{profile.notes}</p>
+        </Section>
+      ) : null}
+      {topicsForCard(card.id).length > 0 ? (
+        <Section title="詳しく（参照）">
+          <ul class="lines">
+            {topicsForCard(card.id).map((t) => (
+              <li>
+                <a href={`#/topic/${t.id}`}>{t.title}</a>
+              </li>
+            ))}
+          </ul>
         </Section>
       ) : null}
       <Sources sources={card.sources} updatedAt={card.updatedAt} review={card.review} />

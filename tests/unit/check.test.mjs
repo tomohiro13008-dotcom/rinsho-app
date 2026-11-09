@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { checkAll, makeValidators } from '../../scripts/check-lib.mjs';
 
 const read = (p) => JSON.parse(readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8'));
-const schemas = Object.fromEntries(['card', 'drill', 'specialty', 'source', 'review'].map((n) => [n, read(`schema/${n}.schema.json`)]));
+const schemas = Object.fromEntries(['card', 'drill', 'specialty', 'source', 'review', 'table', 'verification', 'topic', 'drug'].map((n) => [n, read(`schema/${n}.schema.json`)]));
 const validators = makeValidators(schemas);
 const registry = read('content/registry.json');
 
@@ -79,8 +79,36 @@ describe('点検スクリプト', () => {
       cards: load('content/cards'),
       drills: load('content/drills'),
       specialties: load('content/specialties'),
+      topics: load('content/topics'),
+      drugs: load('content/drugs'),
       validators,
     });
     expect(errors(r)).toEqual([]);
   });
+
+  it('参照項目：表の列数のずれ、ない出典番号、見つからない薬は誤り', () => {
+    const topic = {
+      id: 't', field: 'emergency', title: 'T', tags: [], summary: ['a'], points: ['b'], pitfalls: [],
+      sections: [{ id: 's', title: 'S', table: { columns: ['a', 'b'], rows: [['1']] }, sourceIndexes: [3] }],
+      drugs: ['nope'], sources: [], verification: { checked: [], unverified: [] }, updatedAt: '2026-11-09', review: { level: 0 },
+    };
+    const r = checkAll({ registry, cards: [], drills: [], specialties: [], topics: [{ file: 'content/topics/t.json', data: topic }], drugs: [], validators });
+    const e = errors(r).join('\n');
+    expect(e).toContain('列数');
+    expect(e).toContain('出典の番号 3');
+    expect(e).toContain('薬が見つからない');
+  });
+  it('薬：照合済みなのに添付文書の出典や用法用量の出典番号がなければ誤り', () => {
+    const drug = {
+      id: 'x', generic: 'X', brands: [{ name: 'Xi', strength: '1mg' }], drugClass: 'c', summary: [], preparation: [], cautions: [],
+      doses: [{ indication: 'i', population: '成人', dose: '1mg', route: '静注', basis: 'b' }],
+      sources: [{ type: 'guideline', title: 'G', edition: '1', public: true }],
+      verification: { checked: [], unverified: [] }, updatedAt: '2026-11-09', review: { level: 1 },
+    };
+    const r = checkAll({ registry, cards: [], drills: [], specialties: [], topics: [], drugs: [{ file: 'content/drugs/x.json', data: drug }], validators });
+    const e = errors(r).join('\n');
+    expect(e).toContain('添付文書');
+    expect(e).toContain('出典の番号がない');
+  });
 });
+

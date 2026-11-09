@@ -1,17 +1,27 @@
 // content/ 配下の JSON をビルド時に取り込む。通信はしない。
 
-import type { Card, Drill, Registry, Specialty } from './types';
+import type { Card, Drill, Drug, Registry, Specialty, Topic } from './types';
 import registryJson from '../content/registry.json';
 import { sortCards } from './logic/order';
 
 const cardMods = import.meta.glob<Card>('../content/cards/*.json', { eager: true, import: 'default' });
 const drillMods = import.meta.glob<Drill>('../content/drills/*.json', { eager: true, import: 'default' });
 const specMods = import.meta.glob<Specialty>('../content/specialties/*.json', { eager: true, import: 'default' });
+const topicMods = import.meta.glob<Topic>('../content/topics/*.json', { eager: true, import: 'default' });
+const drugMods = import.meta.glob<Drug>('../content/drugs/*.json', { eager: true, import: 'default' });
 
 export const registry = registryJson as unknown as Registry;
 export const cards: Card[] = sortCards(Object.values(cardMods), registry);
 export const drills: Drill[] = Object.values(drillMods).sort((a, b) => a.id.localeCompare(b.id));
 export const specialties: Specialty[] = Object.values(specMods).sort((a, b) => a.id.localeCompare(b.id));
+
+export const topics: Topic[] = Object.values(topicMods).sort((a, b) => a.title.localeCompare(b.title, 'ja'));
+export const drugs: Drug[] = Object.values(drugMods).sort((a, b) => a.generic.localeCompare(b.generic, 'ja'));
+export const topicById = new Map(topics.map((t) => [t.id, t]));
+export const drugById = new Map(drugs.map((d) => [d.id, d]));
+export const fieldLabel = (id: string) => registry.fields.find((f) => f.id === id)?.label ?? id;
+export const topicsForField = (id: string) => topics.filter((t) => t.field === id);
+export const topicsForCard = (cardId: string) => topics.filter((t) => t.cards?.includes(cardId));
 
 export const cardById = new Map(cards.map((c) => [c.id, c]));
 export const drillById = new Map(drills.map((d) => [d.id, d]));

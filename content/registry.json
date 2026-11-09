@@ -20,6 +20,25 @@
     { "id": "pediatric", "label": "小児の急変" },
     { "id": "agitation", "label": "興奮・せん妄" }
   ],
+  "fields": [
+    { "id": "emergency", "label": "救急・急変（共通）" },
+    { "id": "cardio", "label": "循環器" },
+    { "id": "resp", "label": "呼吸器" },
+    { "id": "gi", "label": "消化器" },
+    { "id": "neuro", "label": "脳神経" },
+    { "id": "endocrine", "label": "内分泌・代謝" },
+    { "id": "renal", "label": "腎・電解質" },
+    { "id": "infection", "label": "感染症" },
+    { "id": "pediatric", "label": "小児" },
+    { "id": "obgyn", "label": "産婦人科" },
+    { "id": "ortho", "label": "整形外科・外傷" },
+    { "id": "uro", "label": "泌尿器" },
+    { "id": "ent", "label": "耳鼻咽喉科" },
+    { "id": "eye", "label": "眼科" },
+    { "id": "derm", "label": "皮膚科" },
+    { "id": "psych", "label": "精神" },
+    { "id": "tox", "label": "中毒・薬" }
+  ],
   "scenes": [
     { "id": "prehospital", "label": "院外（災害を含む）" },
     { "id": "clinic", "label": "診療所" },
