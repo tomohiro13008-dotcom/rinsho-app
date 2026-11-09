@@ -1,0 +1,9 @@
+{
+  "$comment": "AI下書き（2026-11-09）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "chestpain-recall",
+  "cardId": "chestpain",
+  "kind": "recall",
+  "prompt": "胸痛で12誘導心電図を取る時間の目標と、アスピリンの量・飲ませ方を言う",
+  "answer": "到着から10分以内。アスピリン162〜330mgを噛み砕いて",
+  "targetSeconds": 10
+}
