@@ -1,9 +1,10 @@
 {
-  "$comment": "空欄の雛形。下書き・未照合。",
+  "$comment": "AI下書き（2026-11-09）。カードと同じ根拠から作った。本人の照合前。",
   "id": "arrest-recall",
   "cardId": "arrest",
   "kind": "recall",
-  "prompt": "【雛形】問い（未記入）",
-  "answer": "【雛形】答え（未記入）",
-  "targetSeconds": null
+  "prompt": "胸骨圧迫の深さとテンポ、アドレナリンの量と間隔を言う",
+  "answer": "約5cm（6cmを超えない）、100〜120回/分。アドレナリン1回1mg静注、3〜5分ごと",
+  "why": "JRC2020の公開PDFで確かめた数値。2025年版の書籍で要照合。",
+  "targetSeconds": 20
 }

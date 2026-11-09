@@ -1,9 +1,9 @@
 {
-  "$comment": "空欄の雛形。下書き・未照合。",
+  "$comment": "AI下書き（2026-11-09）。カードと同じ根拠から作った。本人の照合前。",
   "id": "dyspnea-recall",
   "cardId": "dyspnea",
   "kind": "recall",
-  "prompt": "【雛形】問い（未記入）",
-  "answer": "【雛形】答え（未記入）",
-  "targetSeconds": null
+  "prompt": "目標SpO2を2つ言う",
+  "answer": "通常94〜98%、CO2がたまる恐れがあれば88〜92%",
+  "targetSeconds": 10
 }

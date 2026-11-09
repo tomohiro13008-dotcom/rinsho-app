@@ -1,0 +1,17 @@
+{
+  "$comment": "AI下書き（2026-11-09）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "common-abcde-sequence",
+  "cardId": "common-abcde",
+  "kind": "sequence",
+  "prompt": "ABCDEの順に並べる",
+  "answer": "気道 → 呼吸 → 循環 → 意識 → 全身",
+  "why": "命に関わる順。前の段階の問題を手当てしてから次へ進む。",
+  "targetSeconds": null,
+  "items": [
+    "A 気道",
+    "B 呼吸",
+    "C 循環",
+    "D 意識",
+    "E 全身"
+  ]
+}

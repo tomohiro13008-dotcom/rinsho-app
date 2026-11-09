@@ -1,9 +1,9 @@
 {
-  "$comment": "空欄の雛形。下書き・未照合。",
+  "$comment": "AI下書き（2026-11-09）。カードと同じ根拠から作った。本人の照合前。",
   "id": "common-abcde-recall",
   "cardId": "common-abcde",
   "kind": "recall",
-  "prompt": "【雛形】問い（未記入）",
-  "answer": "【雛形】答え（未記入）",
-  "targetSeconds": null
+  "prompt": "A〜Eのそれぞれで、最初に見るものを一つずつ言う",
+  "answer": "A 声が出るか・閉塞のサイン／B 呼吸数と努力呼吸／C 皮膚・再充満・脈・血圧／D 意識（AVPUかGCS）と血糖／E 全身を出して見る",
+  "targetSeconds": 30
 }

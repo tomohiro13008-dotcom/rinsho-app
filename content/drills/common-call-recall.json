@@ -1,9 +1,10 @@
 {
-  "$comment": "空欄の雛形。下書き・未照合。",
+  "$comment": "AI下書き（2026-11-09）。カードと同じ根拠から作った。本人の照合前。",
   "id": "common-call-recall",
   "cardId": "common-call",
   "kind": "recall",
-  "prompt": "【雛形】問い（未記入）",
-  "answer": "【雛形】答え（未記入）",
-  "targetSeconds": null
+  "prompt": "院内の呼ぶ基準のうち、呼吸と循環の数値を言う",
+  "answer": "呼吸数 9/分以下か30/分以上、SpO2 92%以下、酸素10L/分以上。心拍40/分未満か130/分以上、収縮期血圧90以下か200mmHg以上",
+  "why": "日本集中治療医学会のRRS運用指針 Fig.1 の例。自施設の基準があればそちらに合わせる。",
+  "targetSeconds": 30
 }

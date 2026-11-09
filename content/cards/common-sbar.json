@@ -1,5 +1,5 @@
 {
-  "$comment": "ループ検証の5枚の空欄サンプル。下書き・未照合。医学的な中身は書いていない。中身は利用者が書いて照合する。",
+  "$comment": "AI下書き（2026-11-09）。根拠の公開資料から下書きしたが、本人の照合前。照合して review.level を上げるまで現場の判断に使わない。",
   "id": "common-sbar",
   "title": "SBARで伝える",
   "common": true,
@@ -9,15 +9,86 @@
     "clinic"
   ],
   "specialties": [],
-  "summary": [],
-  "firstActions": [],
-  "steps": [],
-  "branches": [],
+  "summary": [
+    "急いで判断が要る情報を、状況→背景→評価→依頼の順に短く伝える",
+    "最後に「何をしてほしいか」を必ず言う",
+    "受け手は復唱し、送り手が合っているか確かめる",
+    "大事な情報は、チーム全員に声で伝える"
+  ],
+  "firstActions": [
+    "名乗りと、患者・場所を一言で言えるようにする",
+    "依頼（来てほしい・受け入れてほしい・指示がほしい）を先に決める",
+    "直前のバイタルとABCDEの所見を手元に置く"
+  ],
+  "steps": [
+    {
+      "text": "S 状況：いま何が起きているか（例の型「◯病棟の方が、◯分前からSpO2が下がっています」）",
+      "kind": "communication",
+      "keyword": "S 状況"
+    },
+    {
+      "text": "B 背景：入院の理由、主な既往、これまでの経過と行った手当て",
+      "kind": "communication",
+      "keyword": "B 背景"
+    },
+    {
+      "text": "A 評価：自分は何が問題だと考えるか。分からなければ「悪化していて心配」と言う",
+      "kind": "communication",
+      "keyword": "A 評価"
+    },
+    {
+      "text": "R 依頼：何を、いつまでにしてほしいか（「すぐ来てください」）",
+      "kind": "communication",
+      "keyword": "R 依頼"
+    },
+    {
+      "text": "チェックバック：受けた指示を復唱し、合っているか確かめてもらう",
+      "kind": "communication",
+      "keyword": "復唱"
+    },
+    {
+      "text": "コールアウト：大事な情報と担当者を、チーム全員に声で伝える",
+      "kind": "communication",
+      "keyword": "全員に"
+    }
+  ],
+  "branches": [
+    {
+      "if": "依頼が通らない・懸念が無視された",
+      "then": "もう一度はっきり言い直す",
+      "else": "それでも安全が守られなければ、他のメンバーや上の人を巻き込む"
+    }
+  ],
   "callForHelp": {
-    "criteria": []
+    "criteria": [
+      "2回伝えても安全が守られないときは、上の人を巻き込む"
+    ],
+    "whom": "上級医・上位施設"
   },
-  "pitfalls": [],
-  "sources": [],
+  "pitfalls": [
+    "背景を長く話して、依頼が最後まで出ない",
+    "評価を言わずに数字だけを並べる",
+    "受けた指示を復唱しない"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "AHRQ TeamSTEPPS Pocket Guide",
+      "edition": "AHRQ Pub. No. 23-0043（2023年5月改訂）",
+      "locator": "SBAR、Call-Out、Check-Back、Two-Challenge Rule",
+      "url": "https://nachc.org/wp-content/uploads/2023/10/Teamstepps-pocket-guide.pdf",
+      "public": true,
+      "checkedScope": "AI下書き。本人の照合は未。 SBARの4項目、チェックバック、コールアウト、2回ルールの定義を使った。例文は自作（患者情報は入れていない）。"
+    },
+    {
+      "type": "guideline",
+      "title": "Resuscitation Council UK: The ABCDE Approach",
+      "edition": "2015年10月公開・2024年7月更新",
+      "url": "https://resus.org.uk/node/123",
+      "public": true,
+      "checkedScope": "AI下書き。本人の照合は未。 チームでSBARを使う、の一文だけ。"
+    }
+  ],
   "updatedAt": "2026-11-09",
   "review": {
     "level": 0
