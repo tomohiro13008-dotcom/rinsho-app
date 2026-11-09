@@ -54,6 +54,7 @@
     "sources": { "type": "array", "items": { "$ref": "source.schema.json" } },
     "updatedAt": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
     "review": { "$ref": "review.schema.json" },
-    "drills": { "type": "array", "items": { "type": "string" } }
+    "drills": { "type": "array", "items": { "type": "string" } },
+    "firstCalls": { "type": "array", "items": { "type": "string", "minLength": 1 }, "description": "看護師の第一声。学習の想起で題名の代わりに出す" }
   }
 }

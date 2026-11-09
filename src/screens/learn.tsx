@@ -7,16 +7,18 @@ import { DEFAULT_TARGET_SECONDS, LEVEL_LABELS, displayFor, nextLevel } from '../
 import { getScheduler } from '../logic/srs';
 import { dayKey, formatDateTime } from '../logic/time';
 import { addDrillLog, recordDayIfFirst, saveLearning } from '../store/db';
+import { checkItems, pickFirstCall, ratingFromChecks } from '../logic/checklist';
 import { useApp, type AppData } from '../state';
-import type { Card, Drill, LearningState, MasteryLevel, QueueSource, Rating } from '../types';
+import type { Card, Drill, HistoryEntry, LearningState, MasteryLevel, QueueSource, Rating } from '../types';
 import { CardBody, ExportReminder } from './field';
 import { topicQuizTopics } from './reference';
 
 export function todayQueue(d: AppData, now: number): QueueItem[] {
-  return buildTodayQueue({ cards, learning: d.learning, lookups: d.lookups, now });
+  return buildTodayQueue({ cards, learning: d.learning, lookups: d.lookups, marks: d.marks, now });
 }
 
 const SOURCE_LABEL: Record<QueueSource, string> = {
+  marked: '迷った行に印',
   field: '現場で引いた',
   briefing: 'ブリーフィングで開いた',
   review: '復習の期日',
@@ -56,10 +58,12 @@ export function Learn() {
           <ul class="queue">
             {queue.map((q) => {
               const c = cardById.get(q.cardId)!;
+              // 第一声で問うカードは、題名を出すと答えが分かるので伏せる
+              const hidden = asksByFirstCall(c, levelOf(data, q.cardId));
               return (
                 <li data-card={q.cardId} data-source={q.source}>
                   <a class="btn btn-list" href={`#/practice/${q.cardId}/${q.source}`}>
-                    <span>{c.title}</span>
+                    <span>{hidden ? '看護師の第一声から当てる' : c.title}</span>
                     <span class="muted small">
                       {SOURCE_LABEL[q.source]}
                       {q.lookupAt ? `（${formatDateTime(q.lookupAt)}）` : ''}・{LEVEL_LABELS[levelOf(data, q.cardId)]}
@@ -136,6 +140,11 @@ export function Learn() {
   );
 }
 
+/** 段階2以上（見ずに問う段階）で第一声があれば、題名でなく第一声で問う（改良案①）。段階0〜1は全文を見せる。 */
+export function asksByFirstCall(card: Card, level: MasteryLevel): boolean {
+  return level >= 2 && (card.firstCalls ?? []).some((x) => x.trim());
+}
+
 function hint(s: string, keyword?: string): string {
   if (keyword) return keyword;
   return s.length <= 4 ? s : `${s.slice(0, 4)}…`;
@@ -182,6 +191,7 @@ export async function recordPractice(
   source: QueueSource,
   now: number,
   target = DEFAULT_TARGET_SECONDS,
+  extra: Pick<HistoryEntry, 'prompt' | 'checked' | 'total' | 'missed'> = {},
 ): Promise<LearningState> {
   const level = prev?.level ?? 0;
   const levelAfter = nextLevel(level, rating, seconds, target);
@@ -191,7 +201,7 @@ export async function recordPractice(
     level: levelAfter,
     intervalDays: sched.intervalDays,
     due: sched.due,
-    history: [...(prev?.history ?? []), { at: now, result: rating, seconds, levelAfter, source }],
+    history: [...(prev?.history ?? []), { at: now, result: rating, seconds, levelAfter, source, ...extra }],
   };
   await saveLearning(st);
   return st;
@@ -206,23 +216,49 @@ export function Practice({ cardId, source }: { cardId: string; source: QueueSour
   const [revealed, setRevealed] = useState(display === 'full');
   const [done, setDone] = useState<LearningState | null>(null);
   const [allTiers, setAllTiers] = useState(false);
+  const [firstCall] = useState(() => (card && asksByFirstCall(card, level) ? pickFirstCall(card) : undefined));
+  const [checked, setChecked] = useState<Set<string>>(() => new Set());
   const sw = useStopwatch(!revealed);
   if (!card) return <main class="page"><p>カードが見つかりません。</p></main>;
 
-  const rate = async (r: Rating) => {
+  const items = checkItems(card, !!firstCall);
+  const lastAt = prev?.history.at(-1)?.at ?? -Infinity;
+  const marked = data.marks.filter((m) => m.cardId === card.id && m.at > lastAt);
+
+  const save = async (r: Rating, extra: Pick<HistoryEntry, 'checked' | 'total' | 'missed'> = {}) => {
     if (!revealed) sw.stop();
-    const st = await recordPractice(prev, card.id, r, sw.seconds, source, Date.now());
+    const st = await recordPractice(prev, card.id, r, sw.seconds, source, Date.now(), DEFAULT_TARGET_SECONDS, {
+      ...(firstCall ? { prompt: firstCall } : {}),
+      ...extra,
+    });
     setDone(st);
     await refresh();
+  };
+  const saveChecks = () => {
+    const missed = items.filter((i) => !checked.has(i.key)).map((i) => i.key);
+    void save(ratingFromChecks(items.length - missed.length, items.length), {
+      checked: items.length - missed.length,
+      total: items.length,
+      missed,
+    });
+  };
+  const toggle = (key: string) => {
+    const next = new Set(checked);
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
+    setChecked(next);
   };
 
   if (done) {
     const ds = drillsForCard(card);
+    const last = done.history.at(-1);
     return (
       <main class="page" data-testid="practice-done">
         <h1>{card.title}</h1>
         <p>
-          <Icon name="check" /> 記録しました。段階：{LEVEL_LABELS[done.level]}。次の出題：{done.due ? formatDateTime(done.due).slice(0, 10) : '—'}
+          <Icon name="check" /> 記録しました。
+          {last?.total ? `言えた項目：${last.checked}/${last.total}。` : ''}
+          段階：{LEVEL_LABELS[done.level]}。次の出題：{done.due ? formatDateTime(done.due).slice(0, 10) : '—'}
         </p>
         {ds.length > 0 ? (
           <Section title="このカードの練習">
@@ -246,15 +282,26 @@ export function Practice({ cardId, source }: { cardId: string; source: QueueSour
     );
   }
 
+  const titleHidden = !!firstCall && !revealed;
   return (
-    <main class="page" data-card={card.id} data-display={display}>
+    <main class="page" data-card={card.id} data-display={display} data-asked={firstCall ? 'first-call' : 'title'}>
       <p class="muted small">
         {SOURCE_LABEL[source]}・いまの段階：{LEVEL_LABELS[level]} <ReviewBadge review={card.review} />
       </p>
-      <h1>{card.title}</h1>
+      {titleHidden ? (
+        <>
+          <p class="muted small">看護師の第一声</p>
+          <h1 data-testid="first-call">「{firstCall}」</h1>
+        </>
+      ) : (
+        <h1>{card.title}</h1>
+      )}
+      {firstCall && revealed ? <p class="muted small" data-testid="first-call">問い：「{firstCall}」</p> : null}
       {!revealed ? (
         <>
-          <p class="prompt">見ずに「まずやること」と「呼ぶ基準」を言う。</p>
+          <p class="prompt">
+            {firstCall ? '見ずに、どのカードか・「まずやること」・「呼ぶ基準」を言う。' : '見ずに「まずやること」と「呼ぶ基準」を言う。'}
+          </p>
           {display === 'keywords' ? (
             <div class="hints">
               <h2>ヒント</h2>
@@ -280,9 +327,54 @@ export function Practice({ cardId, source }: { cardId: string; source: QueueSour
             言ったので答えを見る
           </button>
         </>
+      ) : level === 0 ? (
+        <>
+          <p class="prompt">まず全文を読む。次からは見ずに問う。</p>
+          <div class="reveal">
+            <CardBody card={card} profile={data.active} />
+          </div>
+          <button type="button" class="btn btn-primary" data-rating="good" onClick={() => save('good')}>
+            読んだ
+          </button>
+        </>
       ) : (
         <>
-          {level === 0 ? <p class="prompt">まず全文を読む。次からは見ずに問う。</p> : <p class="prompt">照合して自己評価する。</p>}
+          {marked.length > 0 ? (
+            <section class="marked-lines" aria-labelledby="ml-h" data-testid="marked-lines">
+              <h2 id="ml-h">
+                <Icon name="alert" /> 本番で迷った行
+              </h2>
+              <ul class="lines">
+                {[...new Set(marked.map((m) => m.text))].map((t) => (
+                  <li>{t}</li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+          {items.length > 0 ? (
+            <section class="checklist" aria-labelledby="cl-h" data-testid="checklist">
+              <h2 id="cl-h">言えた項目に印を付ける</h2>
+              <ul class="check-items">
+                {items.map((it) => (
+                  <li>
+                    <label class="check-item" data-key={it.key}>
+                      <input type="checkbox" checked={checked.has(it.key)} onChange={() => toggle(it.key)} />
+                      <span>
+                        <span class="muted small">{it.group === 'which' ? 'カード' : it.group === 'first' ? 'まずやること' : '呼ぶ基準'}</span>
+                        <br />
+                        {it.text}
+                      </span>
+                    </label>
+                  </li>
+                ))}
+              </ul>
+              <button type="button" class="btn btn-primary" data-testid="save-checks" onClick={saveChecks}>
+                記録する（{checked.size}/{items.length}）
+              </button>
+            </section>
+          ) : (
+            <RatingButtons onRate={(r) => void save(r)} />
+          )}
           <label class="toggle">
             <input type="checkbox" checked={allTiers} onChange={(e) => setAllTiers((e.target as HTMLInputElement).checked)} />
             ほかの段階の施設だとどう変わるかも見る
@@ -290,18 +382,12 @@ export function Practice({ cardId, source }: { cardId: string; source: QueueSour
           <div class="reveal">
             <CardBody card={card} profile={data.active} showAllTiers={allTiers} />
           </div>
-          {level === 0 ? (
-            <button type="button" class="btn btn-primary" data-rating="good" onClick={() => rate('good')}>
-              読んだ
-            </button>
-          ) : (
-            <RatingButtons onRate={rate} />
-          )}
         </>
       )}
     </main>
   );
 }
+
 
 export const DRILL_KIND_LABEL: Record<Drill['kind'], string> = {
   sequence: '並べ替え（手順の順番）',
@@ -425,6 +511,21 @@ export function DrillView({ drillId }: { drillId: string }) {
   );
 }
 
+/** 相談の伝え方は、声に出して言ってから見る（改良案④：電話相談は声に出す練習に回す）。 */
+function ConsultScript({ text }: { text: string }) {
+  const [open, setOpen] = useState(false);
+  return open ? (
+    <p data-testid="consult-script">{text}</p>
+  ) : (
+    <div>
+      <p class="prompt">専門医への電話の最初の30秒を、声に出して言ってから開く。</p>
+      <button type="button" class="btn" onClick={() => setOpen(true)}>
+        言ったので見る
+      </button>
+    </div>
+  );
+}
+
 export function SpecialtyView({ id }: { id: string }) {
   const { data } = useApp();
   const s = specialtyById.get(id);
@@ -463,6 +564,15 @@ export function SpecialtyView({ id }: { id: string }) {
           </ul>
         )}
       </Section>
+      <Section title="朝まで待てない条件">
+        <Lines items={s.cannotWait ?? []} />
+      </Section>
+      <Section title="朝まで待てる条件">
+        <Lines items={s.canWait ?? []} />
+      </Section>
+      <Section title="専門医が来るまでにやってはいけないこと">
+        <Lines items={s.doNotDo ?? []} />
+      </Section>
       <Section title="よくあるもの">
         <Lines items={s.common} />
       </Section>
@@ -476,7 +586,7 @@ export function SpecialtyView({ id }: { id: string }) {
         <Lines items={s.tips} />
       </Section>
       <Section title="相談の伝え方">
-        {s.consultScript ? <p>{s.consultScript}</p> : <p class="empty">（未記入）</p>}
+        {s.consultScript ? <ConsultScript text={s.consultScript} /> : <p class="empty">（未記入）</p>}
       </Section>
       <Section title={`この科の練習（${doneCount}/${ds.length}問を1回以上）`}>
         {ds.length === 0 ? (

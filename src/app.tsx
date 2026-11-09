@@ -1,13 +1,13 @@
 import { useRoute } from './router';
 import { useAppMaybe } from './state';
-import { CardView, Home, StateList } from './screens/field';
+import { CardView, Home, MarkView, StateList } from './screens/field';
 import { DrillView, Learn, Practice, SpecialtyView } from './screens/learn';
 import { Dashboard } from './screens/dashboard';
 import { Settings } from './screens/settings';
 import { DrugView, FieldView, RefHome, TopicQuiz, TopicView } from './screens/reference';
 import type { QueueSource } from './types';
 
-const SOURCES: QueueSource[] = ['field', 'briefing', 'review', 'new', 'manual'];
+const SOURCES: QueueSource[] = ['marked', 'field', 'briefing', 'review', 'new', 'manual'];
 
 function Screen() {
   const { parts, query } = useRoute();
@@ -18,7 +18,7 @@ function Screen() {
     case 'state':
       return <StateList stateId={b} />;
     case 'card':
-      return <CardView key={b} cardId={b} from={query.get('from')} />;
+      return c === 'mark' ? <MarkView key={b} cardId={b} /> : <CardView key={b} cardId={b} from={query.get('from')} />;
     case 'learn':
       return <Learn />;
     case 'practice':

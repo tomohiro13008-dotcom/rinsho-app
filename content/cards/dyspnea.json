@@ -152,5 +152,10 @@
   "drills": [
     "dyspnea-branch",
     "dyspnea-recall"
+  ],
+  "firstCalls": [
+    "SpO2が85%に下がっています",
+    "息が苦しいと言っています",
+    "肩で息をしていて、呼吸が速いです"
   ]
 }

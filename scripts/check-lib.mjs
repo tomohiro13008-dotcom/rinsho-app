@@ -96,6 +96,13 @@ export function checkAll({ registry, cards, drills, specialties, topics = [], dr
     if ((c.review?.level ?? 0) >= 2 && !c.review.byRole) err(file, 'レビュー段階2以上なのに誰が見たか（byRole）がない');
 
     for (const d of c.drills ?? []) if (!drillIds.has(d)) err(file, `練習が見つからない: ${d}`);
+
+    // 看護師の第一声（想起で題名の代わりに出す）。題名をそのまま書くと当てる練習にならない。
+    if (!c.common && (c.firstCalls ?? []).length === 0) warn(file, '看護師の第一声（firstCalls）がない（想起は題名で問う）');
+    for (const f of c.firstCalls ?? []) {
+      if (f.includes(c.title)) warn(file, `第一声に題名が入っている: 「${f.slice(0, 20)}」`);
+      if (f.length > LIMITS.lineChars) warn(file, `第一声が${LIMITS.lineChars}字を超える: 「${f.slice(0, 20)}…」`);
+    }
   }
 
   for (const { file, data: d } of drills) {
@@ -112,6 +119,9 @@ export function checkAll({ registry, cards, drills, specialties, topics = [], dr
     const blank = drafted ? warn : err;
     if ((s.mustNotMiss ?? []).length === 0) blank(file, '見逃してはいけない疾患が空');
     for (const m of s.mustNotMiss ?? []) if (m.cardId && !cardIds.has(m.cardId)) err(file, `カードが見つからない: ${m.cardId}`);
+    if ((s.cannotWait ?? []).length === 0) blank(file, '朝まで待てない条件が空');
+    if ((s.canWait ?? []).length === 0) blank(file, '朝まで待てる条件が空');
+    if ((s.doNotDo ?? []).length === 0) blank(file, 'やってはいけないことが空');
     if ((s.sources ?? []).length === 0) blank(file, '出典が空');
   }
 

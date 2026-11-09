@@ -2,7 +2,7 @@
 import { createContext } from 'preact';
 import { useCallback, useContext, useEffect, useState } from 'preact/hooks';
 import type { ComponentChildren } from 'preact';
-import type { DayLog, DrillLog, FacilityProfile, LearningState, Lookup, Snapshot } from './types';
+import type { DayLog, DrillLog, FacilityProfile, LearningState, Lookup, Mark, Snapshot, Trouble } from './types';
 import * as db from './store/db';
 import { registry } from './content';
 import { newProfile } from './logic/facility';
@@ -16,6 +16,8 @@ export interface AppData {
   drillLogs: DrillLog[];
   days: DayLog[];
   snapshots: Snapshot[];
+  marks: Mark[];
+  troubles: Trouble[];
   lastExportAt: number | null;
   firstUseAt: number;
   persisted: boolean | null;
@@ -51,6 +53,8 @@ async function load(): Promise<AppData> {
     drillLogs: await db.getAll<DrillLog>('drillLogs'),
     days: await db.listDays(),
     snapshots: await db.listSnapshots(),
+    marks: await db.listMarks(),
+    troubles: await db.listTroubles(),
     lastExportAt: (await db.getSetting<number>('lastExportAt')) ?? null,
     firstUseAt,
     persisted: (await db.getSetting<boolean>('persisted')) ?? null,
