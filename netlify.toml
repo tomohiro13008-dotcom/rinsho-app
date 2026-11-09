@@ -1,0 +1,18 @@
+# Netlify の設定。配布版のビルド（public:false の出典を落とす）を出す。
+[build]
+  command = "npm run build:public"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Service Worker と目録は常に新しいものを取りに行く（古いキャッシュに閉じ込められないように）
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Cache-Control = "no-cache"
