@@ -1,0 +1,9 @@
+{
+  "$comment": "空欄の雛形。下書き・未照合。",
+  "id": "common-call-recall",
+  "cardId": "common-call",
+  "kind": "recall",
+  "prompt": "【雛形】問い（未記入）",
+  "answer": "【雛形】答え（未記入）",
+  "targetSeconds": null
+}

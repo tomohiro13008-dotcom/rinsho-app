@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "specialty.schema.json",
+  "title": "Specialty（柱B：専門医の頭の中の6項目）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "mustNotMiss", "common", "urgencyQuestions", "procedurePrep", "tips", "sources", "updatedAt", "review"],
+  "properties": {
+    "$comment": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "name": { "type": "string" },
+    "externalLink": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "url"],
+      "properties": { "label": { "type": "string" }, "url": { "type": "string" } }
+    },
+    "mustNotMiss": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["disease"],
+        "properties": { "disease": { "type": "string" }, "timeWindow": { "type": "string" }, "cardId": { "type": "string" } }
+      }
+    },
+    "common": { "type": "array", "items": { "type": "string" } },
+    "urgencyQuestions": { "type": "array", "items": { "type": "string" } },
+    "procedurePrep": { "type": "array", "items": { "type": "string" } },
+    "tips": { "type": "array", "items": { "type": "string" } },
+    "consultScript": { "type": "string" },
+    "sources": { "type": "array", "items": { "$ref": "source.schema.json" } },
+    "updatedAt": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "review": { "$ref": "review.schema.json" }
+  }
+}

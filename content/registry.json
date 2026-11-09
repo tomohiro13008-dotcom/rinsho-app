@@ -1,0 +1,51 @@
+{
+  "$comment": "状態・場面・設備の一覧。アプリと点検スクリプトの両方がここを読む。状態の並びは『命に関わる順』の初版（仮）。段階プリセットは初期値（仮）で、自施設で上書きする。",
+  "states": [
+    { "id": "arrest", "label": "反応がない・心停止" },
+    { "id": "dyspnea", "label": "呼吸が苦しい・SpO2低下" },
+    { "id": "shock", "label": "血圧低下・ショック" },
+    { "id": "consciousness", "label": "意識障害" },
+    { "id": "seizure", "label": "けいれん" },
+    { "id": "chestpain", "label": "胸痛" },
+    { "id": "headache", "label": "突然の頭痛" },
+    { "id": "stroke", "label": "麻痺・ろれつ" },
+    { "id": "abdpain", "label": "激しい腹痛" },
+    { "id": "gibleed", "label": "吐血・下血" },
+    { "id": "anaphylaxis", "label": "アナフィラキシー" },
+    { "id": "sepsis", "label": "発熱と全身状態不良" },
+    { "id": "arrhythmia", "label": "脈が速い・遅い" },
+    { "id": "glucose", "label": "血糖の異常値" },
+    { "id": "panic", "label": "検査室からのパニック値の電話" },
+    { "id": "trauma", "label": "外傷" },
+    { "id": "pediatric", "label": "小児の急変" },
+    { "id": "agitation", "label": "興奮・せん妄" }
+  ],
+  "scenes": [
+    { "id": "prehospital", "label": "院外（災害を含む）" },
+    { "id": "clinic", "label": "診療所" },
+    { "id": "ward", "label": "一般病棟" },
+    { "id": "secondary", "label": "二次救急" },
+    { "id": "tertiary", "label": "三次" },
+    { "id": "icu", "label": "ICU" }
+  ],
+  "equipment": [
+    { "id": "aed", "label": "AED・除細動器" },
+    { "id": "pacing", "label": "経皮ペーシング" },
+    { "id": "intubation", "label": "気管挿管の器具" },
+    { "id": "sga", "label": "声門上器具" },
+    { "id": "ventilator", "label": "人工呼吸器" },
+    { "id": "bloodGas", "label": "血液ガス" },
+    { "id": "echo", "label": "エコー" },
+    { "id": "ct", "label": "CT" },
+    { "id": "transfusion", "label": "輸血" },
+    { "id": "vasopressor", "label": "昇圧薬の持続投与" }
+  ],
+  "tierPresets": {
+    "prehospital": ["aed"],
+    "clinic": ["aed", "echo"],
+    "ward": ["aed", "intubation", "sga", "bloodGas", "echo", "ct", "transfusion"],
+    "secondary": ["aed", "pacing", "intubation", "sga", "ventilator", "bloodGas", "echo", "ct", "transfusion", "vasopressor"],
+    "tertiary": ["aed", "pacing", "intubation", "sga", "ventilator", "bloodGas", "echo", "ct", "transfusion", "vasopressor"],
+    "icu": ["aed", "pacing", "intubation", "sga", "ventilator", "bloodGas", "echo", "ct", "transfusion", "vasopressor"]
+  }
+}

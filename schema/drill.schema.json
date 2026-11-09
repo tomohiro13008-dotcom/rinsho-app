@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "drill.schema.json",
+  "title": "Drill（練習）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "prompt", "answer"],
+  "properties": {
+    "$comment": { "type": "string" },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+    "cardId": { "type": "string" },
+    "specialty": { "type": "string" },
+    "kind": { "enum": ["sequence", "branch", "recall", "sayAloud", "scenario"] },
+    "prompt": { "type": "string" },
+    "answer": { "type": "string" },
+    "why": { "type": "string" },
+    "targetSeconds": { "type": ["number", "null"] },
+    "items": { "type": "array", "items": { "type": "string" } }
+  }
+}

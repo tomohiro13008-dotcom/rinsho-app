@@ -1,0 +1,9 @@
+{
+  "$comment": "空欄の雛形。下書き・未照合。",
+  "id": "cardiology-scenario",
+  "specialty": "cardiology",
+  "kind": "scenario",
+  "prompt": "【雛形】問い（未記入）",
+  "answer": "【雛形】答え（未記入）",
+  "targetSeconds": null
+}

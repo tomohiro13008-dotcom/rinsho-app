@@ -1,0 +1,15 @@
+{
+  "$comment": "消化器は統合アプリへのリンクと『他科に伝えたい6項目』だけ。リンク先は未設定（DESIGN.md の未決）。",
+  "id": "gastro",
+  "name": "消化器",
+  "mustNotMiss": [],
+  "common": [],
+  "urgencyQuestions": [],
+  "procedurePrep": [],
+  "tips": [],
+  "sources": [],
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}

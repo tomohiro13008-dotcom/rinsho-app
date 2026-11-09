@@ -1,0 +1,33 @@
+// content/ 配下の JSON をビルド時に取り込む。通信はしない。
+
+import type { Card, Drill, Registry, Specialty } from './types';
+import registryJson from '../content/registry.json';
+import { sortCards } from './logic/order';
+
+const cardMods = import.meta.glob<Card>('../content/cards/*.json', { eager: true, import: 'default' });
+const drillMods = import.meta.glob<Drill>('../content/drills/*.json', { eager: true, import: 'default' });
+const specMods = import.meta.glob<Specialty>('../content/specialties/*.json', { eager: true, import: 'default' });
+
+export const registry = registryJson as unknown as Registry;
+export const cards: Card[] = sortCards(Object.values(cardMods), registry);
+export const drills: Drill[] = Object.values(drillMods).sort((a, b) => a.id.localeCompare(b.id));
+export const specialties: Specialty[] = Object.values(specMods).sort((a, b) => a.id.localeCompare(b.id));
+
+export const cardById = new Map(cards.map((c) => [c.id, c]));
+export const drillById = new Map(drills.map((d) => [d.id, d]));
+export const specialtyById = new Map(specialties.map((s) => [s.id, s]));
+
+const labelMaps = {
+  state: new Map(registry.states.map((s) => [s.id, s.label])),
+  scene: new Map(registry.scenes.map((s) => [s.id, s.label])),
+  equipment: new Map(registry.equipment.map((s) => [s.id, s.label])),
+};
+export const stateLabel = (id: string) => labelMaps.state.get(id) ?? id;
+export const sceneLabel = (id: string) => labelMaps.scene.get(id) ?? id;
+export const equipmentLabel = (id: string) => labelMaps.equipment.get(id) ?? id;
+
+export function cardsForState(stateId: string): Card[] {
+  return cards.filter((c) => c.states.includes(stateId));
+}
+export const commonCards = () => cards.filter((c) => c.common);
+export const drillsForCard = (c: Card) => (c.drills ?? []).map((id) => drillById.get(id)).filter((d): d is Drill => !!d);
