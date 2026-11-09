@@ -1,0 +1,28 @@
+{
+  "$comment": "ループ検証の5枚の空欄サンプル。下書き・未照合。医学的な中身は書いていない。中身は利用者が書いて照合する。",
+  "id": "common-sbar",
+  "title": "SBARで伝える",
+  "common": true,
+  "states": [],
+  "scenes": [
+    "ward",
+    "clinic"
+  ],
+  "specialties": [],
+  "summary": [],
+  "firstActions": [],
+  "steps": [],
+  "branches": [],
+  "callForHelp": {
+    "criteria": []
+  },
+  "pitfalls": [],
+  "sources": [],
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  },
+  "drills": [
+    "common-sbar-say"
+  ]
+}

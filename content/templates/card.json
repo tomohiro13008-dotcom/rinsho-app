@@ -1,0 +1,25 @@
+{
+  "$comment": "カードの雛形。全項目を並べた見本で、アプリには読み込まない。コピーして content/cards/ に置き、【雛形】を自分の言葉に置き換える。書籍の文と図は写さない。書籍の頁は public:false の出典に置く。",
+  "id": "template-card",
+  "title": "【雛形】状態の名前（看護師の第一声の言葉）",
+  "states": ["arrest"],
+  "scenes": ["ward"],
+  "specialties": [],
+  "summary": ["【雛形】要点（5行まで）"],
+  "firstActions": ["【雛形】まずやること（3行まで）"],
+  "steps": [
+    { "text": "【雛形】手順の行", "kind": "procedure", "keyword": "【雛形】ヒント" },
+    { "text": "【雛形】設備が要る行", "kind": "equipment", "requires": ["aed"], "ifMissing": "【雛形】ないときの代わり（呼ぶ・送る・つなぐ）" }
+  ],
+  "branches": [{ "if": "【雛形】状況", "then": "【雛形】こうする", "else": "【雛形】そうでなければ" }],
+  "callForHelp": { "criteria": ["【雛形】呼ぶ基準"], "whom": "【雛形】誰を", "script": "【雛形】電話の第一声" },
+  "transfer": "【雛形】送るときの段取り",
+  "pitfalls": ["【雛形】落とし穴"],
+  "sources": [
+    { "type": "guideline", "title": "【雛形】ガイドライン名", "edition": "【雛形】版", "locator": "【雛形】CQ・頁", "checkedScope": "【雛形】照合した範囲・していない範囲", "public": true },
+    { "type": "book", "title": "【雛形】書名", "locator": "【雛形】頁", "public": false }
+  ],
+  "updatedAt": "2026-11-09",
+  "review": { "level": 0 },
+  "drills": []
+}

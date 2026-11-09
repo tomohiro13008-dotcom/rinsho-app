@@ -1,0 +1,40 @@
+{
+  "$comment": "ループ検証の5枚の空欄サンプル。下書き・未照合。医学的な中身は書いていない。中身は利用者が書いて照合する。",
+  "id": "dyspnea",
+  "title": "呼吸が苦しい・SpO2低下",
+  "states": [
+    "dyspnea"
+  ],
+  "scenes": [
+    "ward",
+    "clinic"
+  ],
+  "specialties": [],
+  "summary": [],
+  "firstActions": [],
+  "steps": [
+    {
+      "text": "【雛形】設備が要る行の例（血液ガス）。中身は未記入",
+      "kind": "decision",
+      "requires": [
+        "bloodGas"
+      ],
+      "ifMissing": "【雛形】その設備がないときの代わりの行。中身は未記入",
+      "keyword": "【雛形】"
+    }
+  ],
+  "branches": [],
+  "callForHelp": {
+    "criteria": []
+  },
+  "pitfalls": [],
+  "sources": [],
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  },
+  "drills": [
+    "dyspnea-recall",
+    "dyspnea-branch"
+  ]
+}

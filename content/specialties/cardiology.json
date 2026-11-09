@@ -1,0 +1,20 @@
+{
+  "$comment": "柱B の6項目の空欄の雛形。下書き・未照合。",
+  "id": "cardiology",
+  "name": "循環器",
+  "mustNotMiss": [
+    {
+      "disease": "【雛形】見逃してはいけない疾患（未記入）",
+      "cardId": "arrest"
+    }
+  ],
+  "common": [],
+  "urgencyQuestions": [],
+  "procedurePrep": [],
+  "tips": [],
+  "sources": [],
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}
