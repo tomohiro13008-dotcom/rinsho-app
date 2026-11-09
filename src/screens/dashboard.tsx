@@ -1,11 +1,12 @@
 // 学習ダッシュボード（改訂設計7章）：左上に「見ずに言える数（前月と並べる）」、右に今日の数、下段に習熟バー、右下に時点。
-import { cards, registry } from '../content';
+import { useState } from 'preact/hooks';
+import { cardById, cards, registry } from '../content';
 import { Icon, Section } from '../components';
-import { barsByScene, barsByState, emptyDayRatio, masteredCount, masteredLastMonth, type Bar } from '../logic/dashboard';
+import { barsByScene, barsByState, emptyDayRatio, markedLines, masteredCount, masteredLastMonth, troubleCounts, type Bar } from '../logic/dashboard';
 import { LEVEL_LABELS, isMastered } from '../logic/mastery';
 import { countUnreviewedField } from '../logic/queue';
 import { dayKey, formatDateTime } from '../logic/time';
-import { saveSnapshot } from '../store/db';
+import { addTrouble, deleteTrouble, saveSnapshot } from '../store/db';
 import { useApp } from '../state';
 import type { MasteryLevel, Snapshot } from '../types';
 import { todayQueue } from './learn';
@@ -101,6 +102,8 @@ export function Dashboard() {
           </p>
         </section>
       </div>
+      <Troubles />
+      <MarkedLines />
       <Section title="状態別の習熟（命に関わる順・見ずに言える枚数）">
         <Bars bars={barsByState(cards, data.learning, registry)} label="状態別の習熟" />
       </Section>
@@ -144,5 +147,76 @@ export function Dashboard() {
       </Section>
       <p class="muted small as-of">{formatDateTime(now)} 時点・この端末の記録から</p>
     </main>
+  );
+}
+
+/** 当直で困った科を1タップで残す（改良案④）。多い科が、次に科の学習を足す候補になる。 */
+function Troubles() {
+  const { data, refresh } = useApp();
+  const [last, setLast] = useState<{ id: number; label: string } | null>(null);
+  const counts = troubleCounts(data.troubles, registry, Date.now());
+  const tap = async (id: string, label: string) => {
+    const key = await addTrouble({ field: id, at: Date.now() });
+    setLast({ id: key, label });
+    await refresh();
+  };
+  const undo = async () => {
+    if (!last) return;
+    await deleteTrouble(last.id);
+    setLast(null);
+    await refresh();
+  };
+  return (
+    <Section title="当直で困った科（1タップで記録）" id="troubles">
+      <p class="small">困った科を押す。患者さんの情報は残さない。直近90日で多い科が、次に科の学習を足す候補。</p>
+      <div class="trouble-grid">
+        {registry.fields.map((f) => (
+          <button type="button" class="btn btn-small" data-field={f.id} onClick={() => tap(f.id, f.label)}>
+            {f.label}
+          </button>
+        ))}
+      </div>
+      {last ? (
+        <p role="status" class="small">
+          <Icon name="check" /> {last.label}を記録しました。
+          <button type="button" class="btn-link" onClick={undo}>
+            取り消す
+          </button>
+        </p>
+      ) : null}
+      {counts.length === 0 ? (
+        <p class="empty">まだ記録がありません。</p>
+      ) : (
+        <ol class="lines" data-testid="trouble-counts">
+          {counts.map((c) => (
+            <li data-field={c.id}>
+              {c.label}：{c.n}回
+            </li>
+          ))}
+        </ol>
+      )}
+    </Section>
+  );
+}
+
+/** 本番で迷った行。自分には想起の燃料、カードには直す箇所になる（改良案③）。 */
+function MarkedLines() {
+  const { data } = useApp();
+  const lines = markedLines(data.marks).slice(0, 20);
+  return (
+    <Section title="本番で迷った行（カードを直す候補）" id="marked">
+      {lines.length === 0 ? (
+        <p class="empty">まだ印はありません。現場カードの下の「迷った行に印を付ける」から残せます。</p>
+      ) : (
+        <ul class="lines" data-testid="marked-list">
+          {lines.map((l) => (
+            <li data-card={l.cardId} data-line={l.line}>
+              <a href={`#/card/${l.cardId}?from=study`}>{cardById.get(l.cardId)?.title ?? l.cardId}</a>：{l.text}
+              <span class="muted small">（{l.n}回・最後 {formatDateTime(l.lastAt).slice(0, 10)}）</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </Section>
   );
 }

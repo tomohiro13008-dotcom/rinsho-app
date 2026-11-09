@@ -1,9 +1,10 @@
 // 現場モード：状態の大ボタン → カード。全文をすぐ見せ、何も問わない。開いた記録だけ残す。
-import { useEffect } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { cardById, cardsForState, commonCards, equipmentLabel, registry, sceneLabel, stateLabel, topicsForCard } from '../content';
 import { Disclaimer, Icon, Lines, ReviewBadge, Section, Sources } from '../components';
 import { resolveStep } from '../logic/facility';
-import { addLookup } from '../store/db';
+import { addLookup, addMarks } from '../store/db';
+import { markLines } from '../logic/checklist';
 import { needsExportReminder, useApp } from '../state';
 import type { Card, FacilityProfile } from '../types';
 
@@ -110,7 +111,7 @@ export function CardBody({ card, profile, showAllTiers = false }: { card: Card; 
           </h2>
           <Lines items={card.callForHelp.criteria} />
           {card.callForHelp.whom ? <p>誰を：{card.callForHelp.whom}</p> : null}
-          {card.callForHelp.script ? <p>第一声：{card.callForHelp.script}</p> : null}
+          {card.callForHelp.script ? <p>電話の第一声：{card.callForHelp.script}</p> : null}
           {profile.contacts.trim() ? (
             <p class="contacts">
               <Icon name="phone" /> 連絡先（自施設メモ）：{profile.contacts}
@@ -215,6 +216,81 @@ export function CardView({ cardId, from }: { cardId: string; from: string | null
     <main class="page card" data-card={card.id}>
       <CardHeader card={card} profile={data.active} />
       <CardBody card={card} profile={data.active} />
+      {from === 'study' ? null : (
+        <p class="after-use">
+          <a class="btn" href={`#/card/${card.id}/mark`} data-testid="to-mark">
+            済んだら：迷った行に印を付ける
+          </a>
+        </p>
+      )}
+    </main>
+  );
+}
+
+/** 本番の後に、迷った行を選ぶだけで印を付ける（改良案③）。患者の情報は入れない。 */
+export function MarkView({ cardId }: { cardId: string }) {
+  const { data, refresh } = useApp();
+  const card = cardById.get(cardId);
+  const [sel, setSel] = useState<Set<string>>(() => new Set());
+  const [saved, setSaved] = useState(false);
+  if (!card) return <main class="page"><p>カードが見つかりません。</p></main>;
+  const steps = card.steps.map((s) => resolveStep(s, data.active.switches).text);
+  const lines = markLines(card, steps);
+  const groups = [...new Set(lines.map((l) => l.group))];
+  const toggle = (k: string) => {
+    const n = new Set(sel);
+    if (n.has(k)) n.delete(k);
+    else n.add(k);
+    setSel(n);
+  };
+  const save = async () => {
+    const at = Date.now();
+    await addMarks(lines.filter((l) => sel.has(l.key)).map((l) => ({ cardId: card.id, line: l.key, text: l.text, at })));
+    setSaved(true);
+    await refresh();
+  };
+  if (saved)
+    return (
+      <main class="page" data-testid="mark-done">
+        <h1>{card.title}</h1>
+        <p>
+          <Icon name="check" /> {sel.size}行に印を付けました。8時間たつと「今日の想起」に並び、記録の「迷った行」に残ります。
+        </p>
+        <a class="btn btn-primary" href="#/">
+          ホームへ
+        </a>
+      </main>
+    );
+  return (
+    <main class="page" data-card={card.id}>
+      <p class="muted small">迷った行に印</p>
+      <h1>{card.title}</h1>
+      <p class="small">迷った行・手が止まった行を選ぶ。患者さんの情報は書かない（行を選ぶだけ）。</p>
+      {groups.map((g) => (
+        <section class="section">
+          <h2>{g}</h2>
+          <ul class="mark-lines">
+            {lines
+              .filter((l) => l.group === g)
+              .map((l) => (
+                <li>
+                  <button type="button" class="btn mark-line" aria-pressed={sel.has(l.key)} data-line={l.key} onClick={() => toggle(l.key)}>
+                    {sel.has(l.key) ? <Icon name="check" /> : null}
+                    <span>{l.text}</span>
+                  </button>
+                </li>
+              ))}
+          </ul>
+        </section>
+      ))}
+      <div class="row">
+        <button type="button" class="btn btn-primary" disabled={sel.size === 0} onClick={save}>
+          印を残す（{sel.size}行）
+        </button>
+        <a class="btn" href={`#/card/${card.id}?from=study`}>
+          やめる
+        </a>
+      </div>
     </main>
   );
 }

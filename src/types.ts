@@ -68,6 +68,8 @@ export interface Card {
   updatedAt: string;
   review: Review;
   drills?: string[];
+  /** 看護師の第一声（例「SpO2が85です」）。学習の想起で題名の代わりに出し、どのカードかを当てさせる。 */
+  firstCalls?: string[];
 }
 
 export type DrillKind = 'sequence' | 'branch' | 'recall' | 'sayAloud' | 'scenario';
@@ -102,6 +104,12 @@ export interface Specialty {
   urgencyQuestions: string[];
   procedurePrep: string[];
   tips: string[];
+  /** 朝まで待てる条件 */
+  canWait?: string[];
+  /** 朝まで待てない条件 */
+  cannotWait?: string[];
+  /** 専門医が来るまでにやってはいけないこと */
+  doNotDo?: string[];
   consultScript?: string;
   sources: Source[];
   updatedAt: string;
@@ -223,7 +231,7 @@ export interface FacilityProfile {
 
 export type Rating = 'again' | 'hard' | 'good' | 'easy';
 
-export type QueueSource = 'field' | 'briefing' | 'review' | 'new' | 'manual';
+export type QueueSource = 'marked' | 'field' | 'briefing' | 'review' | 'new' | 'manual';
 
 export type MasteryLevel = 0 | 1 | 2 | 3 | 4;
 
@@ -233,6 +241,12 @@ export interface HistoryEntry {
   seconds: number;
   levelAfter: MasteryLevel;
   source: QueueSource;
+  /** 題名の代わりに出した看護師の第一声 */
+  prompt?: string;
+  /** 項目ごとの照合：言えた数と全体の数、言えなかった項目のキー */
+  checked?: number;
+  total?: number;
+  missed?: string[];
 }
 
 export interface LearningState {
@@ -248,6 +262,24 @@ export interface Lookup {
   cardId: string;
   at: number;
   mode: 'field' | 'briefing';
+}
+
+/** 本番の後に「迷った行」へ付ける印。患者の情報は持たず、カードの行だけを指す。 */
+export interface Mark {
+  id?: number;
+  cardId: string;
+  /** 行のキー（first:0 / call:1 / branch:0 / step:2） */
+  line: string;
+  /** 印を付けたときの行の文（カードが直されても何に迷ったか分かるように） */
+  text: string;
+  at: number;
+}
+
+/** 当直で困った科（参照の分野 id）を1タップで残す記録。 */
+export interface Trouble {
+  id?: number;
+  field: string;
+  at: number;
 }
 
 export interface DrillLog {

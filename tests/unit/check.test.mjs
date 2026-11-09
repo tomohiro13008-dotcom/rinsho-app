@@ -110,5 +110,20 @@ describe('点検スクリプト', () => {
     expect(e).toContain('添付文書');
     expect(e).toContain('出典の番号がない');
   });
+  it('v1.2：第一声に題名が入ると警告。照合済みの科で「朝まで待てない条件」などが空なら誤り', () => {
+    const w = run({ ...base(), firstCalls: ['Xです'] }).filter((x) => x.level === 'warn').map((x) => x.msg).join('\n');
+    expect(w).toContain('第一声に題名が入っている');
+    const spec = {
+      id: 's', name: 'S', mustNotMiss: [{ disease: 'D' }], common: [], urgencyQuestions: [], procedurePrep: [], tips: [],
+      sources: [{ type: 'guideline', title: 'G', edition: '1', public: true }], updatedAt: '2026-11-09', review: { level: 1 },
+    };
+    const r = checkAll({ registry, cards: [], drills: [], specialties: [{ file: 'content/specialties/s.json', data: spec }], validators });
+    const e = errors(r).join('\n');
+    expect(e).toContain('朝まで待てない条件が空');
+    expect(e).toContain('朝まで待てる条件が空');
+    expect(e).toContain('やってはいけないことが空');
+    const ok = { ...spec, cannotWait: ['a'], canWait: ['b'], doNotDo: ['c'] };
+    expect(errors(checkAll({ registry, cards: [], drills: [], specialties: [{ file: 'content/specialties/s.json', data: ok }], validators }))).toEqual([]);
+  });
 });
 

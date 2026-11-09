@@ -1,11 +1,12 @@
-// 「今日の想起」の並び（改訂設計3章・13章）。
-// 燃料は三つをこの順で並べる：
+// 「今日の想起」の並び（改訂設計3章・13章、v1.2 で印を追加）。
+// 燃料はこの順で並べる：
+//   0. 本番の後に「迷った行」へ印を付けてから8時間以上たち、その後まだ練習していないカード
 //   1. 現場で引いて（または当直前ブリーフィングで開いて）から8時間以上たち、その後まだ練習していないカード
 //   2. 期日の来た復習
 //   3. まだ一度も練習していないカードの順送り（1日1枚）
 // 今日すでに練習したカードは並べない（1と2は練習すると消える。3は1日1枚まで）。
 
-import type { Card, LearningState, Lookup, QueueSource } from '../types';
+import type { Card, LearningState, Lookup, Mark, QueueSource } from '../types';
 import { RECALL_DELAY_MS, startOfDay } from './time';
 
 export interface QueueItem {
@@ -20,6 +21,7 @@ export interface QueueInput {
   cards: Card[];
   learning: Map<string, LearningState>;
   lookups: Lookup[];
+  marks?: Mark[];
   now: number;
   newPerDay?: number;
 }
@@ -29,18 +31,23 @@ function lastPracticeAt(st: LearningState | undefined): number {
   return st.history[st.history.length - 1].at;
 }
 
-export function buildTodayQueue({ cards, learning, lookups, now, newPerDay = 1 }: QueueInput): QueueItem[] {
+export function buildTodayQueue({ cards, learning, lookups, marks = [], now, newPerDay = 1 }: QueueInput): QueueItem[] {
   const known = new Set(cards.map((c) => c.id));
   const today = startOfDay(now);
   const out: QueueItem[] = [];
   const used = new Set<string>();
   const practicedToday = (id: string) => lastPracticeAt(learning.get(id)) >= today;
 
-  // 1. 現場・ブリーフィングの記録（現場を先に、それぞれ古い順）
-  const ripe = lookups
+  // 0〜1. 迷った行の印・現場・ブリーフィングの記録（印→現場→ブリーフィング、それぞれ古い順）
+  const rank = { marked: 0, field: 1, briefing: 2 } as const;
+  const events: { cardId: string; at: number; mode: keyof typeof rank }[] = [
+    ...marks.map((m) => ({ cardId: m.cardId, at: m.at, mode: 'marked' as const })),
+    ...lookups.map((l) => ({ cardId: l.cardId, at: l.at, mode: l.mode })),
+  ];
+  const ripe = events
     .filter((l) => known.has(l.cardId) && now - l.at >= RECALL_DELAY_MS)
     .filter((l) => lastPracticeAt(learning.get(l.cardId)) < l.at)
-    .sort((a, b) => (a.mode === b.mode ? a.at - b.at : a.mode === 'field' ? -1 : 1));
+    .sort((a, b) => (a.mode === b.mode ? a.at - b.at : rank[a.mode] - rank[b.mode]));
   for (const l of ripe) {
     if (used.has(l.cardId) || practicedToday(l.cardId)) continue;
     used.add(l.cardId);

@@ -138,5 +138,9 @@
   "drills": [
     "common-abcde-sequence",
     "common-abcde-recall"
+  ],
+  "firstCalls": [
+    "なんだか、いつもと様子が違います",
+    "顔色が悪くて、ぐったりしています"
   ]
 }

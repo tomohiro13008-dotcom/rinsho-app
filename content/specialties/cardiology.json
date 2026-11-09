@@ -8,6 +8,9 @@
       "cardId": "arrest"
     }
   ],
+  "cannotWait": [],
+  "canWait": [],
+  "doNotDo": [],
   "common": [],
   "urgencyQuestions": [],
   "procedurePrep": [],

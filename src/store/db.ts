@@ -1,12 +1,12 @@
 // 端末内だけの保存（IndexedDB）。通信はしない。
 // 学習記録・施設プロフィール・自施設メモをここに置き、JSONで書き出し・読み込みできる。
 
-import type { DayLog, DrillLog, FacilityProfile, LearningState, Lookup, Snapshot } from '../types';
+import type { DayLog, DrillLog, FacilityProfile, LearningState, Lookup, Mark, Snapshot, Trouble } from '../types';
 
 const DB_NAME = 'rinsho-app';
-const DB_VERSION = 1;
+const DB_VERSION = 2;
 
-export const STORES = ['profiles', 'settings', 'learning', 'lookups', 'drillLogs', 'days', 'snapshots'] as const;
+export const STORES = ['profiles', 'settings', 'learning', 'lookups', 'drillLogs', 'days', 'snapshots', 'marks', 'troubles'] as const;
 export type StoreName = (typeof STORES)[number];
 
 let dbp: Promise<IDBDatabase> | null = null;
@@ -17,13 +17,19 @@ function open(): Promise<IDBDatabase> {
     const req = indexedDB.open(DB_NAME, DB_VERSION);
     req.onupgradeneeded = () => {
       const db = req.result;
-      db.createObjectStore('profiles', { keyPath: 'id' });
-      db.createObjectStore('settings');
-      db.createObjectStore('learning', { keyPath: 'cardId' });
-      db.createObjectStore('lookups', { keyPath: 'id', autoIncrement: true });
-      db.createObjectStore('drillLogs', { keyPath: 'id', autoIncrement: true });
-      db.createObjectStore('days', { keyPath: 'date' });
-      db.createObjectStore('snapshots', { keyPath: 'date' });
+      // 版を上げたときは、ない入れ物だけを足す（いまの記録は残す）
+      const make = (name: StoreName, opts?: IDBObjectStoreParameters) => {
+        if (!db.objectStoreNames.contains(name)) db.createObjectStore(name, opts);
+      };
+      make('profiles', { keyPath: 'id' });
+      make('settings');
+      make('learning', { keyPath: 'cardId' });
+      make('lookups', { keyPath: 'id', autoIncrement: true });
+      make('drillLogs', { keyPath: 'id', autoIncrement: true });
+      make('days', { keyPath: 'date' });
+      make('snapshots', { keyPath: 'date' });
+      make('marks', { keyPath: 'id', autoIncrement: true });
+      make('troubles', { keyPath: 'id', autoIncrement: true });
     };
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
@@ -49,8 +55,8 @@ export async function getAll<T>(store: StoreName): Promise<T[]> {
 export async function get<T>(store: StoreName, key: IDBValidKey): Promise<T | undefined> {
   return wrap((await tx(store, 'readonly')).get(key) as IDBRequest<T | undefined>);
 }
-export async function put(store: StoreName, value: unknown, key?: IDBValidKey): Promise<void> {
-  await wrap((await tx(store, 'readwrite')).put(value, key));
+export async function put(store: StoreName, value: unknown, key?: IDBValidKey): Promise<IDBValidKey> {
+  return wrap((await tx(store, 'readwrite')).put(value, key));
 }
 export async function del(store: StoreName, key: IDBValidKey): Promise<void> {
   await wrap((await tx(store, 'readwrite')).delete(key));
@@ -87,6 +93,13 @@ export async function recordDayIfFirst(d: DayLog): Promise<void> {
   const existing = await get<DayLog>('days', d.date);
   if (!existing) await put('days', d);
 }
+export const listMarks = () => getAll<Mark>('marks');
+export async function addMarks(ms: Mark[]): Promise<void> {
+  for (const m of ms) await put('marks', m);
+}
+export const listTroubles = () => getAll<Trouble>('troubles');
+export const addTrouble = async (t: Trouble): Promise<number> => (await put('troubles', t)) as number;
+export const deleteTrouble = (id: number) => del('troubles', id);
 export const listSnapshots = () => getAll<Snapshot>('snapshots');
 export const saveSnapshot = (s: Snapshot) => put('snapshots', s);
 

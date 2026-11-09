@@ -575,3 +575,83 @@ input[type='search'] {
     font-weight: 700;
   }
 }
+
+/* ---- v1.2：項目ごとの照合・迷った行・困った科 ---- */
+.checklist {
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+}
+.checklist h2,
+.marked-lines h2 {
+  margin-top: 0;
+}
+.check-items,
+.mark-lines {
+  list-style: none;
+  margin: 0 0 0.75rem;
+  padding: 0;
+}
+.check-item {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  min-height: 44px;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.check-item input {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-top: 0.15rem;
+  accent-color: var(--primary);
+}
+.marked-lines {
+  border: 2px solid var(--danger);
+  background: var(--danger-bg);
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin: 0.75rem 0;
+}
+.marked-lines h2 {
+  color: var(--danger);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.mark-lines li + li {
+  margin-top: 0.4rem;
+}
+.mark-line {
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+  font-weight: 400;
+}
+.mark-line[aria-pressed='true'] {
+  border: 2px solid var(--danger);
+  background: var(--danger-bg);
+  font-weight: 700;
+}
+.after-use {
+  margin-top: 1.5rem;
+}
+.trouble-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 0.4rem;
+  margin: 0.5rem 0;
+}
+.btn-link {
+  background: none;
+  border: none;
+  padding: 0 0.25rem;
+  color: var(--primary);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  min-height: 44px;
+}
