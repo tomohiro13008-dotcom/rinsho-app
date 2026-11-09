@@ -1,0 +1,9 @@
+{
+  "$comment": "AI下書き（2026-11-09）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "sepsis-recall",
+  "cardId": "sepsis",
+  "kind": "recall",
+  "prompt": "敗血症で、第1選択の昇圧薬と目標の平均血圧を言う",
+  "answer": "ノルアドレナリン。平均血圧65mmHg",
+  "targetSeconds": 10
+}

@@ -1,0 +1,149 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "sepsis",
+  "title": "敗血症を疑う・敗血症性ショック",
+  "states": [
+    "sepsis",
+    "shock"
+  ],
+  "scenes": [
+    "clinic",
+    "ward",
+    "secondary"
+  ],
+  "specialties": [],
+  "summary": [
+    "感染が疑われ、呼吸・意識・血圧のどれかが崩れたら敗血症を考える",
+    "抗菌薬の前に血液培養2セット。抗菌薬はできるだけ早く",
+    "低血圧には輸液と並行して、早めにノルアドレナリン",
+    "平均血圧65mmHgを目安にする"
+  ],
+  "firstActions": [
+    "呼吸数・意識・血圧を見て、酸素とモニター、静脈路",
+    "血液培養2セットを取り、できるだけ早く抗菌薬",
+    "調整晶質液で輸液を始める（30mL/kg以上を要することも）"
+  ],
+  "steps": [
+    {
+      "text": "迅速評価：呼吸数22/分以上、意識の変化（GCS 15未満）、収縮期血圧100mmHg以下",
+      "kind": "number",
+      "keyword": "22・GCS・100"
+    },
+    {
+      "text": "乳酸値を測り、繰り返す",
+      "kind": "number",
+      "requires": [
+        "bloodGas"
+      ],
+      "ifMissing": "乳酸が測れない：毛細血管再充満時間・皮膚・尿量で循環を見る",
+      "keyword": "乳酸"
+    },
+    {
+      "text": "輸液は調整晶質液。3時間で30mL/kg以上を要する人もいる。入れすぎにも注意",
+      "kind": "number",
+      "keyword": "30mL/kg"
+    },
+    {
+      "text": "目標の平均血圧は65mmHg",
+      "kind": "number",
+      "keyword": "MAP65"
+    },
+    {
+      "text": "低血圧が続けば、輸液と並行して早めにノルアドレナリン",
+      "kind": "decision",
+      "requires": [
+        "vasopressor"
+      ],
+      "ifMissing": "昇圧薬の持続投与ができない：輸液を続けながら、集中治療のできる施設へ送る",
+      "keyword": "ノルアド"
+    },
+    {
+      "text": "ノルアドレナリンで足りなければバソプレシン、さらに低用量ヒドロコルチゾン（200〜300mg/日）",
+      "kind": "decision",
+      "requires": [
+        "vasopressor"
+      ],
+      "ifMissing": "昇圧薬の持続投与ができない：輸液を続けながら、集中治療のできる施設へ送る",
+      "keyword": "バソプレシン"
+    },
+    {
+      "text": "感染源を探し、取り除けるものは早く処置する（ドレナージなど）",
+      "kind": "procedure",
+      "keyword": "感染源"
+    }
+  ],
+  "branches": [
+    {
+      "if": "反応がなく、普段どおりの呼吸がない",
+      "then": "心停止カードへ"
+    },
+    {
+      "if": "十分な輸液でも平均血圧65mmHgを保てない",
+      "then": "敗血症性ショックとして昇圧薬。呼ぶ基準"
+    },
+    {
+      "if": "呼吸が苦しい・SpO2が下がる",
+      "then": "呼吸が苦しいカードへ"
+    }
+  ],
+  "callForHelp": {
+    "criteria": [
+      "収縮期血圧90mmHg以下",
+      "呼吸数30/分以上、またはSpO2 92%以下",
+      "急な意識低下",
+      "輸液しても血圧が戻らない"
+    ],
+    "whom": "院内の応援（RRT・当直医・上級医）。いなければ上位施設へ",
+    "script": "SBARで伝える（SBARカード）"
+  },
+  "transfer": "昇圧薬が要る、感染源の処置が要るときは、集中治療のできる施設へ送る",
+  "pitfalls": [
+    "抗菌薬を急ぐあまり、血液培養を取り忘れる",
+    "収縮期血圧が保たれているので安心する（呼吸数・意識・乳酸を見る）",
+    "輸液だけを続け、昇圧薬の開始が遅れる",
+    "輸液を入れすぎる"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "日本版敗血症診療ガイドライン2024（J-SSCG2024）英語版 J Intensive Care 2025;13:15",
+      "edition": "2024（公開論文、2025年3月）",
+      "locator": "CQ1-2〜1-4、CQ2-2、CQ3-1、3-3〜3-8",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11907869",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。定義、血液培養、抗菌薬の時期、輸液の種類と量、目標の平均血圧、昇圧薬、ステロイドの推奨と強さを拾った。"
+    },
+    {
+      "type": "guideline",
+      "title": "J-SSCG2024 診療フロー（バンドル）日本集中治療医学会・日本救急医学会",
+      "edition": "2024（公開PDF）",
+      "url": "https://jsicm.org/pdf/cq/J-SSCG2024/bundle.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。迅速評価の項目と、初期対応の並びを拾った。"
+    },
+    {
+      "type": "guideline",
+      "title": "日本集中治療医学会 Rapid Response System運用指針",
+      "edition": "日集中医誌 2025;32:R15",
+      "locator": "Fig.1 起動基準の例 p.7",
+      "url": "https://www.jsicm.org/publication/pdf/JSICM_RRS_20250315.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。呼ぶ基準の数値（呼吸数・SpO2・収縮期血圧・けいれん）を写した。"
+    }
+  ],
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  },
+  "drills": [
+    "sepsis-recall"
+  ],
+  "firstCalls": [
+    "熱が出て、血圧が80台です",
+    "熱があって、呼吸が速く、ぼんやりしています",
+    "尿が出ていなくて、手足が冷たいです"
+  ]
+}

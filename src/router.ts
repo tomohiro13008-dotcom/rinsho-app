@@ -19,6 +19,9 @@ export function useRoute(): Route {
       window.scrollTo(0, 0);
     };
     window.addEventListener('hashchange', on);
+    // 最初の描画からこの登録までの間に変わったハッシュを取りこぼさない
+    const now = parse();
+    setR((prev) => (prev.parts.join('/') === now.parts.join('/') && prev.query.toString() === now.query.toString() ? prev : now));
     return () => window.removeEventListener('hashchange', on);
   }, []);
   return r;

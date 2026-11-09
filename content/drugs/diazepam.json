@@ -1,0 +1,137 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "diazepam",
+  "generic": "ジアゼパム",
+  "brands": [
+    {
+      "name": "ホリゾン注射液10mg",
+      "strength": "1管2mL中 10mg"
+    },
+    {
+      "name": "セルシン注射液10mg",
+      "strength": "1管2mL中 10mg",
+      "maker": "武田テバ薬品"
+    },
+    {
+      "name": "セルシン注射液5mg",
+      "strength": "1管1mL中 5mg",
+      "maker": "武田テバ薬品"
+    }
+  ],
+  "drugClass": "ベンゾジアゼピン系（抗けいれん・鎮静）",
+  "summary": [
+    "けいれん重積の第1段階。5〜10mgを5mg/分で静注（ガイドライン）",
+    "添付文書は初回10mgを、できるだけ緩徐に（静注は2分以上）",
+    "他の注射液と混合・希釈しない"
+  ],
+  "doses": [
+    {
+      "indication": "てんかん重積状態（第1段階）",
+      "population": "成人",
+      "dose": "5〜10mg",
+      "route": "静注（5mg/分）",
+      "basis": "てんかん診療ガイドライン2018",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "てんかん重積状態（第1段階）",
+      "population": "小児",
+      "dose": "0.3〜0.5mg/kg",
+      "route": "静注",
+      "basis": "てんかん診療ガイドライン2018",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "てんかん様重積状態の痙攣の抑制ほか（添付文書）",
+      "population": "成人",
+      "dose": "初回10mg（2mL）",
+      "route": "筋注か静注。静注は太い静脈に2分以上かけて",
+      "repeat": "必要に応じて3〜4時間ごと",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "静脈路が取れないとき",
+      "population": "成人（小児0.2〜0.5mg/kg）",
+      "dose": "10〜30mg",
+      "route": "注腸",
+      "basis": "てんかん診療ガイドライン2018",
+      "note": "保険適用外",
+      "sourceIndexes": [
+        0
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "5mg",
+      "recipe": "10mg製剤なら1mL（5mg/mL）"
+    },
+    {
+      "label": "10mg",
+      "recipe": "10mg製剤1管（2mL）。他の注射液と混合・希釈しない"
+    }
+  ],
+  "cautions": [
+    "呼吸抑制・舌根沈下に備え、バッグバルブマスクと吸引を準備する",
+    "他の注射液と混合・希釈しない（添付文書）",
+    "細い静脈や急速の静注で、血栓性静脈炎を起こすおそれ",
+    "筋注は効き始めが遅く、ばらつく（ガイドライン）"
+  ],
+  "topics": [
+    "status-epilepticus"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "てんかん診療ガイドライン2018 第8章 てんかん重積状態（日本神経学会）",
+      "edition": "2018（公開PDF）",
+      "locator": "p.76–79 図1（治療フローチャート）、p.87 CQ8-3",
+      "url": "https://www.neurology-jp.org/guidelinem/epgl/tenkan_2018_08.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。定義の時間、各段階の薬と量・速度、静脈路がないとき、血糖60以下の対応を公開PDFから拾った。"
+    },
+    {
+      "type": "label",
+      "title": "ホリゾン注射液10mg 添付文書",
+      "edition": "2023年8月改訂（第1版）",
+      "locator": "効能又は効果、用法及び用量、適用上の注意",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/ResultDataSetPDF/730119_1124402A2045_2_08",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・含量・用法用量・混合希釈しないこと・血栓性静脈炎"
+    },
+    {
+      "type": "web",
+      "title": "セルシン注射液 患者向医薬品ガイド（武田テバ薬品）",
+      "edition": "2023年2月更新",
+      "url": "https://www.info.pmda.go.jp/downfiles/ph/GUI/400061_1124402A1030_2_00G.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・規格（10mgは1管2mL）・製造販売元だけを確かめた。用法用量はホリゾンの添付文書による。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "量と速度（てんかん診療ガイドライン2018）",
+      "用法用量・混合希釈しないこと（ホリゾンの添付文書）",
+      "セルシンの規格（患者向医薬品ガイド）"
+    ],
+    "unverified": [
+      "てんかん診療ガイドライン2026（書籍）",
+      "セルシン注射液の添付文書本文",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}

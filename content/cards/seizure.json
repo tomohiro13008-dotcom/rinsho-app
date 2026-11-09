@@ -1,0 +1,176 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "seizure",
+  "title": "けいれんが止まらない",
+  "states": [
+    "seizure"
+  ],
+  "scenes": [
+    "clinic",
+    "ward",
+    "secondary"
+  ],
+  "specialties": [],
+  "summary": [
+    "5分以上続けば治療を始める（30分以上で後遺障害の危険）",
+    "第1段階はジアゼパム静注。止まらなければ第2段階の薬へ",
+    "気道・酸素・血糖を同時に見る",
+    "第1・第2段階で止まらなければ、約30分で全身麻酔を考える"
+  ],
+  "firstActions": [
+    "時刻を確かめ、横向きにして気道を保ち、酸素とモニター",
+    "静脈路を取り、血糖を測る",
+    "5分以上続けばジアゼパム5〜10mgを緩徐に静注"
+  ],
+  "steps": [
+    {
+      "text": "ジアゼパム5〜10mgを5mg/分で静注（ガイドライン）。添付文書は初回10mgを2分以上かけて",
+      "kind": "number",
+      "keyword": "ジアゼパム5〜10"
+    },
+    {
+      "text": "血糖60mg/dL以下なら、チアミン100mgとブドウ糖50% 50mLを静注",
+      "kind": "number",
+      "keyword": "B1・ブドウ糖"
+    },
+    {
+      "text": "止まらなければ第2段階：ホスフェニトイン、レベチラセタム、ミダゾラム、フェノバルビタールから選ぶ",
+      "kind": "decision",
+      "keyword": "第2段階"
+    },
+    {
+      "text": "ホスフェニトイン22.5mg/kg。3mg/kg/分か150mg/分の低い方を超えない。心電図と血圧を見る",
+      "kind": "number",
+      "keyword": "22.5mg/kg"
+    },
+    {
+      "text": "レベチラセタム1000〜3000mgを2〜5mg/kg/分で静注",
+      "kind": "number",
+      "keyword": "1000〜3000"
+    },
+    {
+      "text": "静脈路が取れなければ、ジアゼパム注腸10〜30mg（適応外）",
+      "kind": "procedure",
+      "keyword": "注腸"
+    },
+    {
+      "text": "呼吸抑制に備え、バッグバルブマスクと吸引を手元に置く",
+      "kind": "equipment",
+      "keyword": "BVM・吸引"
+    },
+    {
+      "text": "第1・第2段階で止まらなければ（約30分）、挿管・人工呼吸の下で全身麻酔を考える",
+      "kind": "decision",
+      "requires": [
+        "intubation",
+        "ventilator"
+      ],
+      "ifMissing": "挿管・人工呼吸ができない：第2段階の薬を入れながら、応援と搬送を急ぐ",
+      "keyword": "30分・麻酔"
+    }
+  ],
+  "branches": [
+    {
+      "if": "反応がなく、普段どおりの呼吸がない",
+      "then": "心停止カードへ"
+    },
+    {
+      "if": "ジアゼパムで止まった",
+      "then": "原因（低血糖・電解質・薬・頭蓋内の病気）を探し、再発に備える",
+      "else": "止まらなければ第2段階の薬へ"
+    },
+    {
+      "if": "血糖が低い",
+      "then": "低血糖カードへ（チアミンとブドウ糖）"
+    }
+  ],
+  "callForHelp": {
+    "criteria": [
+      "けいれんが5分以上続く",
+      "けいれんを繰り返し、その間に意識が戻らない",
+      "薬のあと呼吸が弱い・SpO2 92%以下",
+      "第1段階の薬で止まらない"
+    ],
+    "whom": "院内の応援（RRT・当直医・上級医）。いなければ上位施設へ",
+    "script": "SBARで伝える（SBARカード）"
+  },
+  "transfer": "第2段階の薬でも止まらない、挿管・人工呼吸が要るときは、上位施設へ送る",
+  "pitfalls": [
+    "ミダゾラムの0.5%製剤と0.1%製剤を取り違える",
+    "血糖を測らずに抗けいれん薬だけを重ねる",
+    "ジアゼパムを他の注射液と混合・希釈する（添付文書は混合・希釈しない）",
+    "ジアゼパムの筋注に頼る（効き始めが遅く、ばらつく）"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "てんかん診療ガイドライン2018 第8章 てんかん重積状態（日本神経学会）",
+      "edition": "2018（公開PDF）",
+      "locator": "p.76–79 図1（治療フローチャート）、p.87 CQ8-3",
+      "url": "https://www.neurology-jp.org/guidelinem/epgl/tenkan_2018_08.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。定義の時間、各段階の薬と量・速度、静脈路がないとき、血糖60以下の対応を公開PDFから拾った。"
+    },
+    {
+      "type": "guideline",
+      "title": "てんかん診療ガイドライン2026（日本神経学会・日本てんかん学会監修、医学書院）",
+      "edition": "2026（書籍版、2026年9月発行）",
+      "public": true,
+      "checkedScope": "未照合。現行版。オンラインの本文は確かめられていない。書籍で照合するのが最優先。"
+    },
+    {
+      "type": "label",
+      "title": "ホリゾン注射液10mg 添付文書",
+      "edition": "2023年8月改訂（第1版）",
+      "locator": "効能又は効果、用法及び用量、適用上の注意",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/ResultDataSetPDF/730119_1124402A2045_2_08",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・含量・用法用量・混合希釈しないこと・血栓性静脈炎"
+    },
+    {
+      "type": "label",
+      "title": "ホストイン静注750mg 添付文書（ノーベルファーマ）",
+      "edition": "2026年6月改訂（第5版）",
+      "locator": "効能又は効果、用法及び用量、7.1、8.1、2.2",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/620095_1132401A1020_1_11",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・含量・初回量と速度・維持量・監視・禁忌"
+    },
+    {
+      "type": "label",
+      "title": "イーケプラ点滴静注500mg 添付文書（ユーシービージャパン）",
+      "edition": "2024年4月改訂（第6版）",
+      "locator": "効能又は効果、用法及び用量",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/820110_1139402A1025_1_15",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・含量・重積状態の量と速度・1日最大量・通常量・腎機能低下時の表"
+    },
+    {
+      "type": "guideline",
+      "title": "日本集中治療医学会 Rapid Response System運用指針",
+      "edition": "日集中医誌 2025;32:R15",
+      "locator": "Fig.1 起動基準の例 p.7",
+      "url": "https://www.jsicm.org/publication/pdf/JSICM_RRS_20250315.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。呼ぶ基準の数値（呼吸数・SpO2・収縮期血圧・けいれん）を写した。"
+    }
+  ],
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  },
+  "drills": [
+    "seizure-sequence",
+    "seizure-recall"
+  ],
+  "firstCalls": [
+    "けいれんが止まりません",
+    "さっきからずっと手足がガクガクしています",
+    "けいれんを何度も繰り返していて、目が覚めません"
+  ]
+}
