@@ -1,0 +1,159 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "drug.schema.json",
+  "title": "Drug（薬）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "generic",
+    "brands",
+    "drugClass",
+    "summary",
+    "doses",
+    "preparation",
+    "cautions",
+    "sources",
+    "verification",
+    "updatedAt",
+    "review"
+  ],
+  "properties": {
+    "$comment": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "generic": {
+      "type": "string"
+    },
+    "brands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "strength"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "strength": {
+            "type": "string"
+          },
+          "maker": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "drugClass": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "array",
+      "maxItems": 5,
+      "items": {
+        "type": "string"
+      }
+    },
+    "doses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "indication",
+          "population",
+          "dose",
+          "route",
+          "basis"
+        ],
+        "properties": {
+          "indication": {
+            "type": "string"
+          },
+          "population": {
+            "type": "string"
+          },
+          "dose": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          },
+          "repeat": {
+            "type": "string"
+          },
+          "basis": {
+            "type": "string"
+          },
+          "note": {
+            "type": "string"
+          },
+          "sourceIndexes": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      }
+    },
+    "preparation": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "label",
+          "recipe"
+        ],
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "recipe": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "weightTable": {
+      "$ref": "table.schema.json"
+    },
+    "cautions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "source.schema.json"
+      }
+    },
+    "verification": {
+      "$ref": "verification.schema.json"
+    },
+    "updatedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "review": {
+      "$ref": "review.schema.json"
+    }
+  }
+}

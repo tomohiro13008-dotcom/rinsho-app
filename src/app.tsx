@@ -4,6 +4,7 @@ import { CardView, Home, StateList } from './screens/field';
 import { DrillView, Learn, Practice, SpecialtyView } from './screens/learn';
 import { Dashboard } from './screens/dashboard';
 import { Settings } from './screens/settings';
+import { DrugView, FieldView, RefHome, TopicQuiz, TopicView } from './screens/reference';
 import type { QueueSource } from './types';
 
 const SOURCES: QueueSource[] = ['field', 'briefing', 'review', 'new', 'manual'];
@@ -26,6 +27,12 @@ function Screen() {
       return <DrillView key={b} drillId={b} />;
     case 'specialty':
       return <SpecialtyView id={b} />;
+    case 'ref':
+      return b === 'field' && c ? <FieldView id={c} /> : <RefHome />;
+    case 'topic':
+      return c === 'quiz' ? <TopicQuiz key={b} id={b} /> : <TopicView key={b} id={b} />;
+    case 'drug':
+      return <DrugView key={b} id={b} />;
     case 'dash':
       return <Dashboard />;
     case 'settings':
@@ -46,6 +53,9 @@ function Nav() {
       </a>
       <a href="#/learn" aria-current={cur(['learn', 'practice', 'drill', 'specialty'])}>
         学習
+      </a>
+      <a href="#/ref" aria-current={cur(['ref', 'topic', 'drug'])}>
+        参照
       </a>
       <a href="#/dash" aria-current={cur(['dash'])}>
         記録

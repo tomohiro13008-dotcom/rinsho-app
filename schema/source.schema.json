@@ -4,14 +4,41 @@
   "title": "Source（出典）",
   "type": "object",
   "additionalProperties": false,
-  "required": ["type", "title", "public"],
+  "required": [
+    "type",
+    "title",
+    "public"
+  ],
   "properties": {
-    "type": { "enum": ["guideline", "book", "web"] },
-    "title": { "type": "string" },
-    "edition": { "type": "string" },
-    "locator": { "type": "string" },
-    "checkedScope": { "type": "string" },
-    "url": { "type": "string" },
-    "public": { "type": "boolean" }
+    "type": {
+      "enum": [
+        "guideline",
+        "book",
+        "web",
+        "label"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "edition": {
+      "type": "string"
+    },
+    "locator": {
+      "type": "string"
+    },
+    "checkedScope": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "public": {
+      "type": "boolean"
+    },
+    "verifiedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    }
   }
 }

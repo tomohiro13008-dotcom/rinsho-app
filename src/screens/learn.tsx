@@ -10,6 +10,7 @@ import { addDrillLog, recordDayIfFirst, saveLearning } from '../store/db';
 import { useApp, type AppData } from '../state';
 import type { Card, Drill, LearningState, MasteryLevel, QueueSource, Rating } from '../types';
 import { CardBody, ExportReminder } from './field';
+import { topicQuizTopics } from './reference';
 
 export function todayQueue(d: AppData, now: number): QueueItem[] {
   return buildTodayQueue({ cards, learning: d.learning, lookups: d.lookups, now });
@@ -100,6 +101,24 @@ export function Learn() {
               </a>
             </li>
           ))}
+        </ul>
+      </Section>
+      <Section title="参照の確認問題">
+        <ul class="list">
+          {topicQuizTopics().map((t) => {
+            const done = t.sections.filter((s) => s.question && data.drillLogs.some((l) => l.drillId === `topic:${t.id}:${s.id}`)).length;
+            const total = t.sections.filter((s) => s.question).length;
+            return (
+              <li>
+                <a class="btn btn-list" href={`#/topic/${t.id}/quiz`}>
+                  <span>{t.title}</span>
+                  <span class="muted small">
+                    {done}/{total}問を1回以上
+                  </span>
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </Section>
       <Section title="科の学習（柱B）">

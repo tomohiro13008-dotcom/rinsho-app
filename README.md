@@ -23,6 +23,7 @@
 | 急変のその場 | 現場（ホーム→カード） | 状態の大ボタンから1〜2タップでカード。まずやることと呼ぶ基準を最初の画面で見る |
 | 当直前（3分） | 学習→当直前ブリーフィング | 1枚を出す。頭の中で最初の5分を言ってから開く |
 | 当直明けの朝・翌日 | 学習→今日の想起 | 見ずに言う→照合→自己評価4段階 |
+| 時間がないとき・調べたいとき | 参照 | 検索か分野から項目を開き、要約とポイントだけ読む。薬は商品名でも引ける |
 | 月に1回 | 記録 | 見ずに言える数の推移、段階の測定（始めと4週後） |
 | 勤務先が変わるとき | 設定 | 施設プロフィール（段階＋設備スイッチ）、自施設メモ、書き出し |
 
@@ -55,15 +56,23 @@ npm run e2e            # Playwright（ビルドして preview で確かめる）
 4. 自分の言葉で書き直す。設備が要る行は `requires` と `ifMissing`（呼ぶ・送る・つなぐ）を必ず対にする。
 5. `npm run check` を通し、`review.level` を上げる（REVIEW.md）。
 
+## 参照の項目・薬を書く
+
+1. 項目は `content/topics/<id>.json`、薬は `content/drugs/<id>.json`。形は `schema/topic.schema.json` と `schema/drug.schema.json`。
+2. 要約は5行まで、ポイントは7行まで。1行は60字を目安にする。
+3. 薬の用法用量は行ごとに根拠（添付文書かガイドラインか）と出典番号を書く。添付文書の出典（type `label`）を1件以上置く。
+4. 体重別の量は自分で計算して `weightTable` に置き、注記に計算の前提（濃度・体重の刻み）を書く。アプリは計算しない。
+5. 照合した範囲を `verification` に書き、`npm run check` を通してから `review.level` を上げる。
+
 ## 構成
 
 ```
-content/        registry.json（状態・場面・設備）、cards/、drills/、specialties/、templates/
+content/        registry.json（状態・場面・設備・分野）、cards/、drills/、specialties/、topics/、drugs/、templates/
 schema/         JSON Schema
 scripts/        check（点検）、gen-sw（Service Worker 生成）、gen-icons
-src/logic/      今日の想起（queue）、間隔反復（srs、差し替え可）、習熟（mastery）、施設（facility）、ダッシュボード
+src/logic/      検索（search）、今日の想起（queue）、間隔反復（srs、差し替え可）、習熟（mastery）、施設（facility）、ダッシュボード
 src/store/      IndexedDB と書き出し・読み込み
-src/screens/    現場、学習、記録、設定
+src/screens/    現場、学習、参照、記録、設定
 src/theme.ts    色（ライト／ダーク）とコントラスト計算
 tests/          unit（vitest）、e2e（Playwright）
 ```

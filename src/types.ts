@@ -20,7 +20,7 @@ export interface Branch {
 }
 
 export interface Source {
-  type: 'guideline' | 'book' | 'web';
+  type: 'guideline' | 'book' | 'web' | 'label';
   title: string;
   edition?: string;
   /** CQ や頁 */
@@ -30,6 +30,8 @@ export interface Source {
   url?: string;
   /** false は自分用（書籍の頁など）。配布版のビルドで落とす。 */
   public: boolean;
+  /** 原典を開いて確かめた日（YYYY-MM-DD） */
+  verifiedAt?: string;
 }
 
 /** 0 AI下書き / 1 自分で照合済み / 2 専門医レビュー済み / 3 現場で使って確認 */
@@ -106,6 +108,92 @@ export interface Specialty {
   review: Review;
 }
 
+// ---- 参照セクション（教科書・レファレンス） ----
+
+/** 表。数値は書き手が作って照合したもので、アプリは計算しない。 */
+export interface Table {
+  caption?: string;
+  columns: string[];
+  rows: string[][];
+  note?: string;
+}
+
+export interface TopicSection {
+  id: string;
+  title: string;
+  paragraphs?: string[];
+  bullets?: string[];
+  table?: Table;
+  /** 確認問題（学習の「参照の確認問題」に出る） */
+  question?: string;
+  answer?: string;
+  /** sources の何番目を根拠にしたか（0始まり） */
+  sourceIndexes?: number[];
+}
+
+export interface Verification {
+  checked: string[];
+  unverified: string[];
+  editorialNote?: string;
+}
+
+/** 参照項目。冒頭に要約とポイント、次に表と詳細。 */
+export interface Topic {
+  id: string;
+  field: string;
+  title: string;
+  tags: string[];
+  summary: string[];
+  points: string[];
+  sections: TopicSection[];
+  pitfalls: string[];
+  cards?: string[];
+  drugs?: string[];
+  related?: string[];
+  sources: Source[];
+  verification: Verification;
+  updatedAt: string;
+  review: Review;
+}
+
+export interface DrugBrand {
+  name: string;
+  /** 規格・含量（例：1管1mL中 1mg） */
+  strength: string;
+  maker?: string;
+}
+
+export interface DoseRow {
+  indication: string;
+  /** 成人／小児など */
+  population: string;
+  dose: string;
+  route: string;
+  /** 間隔・繰り返し・最大量 */
+  repeat?: string;
+  /** 出どころ（添付文書／ガイドライン名） */
+  basis: string;
+  note?: string;
+  sourceIndexes?: number[];
+}
+
+export interface Drug {
+  id: string;
+  generic: string;
+  brands: DrugBrand[];
+  drugClass: string;
+  summary: string[];
+  doses: DoseRow[];
+  preparation: { label: string; recipe: string }[];
+  weightTable?: Table;
+  cautions: string[];
+  topics?: string[];
+  sources: Source[];
+  verification: Verification;
+  updatedAt: string;
+  review: Review;
+}
+
 export interface RegistryItem {
   id: string;
   label: string;
@@ -113,6 +201,8 @@ export interface RegistryItem {
 
 export interface Registry {
   states: RegistryItem[];
+  /** 参照セクションの分野 */
+  fields: RegistryItem[];
   scenes: RegistryItem[];
   equipment: RegistryItem[];
   tierPresets: Record<string, string[]>;

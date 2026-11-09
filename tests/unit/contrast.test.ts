@@ -6,7 +6,7 @@ const textPairs: [keyof Theme, keyof Theme][] = [
   ['text', 'bg'], ['text', 'surface'], ['label', 'bg'], ['label', 'surface'],
   ['primary', 'bg'], ['primary', 'surface'], ['onPrimary', 'primary'],
   ['danger', 'bg'], ['danger', 'surface'], ['danger', 'dangerBg'], ['text', 'dangerBg'], ['onDanger', 'danger'],
-  ['success', 'bg'], ['success', 'surface'], ['onSuccess', 'success'],
+  ['success', 'bg'], ['success', 'surface'], ['onSuccess', 'success'], ['text', 'track'],
 ];
 const shapePairs: [keyof Theme, keyof Theme][] = [
   ['border', 'bg'], ['border', 'surface'], ['primary', 'track'], ['success', 'track'],

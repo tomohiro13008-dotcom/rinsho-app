@@ -1,0 +1,120 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "adrenaline",
+  "generic": "アドレナリン",
+  "brands": [
+    {
+      "name": "ボスミン注1mg",
+      "strength": "1管1mL中 1mg",
+      "maker": "第一三共"
+    },
+    {
+      "name": "アドレナリン注0.1%シリンジ「テルモ」",
+      "strength": "1シリンジ1mL中 1mg",
+      "maker": "テルモ"
+    }
+  ],
+  "drugClass": "カテコラミン（血管収縮薬）",
+  "summary": [
+    "心停止では、JRCは1回1mg静注を3〜5分ごととしている",
+    "PEA・心静止では、できるだけ早く投与する",
+    "添付文書の心停止での静注は「1回0.25mgを超えない量を希釈してゆっくり」で、ガイドラインと違う"
+  ],
+  "doses": [
+    {
+      "indication": "心停止（ALS）",
+      "population": "成人",
+      "dose": "1回 1mg",
+      "route": "静注（骨髄内）",
+      "repeat": "3〜5分ごと。PEA・心静止はできるだけ早く",
+      "basis": "JRC蘇生ガイドライン2020",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "心停止の補助治療（添付文書の記載）",
+      "population": "成人",
+      "dose": "1回 0.25mgを超えない量を生理食塩液などで希釈",
+      "route": "できるだけゆっくり静注",
+      "repeat": "必要があれば5〜15分ごと",
+      "basis": "添付文書",
+      "note": "ガイドラインの量（1mg）と違う。施設の手順を確かめる",
+      "sourceIndexes": [
+        1,
+        2
+      ]
+    },
+    {
+      "indication": "気管支痙攣の緩解、急性低血圧・ショックの補助治療（添付文書）",
+      "population": "成人",
+      "dose": "1回 0.2〜1mg",
+      "route": "皮下注・筋注",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1,
+        2
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "心停止の1回量（JRC）",
+      "recipe": "1mg＝ボスミン注1mg 1管（1mL）、またはテルモのシリンジ1本（1mL）"
+    }
+  ],
+  "cautions": [
+    "筋注・皮下注の量と静注の量を取り違えない",
+    "心停止での静注量は、ガイドラインと添付文書で違う。採用薬と施設の手順で確かめる"
+  ],
+  "topics": [
+    "als-adult"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "JRC蘇生ガイドライン2020 成人の二次救命処置（ALS）",
+      "edition": "2020（公開PDF）",
+      "locator": "p.51–55、p.61",
+      "url": "https://www.jrc-cpr.org/wp-content/uploads/2022/07/JRC_0047-0150_ALS.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "アドレナリン1回1mg・3〜5分ごと、非ショックリズムでできるだけ早く（p.53）"
+    },
+    {
+      "type": "label",
+      "title": "ボスミン注1mg 添付文書（第一三共）",
+      "edition": "2026年3月改訂（第3版）",
+      "locator": "効能又は効果、用法及び用量",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/430574_2451400A1030_1_10",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・規格・心停止の静注量・皮下注筋注量"
+    },
+    {
+      "type": "label",
+      "title": "アドレナリン注0.1%シリンジ「テルモ」 添付文書",
+      "edition": "2026年3月改訂（第2版）",
+      "locator": "効能又は効果、用法及び用量",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/470034_2451402G1040_1_06",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・規格・用法用量"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "販売名と規格（PMDAの添付文書）",
+      "心停止の量（JRC2020公開PDF）"
+    ],
+    "unverified": [
+      "JRC2025（書籍）の記載",
+      "アナフィラキシーでの筋注量（このページには載せていない）",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}

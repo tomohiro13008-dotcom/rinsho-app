@@ -1,0 +1,146 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "oxygen-acute",
+  "field": "resp",
+  "title": "急性期の酸素療法と目標SpO2",
+  "tags": [
+    "酸素",
+    "SpO2",
+    "II型呼吸不全",
+    "CO2ナルコーシス",
+    "NPPV",
+    "高流量鼻カニュラ",
+    "COPD"
+  ],
+  "summary": [
+    "目標SpO2は94〜98%、CO2がたまる恐れ（II型）があれば88〜92%",
+    "重症ならリザーバーマスク15L/分で始め、目標に合わせて下げる",
+    "SpO2では高CO2血症は分からない。意識と呼吸数を合わせて見る"
+  ],
+  "points": [
+    "II型は鼻カニュラから始め、アシドーシスが悪化すればベンチュリーマスク、さらにNPPV",
+    "CO2ナルコーシスで意識障害を伴えば、挿管して人工呼吸を考える",
+    "呼吸数25/分以上や強い呼吸困難（I型）では、高流量鼻カニュラかNPPVを考える",
+    "SpO2 92%以下、酸素10L/分以上が要るは、院内で人を呼ぶ基準",
+    "PaCO2を急に下げると、血圧低下や不整脈が起こりうる"
+  ],
+  "sections": [
+    {
+      "id": "target",
+      "title": "目標SpO2",
+      "table": {
+        "columns": [
+          "状態",
+          "目標SpO2"
+        ],
+        "rows": [
+          [
+            "急性の呼吸不全（I型）",
+            "94〜98%"
+          ],
+          [
+            "CO2がたまる恐れ（II型、COPDなど）",
+            "88〜92%"
+          ]
+        ]
+      },
+      "question": "COPDのある人の目標SpO2は？",
+      "answer": "88〜92%。CO2がたまる恐れがあるため。",
+      "sourceIndexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "stepup",
+      "title": "II型での上げ方",
+      "bullets": [
+        "鼻カニュラから始める",
+        "呼吸性アシドーシスが悪化すれば、ベンチュリーマスクへ",
+        "それでも悪化すればNPPV",
+        "意識障害を伴えば、挿管して人工呼吸を考える"
+      ],
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "id": "escalate",
+      "title": "人を呼ぶ・装置を上げる目安",
+      "bullets": [
+        "SpO2 92%以下、酸素10L/分以上、呼吸数9/分以下か30/分以上は、院内で人を呼ぶ基準（RRS）",
+        "I型で呼吸困難が強い、または呼吸数25/分以上なら、高流量鼻カニュラかNPPVを考える",
+        "高流量鼻カニュラは、換気の補助が要るII型ではNPPVの代わりにならない"
+      ],
+      "question": "酸素の流量が何L/分を超えたら人を呼ぶ基準？",
+      "answer": "10L/分以上（RRS運用指針の例）。",
+      "sourceIndexes": [
+        1,
+        2
+      ]
+    }
+  ],
+  "pitfalls": [
+    "SpO2が上がっても、高CO2血症は見えない",
+    "CO2がたまる恐れのある人に、高濃度の酸素を漫然と続ける",
+    "酸素の流量が増え続けているのに呼ぶのが遅れる"
+  ],
+  "cards": [
+    "dyspnea",
+    "common-abcde"
+  ],
+  "related": [
+    "rrs-criteria"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "Resuscitation Council UK: The ABCDE Approach",
+      "edition": "2015年10月公開・2024年7月更新",
+      "url": "https://resus.org.uk/node/123",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "目標SpO2、リザーバーマスク15L/分、SpO2では高CO2が分からないこと"
+    },
+    {
+      "type": "web",
+      "title": "野口裕幸「酸素療法の基礎からハイフローまで」日本呼吸ケア・リハビリテーション学会誌 32(3):288-292",
+      "edition": "2024（J-STAGE公開 2024-08-30）",
+      "url": "https://www.jstage.jst.go.jp/article/jsrcr/32/3/32_288/_html/-char/ja",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "I型・II型の目標、II型の上げ方、HFT・NPPVの目安、PaCO2を急に下げる危険。二次資料"
+    },
+    {
+      "type": "guideline",
+      "title": "日本集中治療医学会 Rapid Response System運用指針",
+      "edition": "日集中医誌 2025;32:R15",
+      "locator": "Fig.1 p.7、p.8–11",
+      "url": "https://www.jsicm.org/publication/pdf/JSICM_RRS_20250315.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "呼ぶ基準の数値（Fig.1）"
+    },
+    {
+      "type": "book",
+      "title": "酸素療法の実際．酸素療法マニュアル（日本呼吸ケア・リハビリテーション学会・日本呼吸器学会編、メディカルレビュー社）",
+      "edition": "2017",
+      "public": false,
+      "checkedScope": "未照合。二次資料が引用する原典"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "目標SpO2（RCUK、二次資料）",
+      "RRSの数値（運用指針 Fig.1）"
+    ],
+    "unverified": [
+      "酸素療法マニュアル2017の原典",
+      "器具ごとの流量と吸入酸素濃度の目安（載せていない）"
+    ]
+  },
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}

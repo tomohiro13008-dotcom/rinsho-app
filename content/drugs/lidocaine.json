@@ -1,0 +1,128 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "lidocaine",
+  "generic": "リドカイン塩酸塩",
+  "brands": [
+    {
+      "name": "静注用キシロカイン2%",
+      "strength": "1管5mL中 100mg（20mg/mL）",
+      "maker": "サンドファーマ"
+    }
+  ],
+  "drugClass": "抗不整脈薬（Ib群）",
+  "summary": [
+    "JRC2020では、アミオダロンが使えないときの代わりに1〜1.5mg/kgを静注する",
+    "添付文書は1回50〜100mg（1〜2mg/kg）を1〜2分で緩徐に静注",
+    "1時間内の基準最高投与量は300mg（添付文書）"
+  ],
+  "doses": [
+    {
+      "indication": "VF・無脈性VT（アミオダロンが使えないとき）",
+      "population": "成人",
+      "dose": "1〜1.5mg/kg",
+      "route": "静注",
+      "basis": "JRC蘇生ガイドライン2020",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "心室性の期外収縮・頻拍など（添付文書）",
+      "population": "成人",
+      "dose": "1回 50〜100mg（1〜2mg/kg）",
+      "route": "1〜2分で緩徐に静注",
+      "repeat": "効果がなければ5分後に同量。持続を期待するなら10〜20分間隔で同量を追加",
+      "basis": "添付文書",
+      "note": "1時間内の基準最高投与量は300mg",
+      "sourceIndexes": [
+        1
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "濃度",
+      "recipe": "静注用キシロカイン2%は20mg/mL。1管（5mL）で100mg"
+    }
+  ],
+  "weightTable": {
+    "caption": "1〜1.5mg/kg の早見表（JRC2020の量、2%製剤）",
+    "columns": [
+      "体重",
+      "量",
+      "液量（20mg/mL）"
+    ],
+    "rows": [
+      [
+        "40kg",
+        "40〜60mg",
+        "2〜3mL"
+      ],
+      [
+        "50kg",
+        "50〜75mg",
+        "2.5〜3.75mL"
+      ],
+      [
+        "60kg",
+        "60〜90mg",
+        "3〜4.5mL"
+      ],
+      [
+        "70kg",
+        "70〜105mg",
+        "3.5〜5.25mL"
+      ],
+      [
+        "80kg",
+        "80〜120mg",
+        "4〜6mL"
+      ]
+    ],
+    "note": "表の数値は書き手が体重から計算して載せたもの（アプリは計算しない）。照合のときに一行ずつ確かめる。"
+  },
+  "cautions": [
+    "局所麻酔用の製剤と取り違えない（静注用を使う）",
+    "点滴静注は添付文書の承認用法ではない"
+  ],
+  "topics": [
+    "als-adult"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "JRC蘇生ガイドライン2020 成人の二次救命処置（ALS）",
+      "edition": "2020（公開PDF）",
+      "locator": "p.51–55、p.61",
+      "url": "https://www.jrc-cpr.org/wp-content/uploads/2022/07/JRC_0047-0150_ALS.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "アミオダロンが使えない場合にリドカイン1〜1.5mg/kg（p.53–54）"
+    },
+    {
+      "type": "label",
+      "title": "静注用キシロカイン2% 添付文書（サンドファーマ）",
+      "edition": "2023年9月改訂（第1版）",
+      "locator": "効能又は効果、用法及び用量",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/112268_1214401A5022_2_03",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・規格・用法用量・最高投与量"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "販売名・規格・用法用量（PMDAの添付文書）",
+      "心停止での位置づけ（JRC2020）"
+    ],
+    "unverified": [
+      "JRC2025（書籍）の記載",
+      "体重別の表の数値（書き手の計算）",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}

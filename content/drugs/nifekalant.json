@@ -1,0 +1,136 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "nifekalant",
+  "generic": "ニフェカラント塩酸塩",
+  "brands": [
+    {
+      "name": "シンビット静注用50mg",
+      "strength": "1バイアル中 50mg（凍結乾燥）",
+      "maker": "トーアエイヨー"
+    }
+  ],
+  "drugClass": "抗不整脈薬（III群）",
+  "summary": [
+    "JRC2020では、アミオダロンが使えないときの代わりに0.3mg/kgを静注する",
+    "添付文書の単回静注は0.3mg/kgを5分かけて、心電図を見ながら",
+    "生理食塩液か5%ブドウ糖液で溶かして使う"
+  ],
+  "doses": [
+    {
+      "indication": "VF・無脈性VT（アミオダロンが使えないとき）",
+      "population": "成人",
+      "dose": "0.3mg/kg",
+      "route": "静注",
+      "basis": "JRC蘇生ガイドライン2020",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "心室頻拍・心室細動（添付文書：単回静注）",
+      "population": "成人",
+      "dose": "1回 0.3mg/kg",
+      "route": "5分かけて静注（心電図の連続監視下）",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "同（添付文書：維持静注）",
+      "population": "成人",
+      "dose": "1時間あたり 0.4mg/kg",
+      "route": "等速で静注（心電図の連続監視下）",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "溶解",
+      "recipe": "生理食塩液または5%ブドウ糖液で溶解する（溶解量は添付文書に記載がなく、未記入）"
+    }
+  ],
+  "weightTable": {
+    "caption": "体重別の早見表",
+    "columns": [
+      "体重",
+      "単回 0.3mg/kg",
+      "維持 0.4mg/kg/時"
+    ],
+    "rows": [
+      [
+        "40kg",
+        "12mg",
+        "16mg/時"
+      ],
+      [
+        "50kg",
+        "15mg",
+        "20mg/時"
+      ],
+      [
+        "60kg",
+        "18mg",
+        "24mg/時"
+      ],
+      [
+        "70kg",
+        "21mg",
+        "28mg/時"
+      ],
+      [
+        "80kg",
+        "24mg",
+        "32mg/時"
+      ]
+    ],
+    "note": "表の数値は書き手が体重から計算して載せたもの（アプリは計算しない）。照合のときに一行ずつ確かめる。"
+  },
+  "cautions": [
+    "心電図を連続して見ながら投与する（添付文書）"
+  ],
+  "topics": [
+    "als-adult"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "JRC蘇生ガイドライン2020 成人の二次救命処置（ALS）",
+      "edition": "2020（公開PDF）",
+      "locator": "p.51–55、p.61",
+      "url": "https://www.jrc-cpr.org/wp-content/uploads/2022/07/JRC_0047-0150_ALS.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "アミオダロンが使えない場合にニフェカラント0.3mg/kg（p.53–54）"
+    },
+    {
+      "type": "label",
+      "title": "シンビット静注用50mg 添付文書（トーアエイヨー）",
+      "edition": "2025年10月改訂（第3版）",
+      "locator": "効能又は効果、用法及び用量",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/480008_2129407D1030_6_05",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・規格・単回静注と維持静注の量・溶解液"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "販売名・規格・用法用量（PMDAの添付文書）",
+      "心停止での位置づけ（JRC2020）"
+    ],
+    "unverified": [
+      "JRC2025（書籍）の記載",
+      "体重別の表の数値（書き手の計算）",
+      "溶解の液量",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}

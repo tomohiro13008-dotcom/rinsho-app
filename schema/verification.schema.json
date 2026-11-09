@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "verification.schema.json",
+  "title": "Verification（照合状況）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "checked",
+    "unverified"
+  ],
+  "properties": {
+    "checked": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unverified": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "editorialNote": {
+      "type": "string"
+    }
+  }
+}

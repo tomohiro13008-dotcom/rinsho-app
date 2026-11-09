@@ -16,25 +16,27 @@ const loadDir = (d) =>
     .map((f) => ({ file: `${d}/${f}`, data: readJson(join(root, d, f)) }));
 
 const schemas = Object.fromEntries(
-  ['card', 'drill', 'specialty', 'source', 'review'].map((n) => [n, readJson(join(root, 'schema', `${n}.schema.json`))]),
+  ['card', 'drill', 'specialty', 'source', 'review', 'table', 'verification', 'topic', 'drug'].map((n) => [n, readJson(join(root, 'schema', `${n}.schema.json`))]),
 );
 const validators = makeValidators(schemas);
 const registry = readJson(join(root, 'content', 'registry.json'));
 const cards = loadDir('content/cards');
 const drills = loadDir('content/drills');
 const specialties = loadDir('content/specialties');
+const topics = loadDir('content/topics');
+const drugs = loadDir('content/drugs');
 
 // 雛形も形だけは確かめる（中身の規則は当てない）
 const templateErrors = loadDir('content/templates').flatMap(({ file, data }) =>
   validators.card(data) ? [] : validators.card.errors.map((e) => ({ file, level: 'error', msg: `形: ${e.instancePath} ${e.message}` })),
 );
 
-const results = [...templateErrors, ...checkAll({ registry, cards, drills, specialties, validators })];
+const results = [...templateErrors, ...checkAll({ registry, cards, drills, specialties, topics, drugs, validators })];
 const errors = results.filter((r) => r.level === 'error' || strict);
 const warns = results.filter((r) => r.level === 'warn' && !strict);
 
 for (const r of results) console.log(`${r.level === 'error' || strict ? '誤り' : '警告'}  ${r.file}  ${r.msg}`);
 console.log(
-  `\nカード${cards.length}枚・練習${drills.length}問・科${specialties.length}件を点検：誤り${errors.length}件、警告${warns.length}件${strict ? '（--strict）' : ''}`,
+  `\nカード${cards.length}枚・練習${drills.length}問・科${specialties.length}件・参照${topics.length}項目・薬${drugs.length}剤を点検：誤り${errors.length}件、警告${warns.length}件${strict ? '（--strict）' : ''}`,
 );
 process.exit(errors.length > 0 ? 1 : 0);

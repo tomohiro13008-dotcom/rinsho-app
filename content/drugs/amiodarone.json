@@ -1,0 +1,154 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "amiodarone",
+  "generic": "アミオダロン塩酸塩",
+  "brands": [
+    {
+      "name": "アンカロン注150",
+      "strength": "1管3mL中 150mg",
+      "maker": "サノフィ"
+    }
+  ],
+  "drugClass": "抗不整脈薬（III群）",
+  "summary": [
+    "電気ショックで止まらないVF・無脈性VTに、300mgを静注する",
+    "添付文書どおり、5%ブドウ糖液20mLに加えてボーラス投与する",
+    "続く場合は150mgを5%ブドウ糖液10mLに希釈して追加できる"
+  ],
+  "doses": [
+    {
+      "indication": "電気的除細動抵抗性のVF・無脈性VTによる心停止",
+      "population": "成人",
+      "dose": "300mg（6mL）、または5mg/kg",
+      "route": "5%ブドウ糖液20mLに加え静注（ボーラス）",
+      "repeat": "心室性不整脈が続けば150mg（3mL）または2.5mg/kgを5%ブドウ糖液10mLに希釈して追加",
+      "basis": "添付文書（JRC2020も300mg）",
+      "sourceIndexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "indication": "VF・血行動態不安定なVT（心停止でない）：初期急速投与",
+      "population": "成人",
+      "dose": "125mgを5%ブドウ糖液100mLに希釈",
+      "route": "10分で点滴静注",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "同：負荷投与",
+      "population": "成人",
+      "dose": "750mgを5%ブドウ糖液500mLに希釈",
+      "route": "6時間で点滴静注",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "同：維持投与",
+      "population": "成人",
+      "dose": "17mL/時",
+      "route": "点滴静注",
+      "repeat": "合計42時間",
+      "basis": "添付文書",
+      "note": "1日総投与量1250mgを超えない。濃度は2.5mg/mLを超えない",
+      "sourceIndexes": [
+        1
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "心停止の初回 300mg",
+      "recipe": "アンカロン注150 2管（6mL）を5%ブドウ糖液20mLに加える"
+    },
+    {
+      "label": "心停止の追加 150mg",
+      "recipe": "アンカロン注150 1管（3mL）を5%ブドウ糖液10mLに希釈する"
+    }
+  ],
+  "weightTable": {
+    "caption": "5mg/kg で使うときの早見表（心停止）",
+    "columns": [
+      "体重",
+      "量",
+      "液量（50mg/mL）"
+    ],
+    "rows": [
+      [
+        "40kg",
+        "200mg",
+        "4mL"
+      ],
+      [
+        "50kg",
+        "250mg",
+        "5mL"
+      ],
+      [
+        "60kg",
+        "300mg",
+        "6mL"
+      ],
+      [
+        "70kg",
+        "350mg",
+        "7mL"
+      ],
+      [
+        "80kg",
+        "400mg",
+        "8mL"
+      ]
+    ],
+    "note": "表の数値は書き手が体重から計算して載せたもの（アプリは計算しない）。照合のときに一行ずつ確かめる。"
+  },
+  "cautions": [
+    "希釈は添付文書どおり5%ブドウ糖液で行う",
+    "心停止とそれ以外で、量と投与のしかたがまったく違う"
+  ],
+  "topics": [
+    "als-adult"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "JRC蘇生ガイドライン2020 成人の二次救命処置（ALS）",
+      "edition": "2020（公開PDF）",
+      "locator": "p.51–55、p.61",
+      "url": "https://www.jrc-cpr.org/wp-content/uploads/2022/07/JRC_0047-0150_ALS.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "ショック抵抗性VF・無脈性VTにアミオダロン300mg（p.53–54）"
+    },
+    {
+      "type": "label",
+      "title": "アンカロン注150 添付文書（サノフィ）",
+      "edition": "2024年7月改訂（第3版）",
+      "locator": "効能又は効果、用法及び用量",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/780069_2129410A1028_1_17",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・規格・心停止の量と希釈・心停止以外の投与法"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "販売名・規格・用法用量（PMDAの添付文書）",
+      "心停止の量（JRC2020）"
+    ],
+    "unverified": [
+      "JRC2025（書籍）の記載",
+      "体重別の表の数値（書き手の計算）",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}
