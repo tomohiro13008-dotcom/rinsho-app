@@ -1,0 +1,171 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "consciousness",
+  "title": "意識が悪い（意識障害）",
+  "states": [
+    "consciousness"
+  ],
+  "scenes": [
+    "clinic",
+    "ward",
+    "secondary"
+  ],
+  "specialties": [],
+  "summary": [
+    "まず気道・呼吸・循環。気道が守られていなければ横向き",
+    "血糖をすぐ測る。低ければブドウ糖",
+    "瞳孔・麻痺・けいれん・薬（麻薬・鎮静薬）を見る",
+    "急な意識低下・覚醒しないは、人を呼ぶ基準"
+  ],
+  "firstActions": [
+    "気道・呼吸・循環を見る。気道が守られていなければ横向き、酸素とモニター",
+    "血糖を測る",
+    "意識の程度（ACVPUかGCS）・瞳孔・麻痺を見て書く"
+  ],
+  "steps": [
+    {
+      "text": "意識の程度をACVPUかGCSで記録し、前の値と比べる",
+      "kind": "number",
+      "keyword": "ACVPU・GCS"
+    },
+    {
+      "text": "血糖が低ければ低血糖カードへ（50%ブドウ糖20mL静注）",
+      "kind": "number",
+      "keyword": "血糖"
+    },
+    {
+      "text": "瞳孔の大きさ・左右差・対光反射を見る",
+      "kind": "procedure",
+      "keyword": "瞳孔"
+    },
+    {
+      "text": "麻痺・ろれつがあれば脳卒中カードへ。最後に普段どおりだった時刻を確かめる",
+      "kind": "decision",
+      "keyword": "麻痺"
+    },
+    {
+      "text": "けいれんがあればけいれんカードへ",
+      "kind": "decision",
+      "keyword": "けいれん"
+    },
+    {
+      "text": "薬の記録を見て、麻薬・鎮静薬など戻せる原因を探す",
+      "kind": "procedure",
+      "keyword": "薬の記録"
+    },
+    {
+      "text": "麻薬による呼吸抑制なら、ナロキソン0.2mgを静注。効果不十分なら2〜3分おきに0.2mgを1〜2回追加",
+      "kind": "number",
+      "keyword": "ナロキソン0.2mg"
+    },
+    {
+      "text": "ナロキソンより麻薬の作用が長いことがある。効いても見続ける",
+      "kind": "decision",
+      "keyword": "再抑制"
+    },
+    {
+      "text": "ブドウ糖で戻らない・原因がわからなければ頭部CT",
+      "kind": "procedure",
+      "requires": [
+        "ct"
+      ],
+      "ifMissing": "CTがない：原因がわからないまま戻らなければ、CTのできる施設へ送る",
+      "keyword": "CT"
+    },
+    {
+      "text": "全身を見る（外傷・体温・皮膚）。体温を逃がさず、尊厳を守る",
+      "kind": "procedure",
+      "keyword": "全身"
+    }
+  ],
+  "branches": [
+    {
+      "if": "反応がなく、普段どおりの呼吸がない",
+      "then": "心停止カードへ"
+    },
+    {
+      "if": "呼吸数9/分以下・SpO2 92%以下",
+      "then": "気道を確保し、バッグバルブマスクで補助。麻薬が疑わしければナロキソン"
+    },
+    {
+      "if": "血糖が低い",
+      "then": "低血糖カードへ"
+    },
+    {
+      "if": "麻痺・ろれつ・顔のゆがみ",
+      "then": "脳卒中カードへ"
+    }
+  ],
+  "callForHelp": {
+    "criteria": [
+      "急な意識低下・覚醒しない",
+      "けいれんが続く・繰り返す",
+      "呼吸数9/分以下か30/分以上、SpO2 92%以下",
+      "収縮期血圧90mmHg以下"
+    ],
+    "whom": "当直医・院内の急変対応チーム。いなければ救急隊",
+    "script": "SBARで伝える（SBARカード）。いつから、前の意識との差、血糖、瞳孔、麻痺の有無を先に言う"
+  },
+  "transfer": "原因がわからず意識が戻らない、CTや専門医が要るときは、できる施設へ送る",
+  "pitfalls": [
+    "血糖を測らずに頭部CTへ向かう",
+    "ナロキソンで戻ったあと、目を離して呼吸抑制が再びくる",
+    "気道が守られていないのに仰向けのままにする",
+    "「眠っているだけ」と前の意識と比べずに済ませる"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "Resuscitation Council UK. The ABCDE Approach",
+      "edition": "2024年7月更新（Web）",
+      "locator": "Disability、Exposure",
+      "url": "https://resus.org.uk/node/123",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。意識の評価（ACVPU・GCS）、血糖、拮抗薬、瞳孔、薬の記録、側臥位を拾った。血糖のしきい値と10%ブドウ糖の量は英国の値なので、日本の量（低血糖マニュアル）で書いた。"
+    },
+    {
+      "type": "guideline",
+      "title": "日本集中治療医学会 Rapid Response System運用指針",
+      "edition": "日集中医誌 2025;32:R15",
+      "locator": "Fig.1 起動基準の例 p.7",
+      "url": "https://www.jsicm.org/publication/pdf/JSICM_RRS_20250315.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。呼ぶ基準の数値（呼吸数・SpO2・収縮期血圧・けいれん）を写した。"
+    },
+    {
+      "type": "guideline",
+      "title": "重篤副作用疾患別対応マニュアル 低血糖（厚生労働省）",
+      "edition": "平成23年3月作成、令和5年12月改定（公開PDF）",
+      "locator": "p.7、p.13、p.17–18、p.20",
+      "url": "https://www.pmda.go.jp/files/000265665.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。目安の血糖値、症状、経口と静注の量、遷延性低血糖の対応を拾った。"
+    },
+    {
+      "type": "label",
+      "title": "ナロキソン塩酸塩静注0.2mg「AFP」 添付文書（アルフレッサ ファーマ）",
+      "edition": "2021年12月作成（第1版）",
+      "locator": "効能又は効果、用法及び用量、禁忌、8.1、8.2",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/530258_2219402A1049_1_01",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・規格・用法用量・禁忌・作用時間の注意"
+    }
+  ],
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  },
+  "drills": [
+    "consciousness-recall",
+    "consciousness-sequence"
+  ],
+  "firstCalls": [
+    "呼んでも目を開けません。いびきをかいています",
+    "夕方から急にぼんやりして、返事がおかしいです",
+    "痛み止めのあと、呼吸がゆっくりになって起きません"
+  ]
+}

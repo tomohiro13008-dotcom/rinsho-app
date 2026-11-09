@@ -1,0 +1,92 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "omeprazole-iv",
+  "generic": "オメプラゾール（注射）",
+  "brands": [
+    {
+      "name": "オメプラゾール注射用20mg「日医工」",
+      "strength": "1瓶 20mg",
+      "maker": "日医工"
+    }
+  ],
+  "drugClass": "プロトンポンプ阻害薬（PPI）",
+  "summary": [
+    "出血を伴う胃・十二指腸潰瘍などで、経口できないときに使う",
+    "1回20mgを1日2回、点滴か緩徐に静注",
+    "内視鏡で止血したあとはPPIを使う（ガイドライン）"
+  ],
+  "doses": [
+    {
+      "indication": "経口できない、出血を伴う胃潰瘍・十二指腸潰瘍・急性ストレス潰瘍・急性胃粘膜病変",
+      "population": "成人",
+      "dose": "1回20mgを1日2回",
+      "route": "生理食塩液か5%ブドウ糖液に混ぜて点滴静注、または20mLに溶かして緩徐に静注",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "内視鏡的止血のあと",
+      "population": "成人",
+      "dose": "PPIを使う（強い推奨）",
+      "route": "—",
+      "basis": "非静脈瘤性上部消化管出血 内視鏡診療ガイドライン 第2版",
+      "sourceIndexes": [
+        0
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "静注",
+      "recipe": "1瓶（20mg）を生理食塩液か5%ブドウ糖液20mLに溶かし、緩徐に"
+    },
+    {
+      "label": "点滴",
+      "recipe": "1瓶（20mg）を生理食塩液か5%ブドウ糖液に混ぜる"
+    }
+  ],
+  "cautions": [
+    "禁忌：成分への過敏症、リルピビリンを投与中"
+  ],
+  "topics": [
+    "ugib"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "日本消化器内視鏡学会 非静脈瘤性上部消化管出血における内視鏡診療ガイドライン（第2版）",
+      "edition": "第2版（公開PDF。文献検索は2022年11月まで）",
+      "locator": "p.5（静脈瘤を疑う所見・経鼻胃管）、p.7（リスクスコア）、p.8–9（初期治療・輸血・内視鏡の時期）、p.15（PPI）",
+      "url": "https://www.jges.net/wp-content/uploads/2023/12/93c2cf2ee7ab289bd734a82c6dee45c8.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。輸血の目標（Hb 8g/dL）、凝固と血小板の目標、24時間以内の内視鏡、経鼻胃管、静脈瘤を疑う所見、止血後のPPI、GBSのカットオフの記述を拾った。発行年は本文で確かめていない。"
+    },
+    {
+      "type": "label",
+      "title": "オメプラゾール注射用20mg「日医工」 添付文書",
+      "edition": "2026年7月改訂（第4版）",
+      "locator": "効能又は効果、用法及び用量、禁忌",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/ResultDataSetPDF/530169_2329403D1068_1_10",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・効能（出血を伴う胃潰瘍など）・用法用量・禁忌"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "効能・用法用量・禁忌（オメプラゾール注射用20mg「日医工」の添付文書 2026年7月改訂）",
+      "止血後のPPI（ガイドライン第2版 p.15）"
+    ],
+    "unverified": [
+      "先発品（オメプラール注用）・他のPPI注射",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}

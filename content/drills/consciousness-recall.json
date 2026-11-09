@@ -1,0 +1,9 @@
+{
+  "$comment": "AI下書き（2026-11-09）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "consciousness-recall",
+  "cardId": "consciousness",
+  "kind": "recall",
+  "prompt": "麻薬による呼吸抑制で使うナロキソンの量と追加の仕方を言う",
+  "answer": "0.2mg静注。効果不十分なら2〜3分おきに0.2mgを1〜2回追加",
+  "targetSeconds": 10
+}
