@@ -1,0 +1,110 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "levetiracetam",
+  "generic": "レベチラセタム",
+  "brands": [
+    {
+      "name": "イーケプラ点滴静注500mg",
+      "strength": "1瓶5mL中 500mg（100mg/mL）",
+      "maker": "ユーシービージャパン"
+    }
+  ],
+  "drugClass": "抗てんかん薬",
+  "summary": [
+    "重積状態に成人1回1000〜3000mgを2〜5mg/kg/分で静注",
+    "1日最大3000mg",
+    "2018年版ガイドラインの「保険適用外」は、いまの添付文書と違う"
+  ],
+  "doses": [
+    {
+      "indication": "てんかん重積状態",
+      "population": "成人",
+      "dose": "1回1000〜3000mg",
+      "route": "静注（2〜5mg/kg/分）",
+      "repeat": "1日最大3000mg",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "経口できないときの代わり（部分発作など）",
+      "population": "成人",
+      "dose": "1日1000mgを2回に分ける",
+      "route": "1回量を15分かけて点滴静注",
+      "repeat": "1日最高3000mg",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "てんかん重積状態（第2段階）",
+      "population": "成人（小児20〜60mg/kg、最大3000mg）",
+      "dose": "1000〜3000mg",
+      "route": "静注（2〜5mg/kg/分）",
+      "basis": "てんかん診療ガイドライン2018",
+      "note": "2018年の時点では保険適用外とされていた",
+      "sourceIndexes": [
+        0
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "1000mg",
+      "recipe": "2瓶（10mL）"
+    },
+    {
+      "label": "2000mg",
+      "recipe": "4瓶（20mL）"
+    },
+    {
+      "label": "3000mg",
+      "recipe": "6瓶（30mL）"
+    }
+  ],
+  "cautions": [
+    "腎機能が低いときは量を減らす（添付文書に、重積状態を除くクレアチニンクリアランス別の表がある）",
+    "1日最大3000mgを超えない"
+  ],
+  "topics": [
+    "status-epilepticus"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "てんかん診療ガイドライン2018 第8章 てんかん重積状態（日本神経学会）",
+      "edition": "2018（公開PDF）",
+      "locator": "p.76–79 図1（治療フローチャート）、p.87 CQ8-3",
+      "url": "https://www.neurology-jp.org/guidelinem/epgl/tenkan_2018_08.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。定義の時間、各段階の薬と量・速度、静脈路がないとき、血糖60以下の対応を公開PDFから拾った。"
+    },
+    {
+      "type": "label",
+      "title": "イーケプラ点滴静注500mg 添付文書（ユーシービージャパン）",
+      "edition": "2024年4月改訂（第6版）",
+      "locator": "効能又は効果、用法及び用量",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/820110_1139402A1025_1_15",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・含量・重積状態の量と速度・1日最大量・通常量・腎機能低下時の表"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "効能（重積状態を含む）・用法用量・腎機能低下時の表（イーケプラ点滴静注の添付文書 2024年4月改訂）"
+    ],
+    "unverified": [
+      "てんかん診療ガイドライン2026（書籍）での位置づけ",
+      "希釈の方法",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}

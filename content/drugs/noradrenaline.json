@@ -1,0 +1,103 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "noradrenaline",
+  "generic": "ノルアドレナリン",
+  "brands": [
+    {
+      "name": "ノルアドリナリン注1mg",
+      "strength": "1管1mL中 1mg",
+      "maker": "アルフレッサ ファーマ"
+    }
+  ],
+  "drugClass": "カテコラミン（血管収縮薬）",
+  "summary": [
+    "敗血症性ショックの第1選択の昇圧薬（J-SSCG2024）",
+    "添付文書：1mgを250mLに溶かし、0.5〜1.0mL/分を目安に",
+    "血管外に漏れると局所の壊死"
+  ],
+  "doses": [
+    {
+      "indication": "急性低血圧・ショックの補助治療（点滴）",
+      "population": "成人",
+      "dose": "1回1mgを生理食塩液・5%ブドウ糖液など250mLに溶かす",
+      "route": "点滴静注（0.5〜1.0mL/分を目安）",
+      "repeat": "血圧を見ながら速さを調節",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "急性低血圧・ショックの補助治療（皮下注）",
+      "population": "成人",
+      "dose": "1回0.1〜1mg",
+      "route": "皮下注",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "敗血症の低血圧",
+      "population": "成人",
+      "dose": "量の推奨はない（第1選択とする推奨）",
+      "route": "輸液と並行して早期に",
+      "basis": "J-SSCG2024",
+      "note": "目標の平均血圧は65mmHg",
+      "sourceIndexes": [
+        0
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "添付文書の溶かし方",
+      "recipe": "1mg（1管）＋生理食塩液250mL＝4μg/mL。0.5mL/分＝2μg/分、1.0mL/分＝4μg/分（換算は書き手）"
+    }
+  ],
+  "cautions": [
+    "大量に血管外へ漏れると、局所の虚血性壊死",
+    "過度の昇圧で、急性肺水腫・不整脈・心停止に至ることがある",
+    "持続投与は輸液ポンプで"
+  ],
+  "topics": [
+    "sepsis-initial"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "日本版敗血症診療ガイドライン2024（J-SSCG2024）英語版 J Intensive Care 2025;13:15",
+      "edition": "2024（公開論文、2025年3月）",
+      "locator": "CQ1-2〜1-4、CQ2-2、CQ3-1、3-3〜3-8",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11907869",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。定義、血液培養、抗菌薬の時期、輸液の種類と量、目標の平均血圧、昇圧薬、ステロイドの推奨と強さを拾った。"
+    },
+    {
+      "type": "label",
+      "title": "ノルアドリナリン注1mg 添付文書（アルフレッサ ファーマ）",
+      "edition": "2026年4月改訂（第2版）",
+      "locator": "効能又は効果、用法及び用量、8、14.1.2",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/530258_2451401A1034_2_04",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・含量・点滴の溶かし方と速度・皮下注量・血管外漏出"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "用法用量・漏出・過度の昇圧（ノルアドリナリン注の添付文書 2026年4月改訂）",
+      "第1選択の推奨（J-SSCG2024）"
+    ],
+    "unverified": [
+      "体重あたりの持続量（このページには載せていない）",
+      "μg/分への換算（書き手の計算）",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}

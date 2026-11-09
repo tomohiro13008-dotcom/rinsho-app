@@ -1,0 +1,111 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "glucose-50",
+  "generic": "ブドウ糖（50%）",
+  "brands": [
+    {
+      "name": "大塚糖液50%（20mL管）",
+      "strength": "1管20mL",
+      "maker": "大塚製薬工場"
+    }
+  ],
+  "drugClass": "糖類製剤",
+  "summary": [
+    "意識が悪い低血糖に、50%ブドウ糖20mLを静注",
+    "けいれん重積で血糖60mg/dL以下なら、50% 50mLとチアミン100mg",
+    "意識が戻っても、30分ほどで再び下がることがある"
+  ],
+  "doses": [
+    {
+      "indication": "低血糖（意識が悪い）",
+      "population": "成人",
+      "dose": "50%ブドウ糖20mL（20%なら40mL）",
+      "route": "静注",
+      "basis": "重篤副作用疾患別対応マニュアル 低血糖",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "低血糖時の糖質補給（添付文書）",
+      "population": "成人",
+      "dose": "1回10〜50%液20〜500mL",
+      "route": "静注",
+      "repeat": "点滴するときはブドウ糖として0.5g/kg/時以下",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "けいれん重積状態で血糖60mg/dL以下",
+      "population": "成人",
+      "dose": "50% 50mL（チアミン100mg静注と一緒に）",
+      "route": "静注",
+      "basis": "てんかん診療ガイドライン2018",
+      "sourceIndexes": [
+        2
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "低血糖の1回量",
+      "recipe": "50%の20mL管を1本"
+    }
+  ],
+  "cautions": [
+    "意識が戻っても、とくにSU薬では30分ほどで再び下がることがある。血糖を繰り返し測る",
+    "ブドウ糖で意識が戻らなければ、他の原因を探す（CTなど）"
+  ],
+  "topics": [
+    "hypoglycemia",
+    "status-epilepticus"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "重篤副作用疾患別対応マニュアル 低血糖（厚生労働省）",
+      "edition": "平成23年3月作成、令和5年12月改定（公開PDF）",
+      "locator": "p.7、p.13、p.17–18、p.20",
+      "url": "https://www.pmda.go.jp/files/000265665.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。目安の血糖値、症状、経口と静注の量、遷延性低血糖の対応を拾った。"
+    },
+    {
+      "type": "label",
+      "title": "大塚糖液 添付文書（大塚製薬工場）",
+      "edition": "2025年1月改訂（第2版）",
+      "locator": "効能又は効果、用法及び用量",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/180079_3231401A1094_1_19",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "販売名・規格・低血糖時の用法用量・点滴の速度"
+    },
+    {
+      "type": "guideline",
+      "title": "てんかん診療ガイドライン2018 第8章 てんかん重積状態（日本神経学会）",
+      "edition": "2018（公開PDF）",
+      "locator": "p.76–79 図1（治療フローチャート）、p.87 CQ8-3",
+      "url": "https://www.neurology-jp.org/guidelinem/epgl/tenkan_2018_08.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。定義の時間、各段階の薬と量・速度、静脈路がないとき、血糖60以下の対応を公開PDFから拾った。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "静注量（重篤副作用疾患別対応マニュアル 低血糖）",
+      "用法用量と点滴の速さ（大塚糖液の添付文書）"
+    ],
+    "unverified": [
+      "他社の50%ブドウ糖製剤",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}
