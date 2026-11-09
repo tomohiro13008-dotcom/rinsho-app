@@ -1,0 +1,9 @@
+{
+  "$comment": "AI下書き（2026-11-09）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "abdpain-recall",
+  "cardId": "abdpain",
+  "kind": "recall",
+  "prompt": "腹痛で最初に除く「超緊急」の4つを言う",
+  "answer": "急性心筋梗塞、腹部大動脈瘤破裂、肺塞栓、大動脈解離（心タンポナーデ）",
+  "targetSeconds": 15
+}

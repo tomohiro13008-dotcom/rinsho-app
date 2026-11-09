@@ -1,0 +1,158 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "acetaminophen-iv",
+  "generic": "アセトアミノフェン（静注）",
+  "brands": [
+    {
+      "name": "アセトアミノフェン静注液（テルモ。旧販売名アセリオ静注液1000mgバッグかを照合で確かめる）",
+      "strength": "1袋100mL中 1000mg（10mg/mL）",
+      "maker": "テルモ"
+    }
+  ],
+  "drugClass": "解熱鎮痛薬",
+  "summary": [
+    "痛みに成人1回300〜1000mgを15分で静注、4〜6時間以上あける",
+    "1日4000mgまで。50kg未満は1回15mg/kg・1日60mg/kgまで",
+    "重い肝障害は禁忌。他のアセトアミノフェン製剤と重ねない"
+  ],
+  "doses": [
+    {
+      "indication": "疼痛（経口・坐剤が難しいとき）",
+      "population": "成人",
+      "dose": "1回300〜1000mg",
+      "route": "15分かけて静注",
+      "repeat": "4〜6時間以上あけ、1日4000mgまで",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "疼痛",
+      "population": "体重50kg未満の成人",
+      "dose": "1回15mg/kgまで",
+      "route": "15分かけて静注",
+      "repeat": "4〜6時間以上あけ、1日60mg/kgまで",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "発熱",
+      "population": "成人",
+      "dose": "1回300〜500mg",
+      "route": "15分かけて静注",
+      "repeat": "原則1日2回まで、1日1500mgまで",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "疼痛・発熱",
+      "population": "2歳以上の小児",
+      "dose": "1回10〜15mg/kg",
+      "route": "15分かけて静注",
+      "repeat": "4〜6時間以上あけ、1日60mg/kgまで（成人量を超えない）",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "急性腹症の鎮痛",
+      "population": "成人",
+      "dose": "1000mg",
+      "route": "静注",
+      "basis": "急性腹症診療ガイドライン2015",
+      "note": "痛みの強さによらず推奨（グレードA）",
+      "sourceIndexes": [
+        0
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "濃度",
+      "recipe": "1袋100mLに1000mg（10mg/mL）。必要な量だけ使う"
+    }
+  ],
+  "weightTable": {
+    "caption": "体重50kg未満の成人 1回15mg/kg（10mg/mL）",
+    "columns": [
+      "体重",
+      "1回の上限",
+      "液量"
+    ],
+    "rows": [
+      [
+        "30kg",
+        "450mg",
+        "45mL"
+      ],
+      [
+        "35kg",
+        "525mg",
+        "52.5mL"
+      ],
+      [
+        "40kg",
+        "600mg",
+        "60mL"
+      ],
+      [
+        "45kg",
+        "675mg",
+        "67.5mL"
+      ]
+    ],
+    "note": "表の数値は書き手が体重から計算して載せたもの（アプリは計算しない）。照合のときに一行ずつ確かめる。"
+  },
+  "cautions": [
+    "禁忌：重い肝障害、成分への過敏症",
+    "他のアセトアミノフェンを含む薬（市販薬を含む）と重ねると、過量で重い肝障害のおそれ",
+    "1日1500mgを超える量を長く使うときは、肝機能を定期的に確かめる"
+  ],
+  "topics": [
+    "acute-abdomen"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "急性腹症診療ガイドライン2015（急性腹症診療ガイドライン出版委員会）",
+      "edition": "2015（公開PDF。日本腹部救急医学会の公開版）",
+      "locator": "第Ⅳ章 CQ13（p.30–31）、第Ⅴ章 図Ⅴ-1・CQ86（p.34–38）、第Ⅹ章 CQ102–106（p.156–169）",
+      "url": "https://plaza.umin.ac.jp/jaem/docs/guideline2015_12.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。命を脅かす疾患の一覧、ショックを伴う激痛の鑑別、初期治療（バイタル・輸液・静脈路・輸血の目標）、鎮痛、抗菌薬の時期を拾った。第Ⅳ章は guideline2015_6.pdf、第Ⅴ章は guideline2015_7.pdf。"
+    },
+    {
+      "type": "label",
+      "title": "アセトアミノフェン静注液 添付文書（テルモ、1袋100mL中1000mg）",
+      "edition": "2023年10月改訂（第3版）",
+      "locator": "効能又は効果、用法及び用量、警告、禁忌",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/ResultDataSetPDF/470034_1141400A2020_1_06",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "規格・効能・成人と体重50kg未満と小児の用法用量・警告・禁忌。販売名の正式表記（アセリオ静注液1000mgバッグか）はこのページでは確かめきれていない。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "規格・用法用量・警告・禁忌（テルモのアセトアミノフェン静注液の添付文書 2023年10月改訂）",
+      "急性腹症での推奨（2015年版 CQ105）"
+    ],
+    "unverified": [
+      "販売名の正式表記",
+      "急性腹症診療ガイドライン2025での位置づけ",
+      "体重別の表の数値（書き手の計算）",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-09",
+  "review": {
+    "level": 0
+  }
+}
