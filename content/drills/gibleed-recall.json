@@ -1,0 +1,9 @@
+{
+  "$comment": "AI下書き（2026-11-09）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "gibleed-recall",
+  "cardId": "gibleed",
+  "kind": "recall",
+  "prompt": "心血管疾患のない上部消化管出血で、輸血の目標Hbと、凝固・血小板の目標を言う",
+  "answer": "Hb 8g/dL（入れすぎない）。PT-INR 1.5以下、血小板5万/μL以上",
+  "targetSeconds": 15
+}
