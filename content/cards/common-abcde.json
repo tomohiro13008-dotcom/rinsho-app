@@ -1,5 +1,5 @@
 {
-  "$comment": "ループ検証の5枚の空欄サンプル。下書き・未照合。医学的な中身は書いていない。中身は利用者が書いて照合する。",
+  "$comment": "AI下書き（2026-11-09）。根拠の公開資料から下書きしたが、本人の照合前。照合して review.level を上げるまで現場の判断に使わない。",
   "id": "common-abcde",
   "title": "ABCDEで全身状態を見る",
   "common": true,
@@ -9,20 +9,134 @@
     "clinic"
   ],
   "specialties": [],
-  "summary": [],
-  "firstActions": [],
-  "steps": [],
-  "branches": [],
+  "summary": [
+    "気道→呼吸→循環→意識→全身の順に見る",
+    "命に関わる問題は、その場で手当てしてから次へ進む",
+    "手当てのたびに効いたかを見直す",
+    "早めに人を呼び、チームで手分けする",
+    "まず命をつなぎ、診断のための時間を稼ぐ"
+  ],
+  "firstActions": [
+    "自分の安全を確かめ、反応と呼吸を見る（なければ心停止カード）",
+    "モニター（SpO2・心電図・血圧）を付け、静脈路を取る",
+    "悪いと感じたら、この時点で人を呼ぶ"
+  ],
+  "steps": [
+    {
+      "text": "A 気道：声が出るか。いびき・ストライダー・シーソー呼吸は閉塞を疑う",
+      "kind": "procedure",
+      "keyword": "A 声・閉塞"
+    },
+    {
+      "text": "A 閉塞は緊急。吸引し、用手的に気道を開く",
+      "kind": "procedure",
+      "keyword": "A 吸引・開く"
+    },
+    {
+      "text": "酸素：重症ならリザーバーマスク15L/分で始め、目標SpO2に合わせて下げる",
+      "kind": "number",
+      "keyword": "リザーバー15L"
+    },
+    {
+      "text": "目標SpO2は94〜98%。CO2がたまる恐れがあれば88〜92%",
+      "kind": "number",
+      "keyword": "94〜98／88〜92"
+    },
+    {
+      "text": "B 呼吸：呼吸数（正常12〜20、25超は警告）、努力呼吸、左右差を見る",
+      "kind": "number",
+      "keyword": "B 呼吸数25"
+    },
+    {
+      "text": "B 換気が足りなければバッグバルブマスクで補助する",
+      "kind": "procedure",
+      "keyword": "B 補助換気"
+    },
+    {
+      "text": "C 循環：皮膚の色と温度、毛細血管再充満（正常2秒未満）、脈、血圧、出血",
+      "kind": "number",
+      "keyword": "C 再充満2秒"
+    },
+    {
+      "text": "C ショックはまず循環血液量の不足を疑う。太い留置針で静脈路と採血",
+      "kind": "decision",
+      "keyword": "C 量の不足"
+    },
+    {
+      "text": "C 輸液はボーラスで入れ、5分ごとに見直す（量は根拠の例を照合）",
+      "kind": "number",
+      "keyword": "C 5分ごと"
+    },
+    {
+      "text": "D 意識：AVPUかGCS、瞳孔、血糖。鎮静薬など薬の影響を確かめる",
+      "kind": "procedure",
+      "keyword": "D 血糖・薬"
+    },
+    {
+      "text": "E 全身：必要なら全身を出して見る。保温と尊厳に気を配る",
+      "kind": "procedure",
+      "keyword": "E 出して見る"
+    },
+    {
+      "text": "A〜Eを繰り返し、経過と検査を見直して、治療の場（転棟・搬送）を決める",
+      "kind": "decision",
+      "keyword": "繰り返す"
+    }
+  ],
+  "branches": [
+    {
+      "if": "反応がなく、普段どおりの呼吸がない",
+      "then": "胸骨圧迫を始め、心停止カードへ"
+    },
+    {
+      "if": "A に閉塞がある",
+      "then": "B に進まず、まず気道を開く"
+    },
+    {
+      "if": "手当てをしても悪くなる",
+      "then": "応援と搬送を考える（呼ぶ・送るカード）"
+    }
+  ],
   "callForHelp": {
-    "criteria": []
+    "criteria": [
+      "気道閉塞の疑い・ストライダー・気管チューブや気切カニューレの異常",
+      "努力呼吸、呼吸数 9/分以下か 30/分以上、SpO2 92%以下、酸素 10L/分以上が要る",
+      "心拍 40/分未満か 130/分以上、収縮期血圧 90以下か 200mmHg以上",
+      "急な意識低下・覚醒しない・けいれんが続く、明らかな出血、何らかの懸念"
+    ],
+    "whom": "院内の応援（RRT・当直医・上級医）。いなければ上位施設へ",
+    "script": "SBARで伝える（SBARカード）"
   },
-  "pitfalls": [],
-  "sources": [],
+  "pitfalls": [
+    "SpO2が保たれていても、高CO2血症は見えない",
+    "一つの異常に気を取られ、残りの評価を飛ばす",
+    "手当ての効果を見直さずに次へ進む"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "Resuscitation Council UK: The ABCDE Approach",
+      "edition": "2015年10月公開・2024年7月更新",
+      "url": "https://resus.org.uk/node/123",
+      "public": true,
+      "checkedScope": "AI下書き。本人の照合は未。 酸素の目標・呼吸数・再充満・5分ごとの見直しは原文の数値を写した。RCUKの輸液量の例（晶質液500mLを15分未満、心不全・外傷は250mL）と低血糖の補正量は日本の採用薬と違いうるため載せていない。"
+    },
+    {
+      "type": "guideline",
+      "title": "日本集中治療医学会 Rapid Response System運用指針",
+      "edition": "日集中医誌 2025;32:R15",
+      "locator": "Fig.1 起動基準の例 p.7、起動者 p.9、主治医への連絡 p.11",
+      "url": "https://www.jsicm.org/publication/pdf/JSICM_RRS_20250315.pdf",
+      "public": true,
+      "checkedScope": "AI下書き。本人の照合は未。 呼ぶ基準は Fig.1 の数値をそのまま写した。"
+    }
+  ],
   "updatedAt": "2026-11-09",
   "review": {
     "level": 0
   },
   "drills": [
+    "common-abcde-sequence",
     "common-abcde-recall"
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "$comment": "ループ検証の5枚の空欄サンプル。下書き・未照合。医学的な中身は書いていない。中身は利用者が書いて照合する。",
+  "$comment": "AI下書き（2026-11-09）。根拠の公開資料から下書きしたが、本人の照合前。照合して review.level を上げるまで現場の判断に使わない。",
   "id": "dyspnea",
   "title": "呼吸が苦しい・SpO2低下",
   "states": [
@@ -10,31 +10,147 @@
     "clinic"
   ],
   "specialties": [],
-  "summary": [],
-  "firstActions": [],
+  "summary": [
+    "まず気道と呼吸の様子を見て、酸素を始める",
+    "目標SpO2は94〜98%、CO2がたまる恐れがあれば88〜92%",
+    "SpO2だけでは高CO2血症は分からない。意識と呼吸数を合わせて見る",
+    "酸素を増やしても保てない・呼吸が疲れてきたら、換気の補助と応援を考える"
+  ],
+  "firstActions": [
+    "気道（声が出るか・ストライダー）と、呼吸数・努力呼吸を見る",
+    "酸素を始め（重症ならリザーバーマスク15L/分）、モニターを付ける",
+    "CO2がたまる恐れ（COPDなど）を確かめ、目標SpO2を決める"
+  ],
   "steps": [
     {
-      "text": "【雛形】設備が要る行の例（血液ガス）。中身は未記入",
+      "text": "目標SpO2：94〜98%。CO2がたまる恐れがあれば88〜92%",
+      "kind": "number",
+      "keyword": "94〜98／88〜92"
+    },
+    {
+      "text": "CO2がたまる恐れがあれば鼻カニュラから始め、アシドーシスが悪化すればベンチュリーマスクへ",
+      "kind": "decision",
+      "keyword": "鼻カニュラから"
+    },
+    {
+      "text": "呼吸音の左右差、喘鳴、副雑音を聞き、呼吸の疲れ（呼吸数の増加・補助筋）を見る",
+      "kind": "procedure",
+      "keyword": "聴診・疲れ"
+    },
+    {
+      "text": "血液ガスでpHとPaCO2を見る",
       "kind": "decision",
       "requires": [
         "bloodGas"
       ],
-      "ifMissing": "【雛形】その設備がないときの代わりの行。中身は未記入",
-      "keyword": "【雛形】"
+      "ifMissing": "血液ガスがない：意識・呼吸数・呼吸の疲れで高CO2を疑い、悪化すれば早めに搬送を相談する",
+      "keyword": "血液ガス"
+    },
+    {
+      "text": "エコーで胸水・気胸・心機能を見る（詳しくはPOCUSツール）",
+      "kind": "procedure",
+      "requires": [
+        "echo"
+      ],
+      "ifMissing": "エコーがない：身体所見と、撮れれば胸部X線で判断する",
+      "keyword": "エコー"
+    },
+    {
+      "text": "呼吸数25/分以上や強い呼吸困難が続けば、高流量鼻カニュラかNPPVを考える",
+      "kind": "decision",
+      "requires": [
+        "nppv"
+      ],
+      "ifMissing": "NPPV・高流量の装置がない：酸素を続けながら、この時点で搬送を相談する",
+      "keyword": "25回・NPPV"
+    },
+    {
+      "text": "CO2がたまる人で意識障害を伴えば、挿管して人工呼吸を考える",
+      "kind": "decision",
+      "requires": [
+        "intubation",
+        "ventilator"
+      ],
+      "ifMissing": "挿管・人工呼吸ができない：バッグバルブマスクで補助しながら、応援と搬送を急ぐ",
+      "keyword": "意識障害・挿管"
+    },
+    {
+      "text": "換気が足りなければ、その場でバッグバルブマスクで補助する",
+      "kind": "procedure",
+      "keyword": "補助換気"
     }
   ],
-  "branches": [],
+  "branches": [
+    {
+      "if": "反応がなく、普段どおりの呼吸がない",
+      "then": "心停止カードへ"
+    },
+    {
+      "if": "CO2がたまる恐れがある",
+      "then": "鼻カニュラ → ベンチュリーマスク → NPPV の順に上げる",
+      "else": "恐れがなければ目標94〜98%まで上げる"
+    },
+    {
+      "if": "酸素10L/分以上が要る、またはSpO2 92%以下が続く",
+      "then": "呼ぶ基準。応援を呼ぶ（呼ぶ・送るカード）"
+    }
+  ],
   "callForHelp": {
-    "criteria": []
+    "criteria": [
+      "気道閉塞の疑い・ストライダー",
+      "努力呼吸、呼吸数 9/分以下か 30/分以上",
+      "SpO2 92%以下、酸素 10L/分以上が要る",
+      "急な意識低下"
+    ],
+    "whom": "院内の応援（RRT・当直医・上級医）。いなければ上位施設へ",
+    "script": "SBARで伝える（SBARカード）"
   },
-  "pitfalls": [],
-  "sources": [],
+  "pitfalls": [
+    "SpO2が上がっても、高CO2血症は見えない",
+    "CO2がたまる恐れがある人に、高濃度の酸素を漫然と続ける",
+    "酸素の流量が増え続けているのに、呼ぶのが遅れる",
+    "PaCO2を急に下げると、血圧低下や不整脈が起こりうる"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "Resuscitation Council UK: The ABCDE Approach",
+      "edition": "2015年10月公開・2024年7月更新",
+      "url": "https://resus.org.uk/node/123",
+      "public": true,
+      "checkedScope": "AI下書き。本人の照合は未。 目標SpO2、リザーバーマスク15L/分、SpO2では高CO2が分からないこと、を原文から写した。"
+    },
+    {
+      "type": "guideline",
+      "title": "日本集中治療医学会 Rapid Response System運用指針",
+      "edition": "日集中医誌 2025;32:R15",
+      "locator": "Fig.1 起動基準の例 p.7、起動者 p.9、主治医への連絡 p.11",
+      "url": "https://www.jsicm.org/publication/pdf/JSICM_RRS_20250315.pdf",
+      "public": true,
+      "checkedScope": "AI下書き。本人の照合は未。 呼ぶ基準は Fig.1 の数値をそのまま写した。"
+    },
+    {
+      "type": "web",
+      "title": "野口裕幸「酸素療法の基礎からハイフローまで」日本呼吸ケア・リハビリテーション学会誌 32(3):288-292",
+      "edition": "2024（J-STAGE公開 2024-08-30）",
+      "url": "https://www.jstage.jst.go.jp/article/jsrcr/32/3/32_288/_html/-char/ja",
+      "public": true,
+      "checkedScope": "AI下書き。本人の照合は未。 二次資料。I型・II型の目標SpO2、HFT・NPPVを考える目安（呼吸数25/分以上・強い呼吸困難）、II型の段階的な上げ方、CO2ナルコーシスでの挿管、PaCO2を急に下げる危険を使った。"
+    },
+    {
+      "type": "book",
+      "title": "酸素療法の実際．酸素療法マニュアル（日本呼吸ケア・リハビリテーション学会・日本呼吸器学会編、メディカルレビュー社）",
+      "edition": "2017",
+      "public": false,
+      "checkedScope": "未照合。二次資料（野口2024）が引用している原典。原典の頁はまだ確かめていない。"
+    }
+  ],
   "updatedAt": "2026-11-09",
   "review": {
     "level": 0
   },
   "drills": [
-    "dyspnea-recall",
-    "dyspnea-branch"
+    "dyspnea-branch",
+    "dyspnea-recall"
   ]
 }

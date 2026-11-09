@@ -1,5 +1,5 @@
 {
-  "$comment": "ループ検証の5枚の空欄サンプル。下書き・未照合。医学的な中身は書いていない。中身は利用者が書いて照合する。",
+  "$comment": "AI下書き（2026-11-09）。根拠の公開資料から下書きしたが、本人の照合前。照合して review.level を上げるまで現場の判断に使わない。",
   "id": "common-call",
   "title": "呼ぶ・送るの判断",
   "common": true,
@@ -9,15 +9,120 @@
     "clinic"
   ],
   "specialties": [],
-  "summary": [],
-  "firstActions": [],
-  "steps": [],
-  "branches": [],
+  "summary": [
+    "呼ぶ基準に一つでも当てはまれば、自分で抱えずに呼ぶ",
+    "「何らかの懸念」も正式な呼ぶ理由になる",
+    "呼んだあとも、来るまでABCDEで評価と手当てを続ける",
+    "自施設でできない治療が要りそうなら、悪化する前に搬送を相談する"
+  ],
+  "firstActions": [
+    "呼ぶ基準（下）に当てはまるかを見る",
+    "当てはまれば呼び、同時にABCDEで手当てを始める",
+    "自施設で足りないもの（設備・人・専門）を一言で言えるようにする"
+  ],
+  "steps": [
+    {
+      "text": "院内の応援（RRT・当直医・上級医）に電話する",
+      "kind": "communication",
+      "keyword": "応援に電話"
+    },
+    {
+      "text": "主治医チームにも連絡する",
+      "kind": "communication",
+      "keyword": "主治医へ"
+    },
+    {
+      "text": "自施設でできる手当てと、足りないものを分ける",
+      "kind": "decision",
+      "keyword": "できる／足りない"
+    },
+    {
+      "text": "人工呼吸が要りそうなら、院内で準備を始める",
+      "kind": "decision",
+      "requires": [
+        "ventilator"
+      ],
+      "ifMissing": "人工呼吸器がない：人工呼吸が要りそうな時点で上位施設へ搬送を相談する",
+      "keyword": "人工呼吸"
+    },
+    {
+      "text": "緊急の画像が要るなら、院内でCTを撮る",
+      "kind": "decision",
+      "requires": [
+        "ct"
+      ],
+      "ifMissing": "CTがない：画像が要ると判断した時点で搬送を相談する",
+      "keyword": "CT"
+    },
+    {
+      "text": "輸血が要りそうなら、院内で準備を始める",
+      "kind": "decision",
+      "requires": [
+        "transfusion"
+      ],
+      "ifMissing": "輸血ができない：出血が続くと判断した時点で搬送を相談する",
+      "keyword": "輸血"
+    },
+    {
+      "text": "搬送を決めたら、上位施設にSBARで依頼し、受け入れと手段を決める",
+      "kind": "communication",
+      "keyword": "SBARで依頼"
+    },
+    {
+      "text": "搬送までABCDEの見直しを続け、経過を記録して紹介状にまとめる",
+      "kind": "procedure",
+      "keyword": "見直し・記録"
+    }
+  ],
+  "branches": [
+    {
+      "if": "呼ぶ基準に当てはまる",
+      "then": "すぐ呼ぶ。様子を見ない"
+    },
+    {
+      "if": "基準には当てはまらないが心配",
+      "then": "「心配」を理由に呼んでよい"
+    },
+    {
+      "if": "自施設でできない治療が要る見込み",
+      "then": "悪化を待たずに搬送を相談する"
+    }
+  ],
   "callForHelp": {
-    "criteria": []
+    "criteria": [
+      "気道閉塞の疑い・ストライダー・気管チューブや気切カニューレの異常",
+      "努力呼吸、呼吸数 9/分以下か 30/分以上、SpO2 92%以下、酸素 10L/分以上が要る",
+      "心拍 40/分未満か 130/分以上、収縮期血圧 90以下か 200mmHg以上",
+      "急な意識低下・覚醒しない・けいれんが続く、明らかな出血、何らかの懸念"
+    ],
+    "whom": "院内の応援（RRT・当直医・上級医）、主治医チーム、上位施設",
+    "script": "SBARで伝える（SBARカード）"
   },
-  "pitfalls": [],
-  "sources": [],
+  "transfer": "受け入れ先、搬送手段、同乗者、持たせる物（紹介状・検査結果・画像）を決める。手段と所要時間の目安は自施設メモに書いておく。",
+  "pitfalls": [
+    "検査結果を待ってから呼ぶ",
+    "夜間だからと遠慮して呼ぶのが遅れる",
+    "搬送の相談が、悪化してからになる"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "日本集中治療医学会 Rapid Response System運用指針",
+      "edition": "日集中医誌 2025;32:R15",
+      "locator": "Fig.1 起動基準の例 p.7、起動者 p.9、主治医への連絡 p.11",
+      "url": "https://www.jsicm.org/publication/pdf/JSICM_RRS_20250315.pdf",
+      "public": true,
+      "checkedScope": "AI下書き。本人の照合は未。 根拠にあるのは起動基準（p.7）、看護師・研修医・家族も起動してよいこと（p.9）、主治医チームへの連絡（p.11）まで。設備がないときの搬送の段取りは一般的な整理で、根拠はない。"
+    },
+    {
+      "type": "guideline",
+      "title": "Resuscitation Council UK: The ABCDE Approach",
+      "edition": "2015年10月公開・2024年7月更新",
+      "url": "https://resus.org.uk/node/123",
+      "public": true,
+      "checkedScope": "AI下書き。本人の照合は未。 早めに助けを呼ぶ、チームで手分けする、の原則だけを使った。"
+    }
+  ],
   "updatedAt": "2026-11-09",
   "review": {
     "level": 0
