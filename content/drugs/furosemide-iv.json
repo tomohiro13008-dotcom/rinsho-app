@@ -1,0 +1,97 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。 本人の方針（2026-11-10）：国内の公開資料で確かめられない部分は海外の公開ガイドラインで下書きし、手元の書籍を照合の正本にする。",
+  "id": "furosemide-iv",
+  "generic": "フロセミド（注射）",
+  "brands": [
+    {
+      "name": "ラシックス注20mg",
+      "strength": "1管2mL中 20mg",
+      "maker": "サノフィ"
+    }
+  ],
+  "drugClass": "ループ利尿薬",
+  "summary": [
+    "効能にうっ血性心不全による浮腫がある",
+    "添付文書：成人1日1回20mgを静注か筋注（適宜増減）",
+    "大量に静注するときは毎分4mg以下。急速だと難聴が出やすい",
+    "英国：急性心不全で内服中なら、それより多い量を考える"
+  ],
+  "doses": [
+    {
+      "indication": "心性浮腫（うっ血性心不全）など",
+      "population": "成人",
+      "dose": "20mg",
+      "route": "静注か筋注",
+      "repeat": "1日1回",
+      "basis": "添付文書",
+      "note": "年齢・症状により適宜増減。腎機能不全などではさらに大量に使うこともある",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "急性心不全（英国）",
+      "population": "成人",
+      "dose": "決まった量はない。内服中の人は、入院前より多い量を考える",
+      "route": "静注（ボーラスか持続）",
+      "basis": "NICE CG187（1.3.3・1.3.4）",
+      "sourceIndexes": [
+        1
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "20mg",
+      "recipe": "ラシックス注20mg 1管（2mL）をゆっくり静注"
+    },
+    {
+      "label": "大量のとき",
+      "recipe": "毎分4mg以下の速さに調節する（添付文書7）"
+    }
+  ],
+  "cautions": [
+    "禁忌：無尿、肝性昏睡、ナトリウム・カリウムが明らかに減っている、スルフォンアミド誘導体への過敏症、デスモプレシン（男性の夜間多尿）を投与中",
+    "利尿が急に出ることがある。電解質失調と脱水に注意し、少量から始めて徐々に増やす（8.1）",
+    "大量を急速に静注すると難聴が出やすい（7）"
+  ],
+  "topics": [
+    "acute-heart-failure"
+  ],
+  "sources": [
+    {
+      "type": "label",
+      "title": "ラシックス注20mg 添付文書（サノフィ）",
+      "edition": "2026年4月改訂（第2版）",
+      "locator": "効能又は効果、用法及び用量、禁忌、7、8.1",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/780069_2139401A2137_1_22",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。販売名・効能（うっ血性心不全による浮腫など）・用法用量・禁忌・静注の速さ（大量は毎分4mg以下）・電解質の注意を確かめた。"
+    },
+    {
+      "type": "guideline",
+      "title": "NICE clinical guideline CG187. Acute heart failure: diagnosis and management",
+      "edition": "2014年10月、2021年11月見直し（Web）",
+      "locator": "1.1.2、1.2.2〜1.2.4、1.3.2〜1.3.11、1.4.1〜1.4.5、1.5.1",
+      "url": "https://nice.org.uk/guidance/cg187/resources/acute-heart-failure-diagnosis-and-management-35109817738693",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。ナトリウム利尿ペプチドの除外の値、心エコーの時期、利尿薬・オピオイド・硝酸薬・強心薬と昇圧薬・NPPV・挿管・β遮断薬・限外濾過の推奨を拾った。酸素の推奨は拾えていない。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "販売名・規格・効能・用法用量・禁忌・静注の速さ（PMDAの添付文書）",
+      "急性心不全での英国の推奨（NICE CG187）"
+    ],
+    "unverified": [
+      "日本の心不全の指針（書籍）での量",
+      "内服量からの換算の目安"
+    ]
+  },
+  "updatedAt": "2026-11-10",
+  "review": {
+    "level": 0
+  }
+}

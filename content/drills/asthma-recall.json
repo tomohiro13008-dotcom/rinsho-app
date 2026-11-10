@@ -1,0 +1,9 @@
+{
+  "$comment": "AI下書き（2026-11-10）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "asthma-recall",
+  "cardId": "dyspnea",
+  "kind": "recall",
+  "prompt": "命に関わる喘息の所見を4つ以上言う",
+  "answer": "SpO2 92%未満、PEF 33%未満、呼吸音が聞こえない、チアノーゼ、弱い呼吸、PaCO2が正常、不整脈・低血圧、疲弊・意識の変化",
+  "targetSeconds": 20
+}

@@ -90,7 +90,9 @@
     "common-abcde"
   ],
   "related": [
-    "rrs-criteria"
+    "rrs-criteria",
+    "acute-heart-failure",
+    "acute-asthma"
   ],
   "sources": [
     {
