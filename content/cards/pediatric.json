@@ -84,6 +84,10 @@
     {
       "if": "血糖が低い",
       "then": "低血糖カードへ"
+    },
+    {
+      "if": "ショック（感染が疑わしい）",
+      "then": "晶質液10〜20mL/kgをボーラスし、1回ごとに評価する。参照「小児の敗血症性ショック」"
     }
   ],
   "callForHelp": {
@@ -118,7 +122,7 @@
       "type": "guideline",
       "title": "JRC蘇生ガイドライン2025",
       "edition": "2025（書籍版、医学書院、2026年7月13日発刊）",
-      "locator": "第6章 ACS、第7章 脳神経蘇生",
+      "locator": "第3章 小児の蘇生（PLS）",
       "public": true,
       "checkedScope": "未照合。現行版の書籍とはまだ照合していない。2020年版の公開PDFで書いた。"
     }
@@ -128,7 +132,8 @@
     "level": 0
   },
   "drills": [
-    "pediatric-recall"
+    "pediatric-recall",
+    "pediatric-shock-recall"
   ],
   "firstCalls": [
     "お子さんがぐったりして、呼びかけに反応が鈍いです",

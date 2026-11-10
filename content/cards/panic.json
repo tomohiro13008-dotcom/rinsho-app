@@ -129,7 +129,8 @@
     "level": 0
   },
   "drills": [
-    "panic-recall"
+    "panic-recall",
+    "hyperkalemia-recall"
   ],
   "firstCalls": [
     "検査室です。カリウムが7.2です",
