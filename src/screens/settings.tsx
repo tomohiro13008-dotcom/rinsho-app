@@ -1,6 +1,6 @@
 // 設定：施設プロフィール（段階プリセット＋スイッチ、複数保存と切り替え）、自施設メモ、書き出し・読み込み。
 import { useState } from 'preact/hooks';
-import { registry, sceneLabel } from '../content';
+import { cards, drugs, registry, sceneLabel, topics } from '../content';
 import { Section } from '../components';
 import { newProfile, presetSwitches } from '../logic/facility';
 import { formatDateTime } from '../logic/time';
@@ -162,6 +162,9 @@ export function Settings() {
           教育・訓練用。患者の情報は入力しない。体重や検査値から量や判定を出す機能はない。AIは入っていない。通信なしで動く。
         </p>
         <p class="small muted">{__PUBLIC_BUILD__ ? '配布版（自分用の出典を除いたビルド）' : '自分用のビルド'}</p>
+        <p class="small muted" data-testid="build-id">
+          版：{__BUILD_ID__}・カード{cards.length}枚・参照{topics.length}項目・薬{drugs.length}剤
+        </p>
       </Section>
     </main>
   );

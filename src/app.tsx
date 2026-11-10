@@ -6,6 +6,7 @@ import { Dashboard } from './screens/dashboard';
 import { Settings } from './screens/settings';
 import { DrugView, FieldView, RefHome, TopicQuiz, TopicView } from './screens/reference';
 import type { QueueSource } from './types';
+import { useUpdateReady } from './update';
 
 const SOURCES: QueueSource[] = ['marked', 'field', 'briefing', 'review', 'new', 'manual'];
 
@@ -67,6 +68,19 @@ function Nav() {
   );
 }
 
+function UpdateNotice() {
+  const ready = useUpdateReady();
+  if (!ready) return null;
+  return (
+    <div class="notice update-notice" role="status" data-testid="update-notice">
+      <span>新しい版があります。</span>
+      <button type="button" class="btn btn-small" onClick={() => location.reload()}>
+        読み込む
+      </button>
+    </div>
+  );
+}
+
 export function App() {
   const { data } = useAppMaybe();
   return (
@@ -81,6 +95,7 @@ export function App() {
           </a>
         ) : null}
       </header>
+      <UpdateNotice />
       {data ? <Screen /> : <main class="page"><p>読み込み中…</p></main>}
       <Nav />
     </div>

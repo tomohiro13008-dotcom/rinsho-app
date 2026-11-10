@@ -21,6 +21,7 @@ export default defineConfig({
   ],
   define: {
     __PUBLIC_BUILD__: JSON.stringify(publicBuild),
+    __BUILD_ID__: JSON.stringify((process.env.COMMIT_REF ?? 'local').slice(0, 7)),
   },
   test: {
     include: ['tests/unit/**/*.test.{ts,mjs}'],
