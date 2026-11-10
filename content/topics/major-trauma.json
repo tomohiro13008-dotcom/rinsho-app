@@ -124,7 +124,9 @@
   "drugs": [],
   "related": [
     "head-injury",
-    "rrs-criteria"
+    "rrs-criteria",
+    "open-fracture",
+    "compartment-syndrome"
   ],
   "sources": [
     {

@@ -180,7 +180,9 @@
   "related": [
     "rrs-criteria",
     "oxygen-acute",
-    "pediatric-sepsis-shock"
+    "pediatric-sepsis-shock",
+    "febrile-neutropenia",
+    "bacterial-meningitis"
   ],
   "sources": [
     {
