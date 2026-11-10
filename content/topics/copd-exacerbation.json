@@ -1,0 +1,145 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。 本人の方針（2026-11-10）：国内の公開資料で確かめられない部分は海外の公開ガイドラインで下書きし、手元の書籍を照合の正本にする。",
+  "id": "copd-exacerbation",
+  "field": "resp",
+  "title": "COPDの増悪",
+  "tags": [
+    "COPD",
+    "慢性閉塞性肺疾患",
+    "増悪",
+    "CO2ナルコーシス",
+    "高二酸化炭素血症",
+    "NPPV",
+    "NIV",
+    "肺気腫"
+  ],
+  "summary": [
+    "目標SpO2は88〜92%。血液ガスの結果までベンチュリーマスクで",
+    "CO2が正常なら94〜98%に戻す",
+    "気管支拡張薬の吸入と、プレドニゾロン30mgを5日",
+    "治療してもCO2が高くアシドーシスなら、上級医とNIVを"
+  ],
+  "points": [
+    "高CO2・アシドーシスのときは酸素でなく空気でネブライザー",
+    "膿性痰があり、息切れか痰の量が増えたら抗菌薬",
+    "長時間作用型の抗コリン薬を使っている人に、イプラトロピウムを重ねない",
+    "英国の吸入量は日本の添付文書より多い。日本の量で照合",
+    "英国の地域の手順（見直し期限切れ）による下書き"
+  ],
+  "sections": [
+    {
+      "id": "o2",
+      "title": "酸素（英国 NHS Highland）",
+      "table": {
+        "columns": [
+          "状態",
+          "目標SpO2"
+        ],
+        "rows": [
+          [
+            "CO2が高い、もともと94%未満、CO2が正常上限でたまりやすい",
+            "88〜92%"
+          ],
+          [
+            "血液ガスでCO2が正常",
+            "94〜98%"
+          ]
+        ],
+        "note": "結果が出るまでは88〜92%を目標にベンチュリーマスクで。"
+      },
+      "question": "COPDの増悪で、血液ガスの結果が出るまでの目標SpO2は？",
+      "answer": "88〜92%。",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "id": "drug",
+      "title": "薬（英国）",
+      "bullets": [
+        "ネブライザー：サルブタモール5mg＋イプラトロピウム500μg",
+        "高CO2・アシドーシスなら空気で回す",
+        "プレドニゾロン30mgを5日（入院、または日常生活に障る息切れ）",
+        "膿性痰＋（息切れの増加か痰の増加）で抗菌薬"
+      ],
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "id": "niv",
+      "title": "NIV（非侵襲的換気）",
+      "bullets": [
+        "十分な治療でもCO2が高くアシドーシスが続くなら、上級医が診る",
+        "NIVは見守りのできる場所で",
+        "pH・CO2の数値の基準は英国の資料になく、日本の書籍で照合"
+      ],
+      "sourceIndexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "japan",
+      "title": "照合すること",
+      "bullets": [
+        "COPDガイドライン第6版での増悪の薬と量",
+        "日本の吸入液の量（ベネトリンの添付文書は1回1.5〜2.5mg）",
+        "NPPVを始める基準",
+        "日本で使えるイプラトロピウムの製剤（吸入液があるか）"
+      ],
+      "sourceIndexes": [
+        1
+      ]
+    }
+  ],
+  "pitfalls": [
+    "高流量の酸素でCO2を上げる",
+    "酸素でネブライザーを回す",
+    "SpO2がよいので安心する（CO2はわからない）",
+    "英国の量をそのまま日本の製剤に当てる"
+  ],
+  "cards": [
+    "dyspnea"
+  ],
+  "drugs": [
+    "salbutamol-inh"
+  ],
+  "related": [
+    "oxygen-acute",
+    "acute-asthma",
+    "acute-heart-failure"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "NHS Highland COPD Guidelines（Right Decisions, Respiratory Department）",
+      "edition": "2021年12月3日見直し（次の見直し予定2024年を過ぎている。Web）",
+      "url": "https://rightdecisions.scot.nhs.uk/tam-treatments-and-medicines-nhs-highland/therapeutic-guidelines/respiratory/copd-chronic-obstructive-pulmonary-disease-guidelines",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。見直しの期限を過ぎた地域の手順。目標SpO2、吸入の量、プレドニゾロン30mg 5日、抗菌薬を始める条件、NIVの考え方を確かめた。NICE NG115はこの環境から開けなかった。"
+    },
+    {
+      "type": "guideline",
+      "title": "COPD（慢性閉塞性肺疾患）診断と治療のためのガイドライン第6版（日本呼吸器学会）",
+      "edition": "2022（書籍）",
+      "public": true,
+      "checkedScope": "未照合。増悪の薬と量、NIVの基準はここで照合する。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "目標SpO2・吸入・プレドニゾロン・抗菌薬・NIVの考え方（NHS Highland、2021年12月見直し）"
+    ],
+    "unverified": [
+      "NICE NG115（開けなかった）",
+      "日本のCOPDガイドライン第6版",
+      "NPPVの数値の基準"
+    ]
+  },
+  "updatedAt": "2026-11-10",
+  "review": {
+    "level": 0
+  }
+}
