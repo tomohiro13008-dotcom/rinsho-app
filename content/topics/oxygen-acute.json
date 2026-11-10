@@ -93,7 +93,9 @@
     "rrs-criteria",
     "acute-heart-failure",
     "acute-asthma",
-    "copd-exacerbation"
+    "copd-exacerbation",
+    "co-poisoning",
+    "epiglottitis"
   ],
   "sources": [
     {
