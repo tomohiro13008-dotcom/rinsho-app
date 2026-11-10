@@ -1,0 +1,9 @@
+{
+  "$comment": "AI下書き（2026-11-10）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "headache-recall",
+  "cardId": "headache",
+  "kind": "recall",
+  "prompt": "雷鳴頭痛の定義と、CTがもっとも正確な時間を言う",
+  "answer": "1〜5分で最強になる突然の激しい頭痛。CTは発症6時間以内がもっとも正確",
+  "targetSeconds": 10
+}

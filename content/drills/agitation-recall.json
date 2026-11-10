@@ -1,0 +1,9 @@
+{
+  "$comment": "AI下書き（2026-11-10）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "agitation-recall",
+  "cardId": "agitation",
+  "kind": "recall",
+  "prompt": "せん妄でハロペリドールを考えてよい条件と、使う期間を言う",
+  "answer": "苦痛が強い・自他に危険があり、言葉や態度での鎮静が効かないとき。ふつう1週間以内、少量から",
+  "targetSeconds": 15
+}

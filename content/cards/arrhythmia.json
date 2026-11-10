@@ -1,0 +1,177 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。 本人の方針（2026-11-10）：国内の公開資料で確かめられない部分は海外の公開ガイドラインで下書きし、手元の書籍（JRC2025など）を照合の正本にする。",
+  "id": "arrhythmia",
+  "title": "脈が速い・遅い（不整脈）",
+  "states": [
+    "arrhythmia"
+  ],
+  "scenes": [
+    "clinic",
+    "ward",
+    "secondary"
+  ],
+  "specialties": [
+    "cardiology"
+  ],
+  "summary": [
+    "まずモニター・12誘導・静脈路。洞性頻脈は原因を治す",
+    "命に関わる所見があれば、頻脈は同期電気ショック、徐脈はアトロピン",
+    "徐脈：アトロピン0.5mg静注、繰り返して最大3mg",
+    "英国の指針で下書き。日本の製剤と量は書籍（JRC2025）で照合する"
+  ],
+  "firstActions": [
+    "モニター・SpO2・血圧、12誘導心電図、静脈路",
+    "命に関わる所見（ショック・失神・心筋虚血・重い心不全）を探す",
+    "当直医を呼び、除細動器をそばに置く"
+  ],
+  "steps": [
+    {
+      "text": "洞性頻脈には抗不整脈薬も電気ショックも使わない。原因を探して治す",
+      "kind": "decision",
+      "keyword": "洞性は原因"
+    },
+    {
+      "text": "頻脈で命に関わる所見があれば、同期電気ショック（最大3回）。意識があれば鎮静",
+      "kind": "procedure",
+      "requires": [
+        "aed"
+      ],
+      "ifMissing": "除細動器がない：応援を呼び、できる施設へ急いで送る",
+      "keyword": "同期ショック"
+    },
+    {
+      "text": "幅の狭い規則的な頻脈：迷走神経刺激。英国では次にアデノシン6→12→18mg急速静注（日本の製剤と量は照合で確かめる）",
+      "kind": "number",
+      "keyword": "迷走神経刺激"
+    },
+    {
+      "text": "幅の狭い不規則な頻脈（心房細動）：心拍数を下げる薬。EF40%未満ならβ遮断薬かジゴキシン。24時間を超えれば抗凝固",
+      "kind": "decision",
+      "keyword": "心房細動"
+    },
+    {
+      "text": "幅の広い規則的な頻脈：同期電気ショック。効かなければアミオダロン300mgを10〜20分で（英国の量）",
+      "kind": "number",
+      "keyword": "アミオダロン300"
+    },
+    {
+      "text": "QT延長を伴う多形性心室頻拍：マグネシウム8mmolを10分で静注。アミオダロンは避ける",
+      "kind": "number",
+      "keyword": "Mg 8mmol"
+    },
+    {
+      "text": "徐脈で命に関わる所見があれば、アトロピン0.5mg静注。効かなければ繰り返し、最大3mg",
+      "kind": "number",
+      "keyword": "アトロピン0.5"
+    },
+    {
+      "text": "心静止の危険（最近の心静止、MobitzⅡ型、幅の広いQRSの完全房室ブロック、3秒を超える心室停止）があれば、ペーシングを準備",
+      "kind": "procedure",
+      "requires": [
+        "pacing"
+      ],
+      "ifMissing": "ペーシングできない：アトロピンを繰り返し、持続静注を専門医と相談しながら、できる施設へ急いで送る",
+      "keyword": "心静止の危険"
+    },
+    {
+      "text": "次の手：イソプレナリン5μg/分、またはアドレナリン2〜10μg/分の持続静注（英国の量）",
+      "kind": "number",
+      "requires": [
+        "vasopressor"
+      ],
+      "ifMissing": "持続静注ができない：アトロピンを繰り返し、搬送を急ぐ",
+      "keyword": "持続静注"
+    },
+    {
+      "text": "β遮断薬・カルシウム拮抗薬の過量による徐脈では、グルカゴンを考える",
+      "kind": "decision",
+      "keyword": "グルカゴン"
+    }
+  ],
+  "branches": [
+    {
+      "if": "反応がなく、普段どおりの呼吸がない",
+      "then": "心停止カードへ"
+    },
+    {
+      "if": "頻脈で、ショック・失神・心筋虚血・重い心不全がある",
+      "then": "同期電気ショック。専門医を呼ぶ"
+    },
+    {
+      "if": "徐脈で、ショック・失神・心筋虚血・重い心不全がある",
+      "then": "アトロピン0.5mg静注。効かなければペーシングか持続静注"
+    },
+    {
+      "if": "早期興奮（WPW）を伴う心房細動",
+      "then": "アデノシンなど房室結節を抑える薬を使わない。プロカインアミドか電気ショック（専門医と）"
+    }
+  ],
+  "callForHelp": {
+    "criteria": [
+      "心拍40/分未満か130/分以上",
+      "ショック・失神・胸痛・重い心不全",
+      "幅の広いQRSの頻脈",
+      "3秒を超える心室停止・完全房室ブロック"
+    ],
+    "whom": "循環器の当番医・当直医。いなければ救急隊",
+    "script": "SBARで伝える（SBARカード）。心拍数、QRSの幅と規則性、血圧、命に関わる所見の有無を先に言う"
+  },
+  "transfer": "ペーシング・電気ショック・持続静注ができない、または原因の治療が要るときは、できる施設へ送る",
+  "pitfalls": [
+    "洞性頻脈に抗不整脈薬を使う",
+    "不安定なのに薬から始めて、電気ショックが遅れる",
+    "QT延長の多形性心室頻拍にアミオダロンを使う",
+    "早期興奮を伴う心房細動に房室結節を抑える薬を使う"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "Resuscitation Council UK. Adult tachyarrhythmia algorithm",
+      "edition": "2026年3月更新（V3、公開PDF）",
+      "url": "https://www.resus.org.uk/sites/default/files/2026-03/Adult%20tachyarrhythmia%20algorithm%20V3%20March%202026.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。命に関わる所見、同期電気ショック、QRS幅と規則性での分岐、アデノシン・アミオダロン・プロカインアミド・マグネシウムの量を拾った。英国の量と製剤。電気ショックのエネルギーは記載がない。"
+    },
+    {
+      "type": "guideline",
+      "title": "Resuscitation Council UK. Adult bradyarrhythmia algorithm",
+      "edition": "2025（公開PDF）",
+      "url": "https://www.resus.org.uk/sites/default/files/2025-10/Adult%20bradyarrhythmia%202025.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。命に関わる所見、心静止の危険、アトロピン・イソプレナリン・アドレナリンの量、代わりの薬、ペーシングを拾った。英国の量と製剤。"
+    },
+    {
+      "type": "guideline",
+      "title": "日本集中治療医学会 Rapid Response System運用指針",
+      "edition": "日集中医誌 2025;32:R15",
+      "locator": "Fig.1 起動基準の例 p.7",
+      "url": "https://www.jsicm.org/publication/pdf/JSICM_RRS_20250315.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。呼ぶ基準の数値（呼吸数・SpO2・収縮期血圧・けいれん）を写した。"
+    },
+    {
+      "type": "guideline",
+      "title": "JRC蘇生ガイドライン2025",
+      "edition": "2025（書籍版、医学書院、2026年7月13日発刊）",
+      "locator": "第6章 ACS、第7章 脳神経蘇生",
+      "public": true,
+      "checkedScope": "未照合。現行版の書籍とはまだ照合していない。2020年版の公開PDFで書いた。"
+    }
+  ],
+  "updatedAt": "2026-11-10",
+  "review": {
+    "level": 0
+  },
+  "drills": [
+    "arrhythmia-recall",
+    "arrhythmia-branch"
+  ],
+  "firstCalls": [
+    "モニターで脈が150くらいです。ドキドキすると言っています",
+    "脈が40を切っていて、ふらつくそうです",
+    "急に脈が速くなって、血圧が下がってきました"
+  ]
+}
