@@ -1,0 +1,100 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。 本人の方針（2026-11-10）：国内の公開資料で確かめられない部分は海外の公開ガイドラインで下書きし、手元の書籍を照合の正本にする。",
+  "id": "calcium-gluconate",
+  "generic": "グルコン酸カルシウム水和物",
+  "brands": [
+    {
+      "name": "カルチコール注射液8.5% 5mL",
+      "strength": "1管5mL中 425mg（1mLにカルシウム0.39mEq）",
+      "maker": "日医工"
+    },
+    {
+      "name": "カルチコール注射液8.5% 10mL",
+      "strength": "1管10mL中 850mg（1mLにカルシウム0.39mEq）",
+      "maker": "日医工"
+    }
+  ],
+  "drugClass": "カルシウム製剤",
+  "summary": [
+    "8.5%液。1mLにカルシウム7.85mg（0.39mEq）",
+    "効能は低カルシウム血症のテタニーなど。高カリウム血症は効能にない",
+    "英国の高K指針は10%液30mLを10分。日本の8.5%とは濃度が違う",
+    "ジギタリスを飲んでいる人には、原則として併用を避ける"
+  ],
+  "doses": [
+    {
+      "indication": "低カルシウム血症によるテタニー・テタニー関連症状",
+      "population": "成人",
+      "dose": "0.4〜2.0g（カルシウム1.8〜8.9mEq）",
+      "route": "8.5%液をゆっくり静注（カルシウム毎分0.68〜1.36mEq＝本剤毎分1.7〜3.5mL）",
+      "repeat": "1日1回",
+      "basis": "添付文書",
+      "note": "年齢・症状により適宜増減",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "高カリウム血症で心電図変化がある（英国）",
+      "population": "成人",
+      "dose": "カルシウム6.8mmol：10%グルコン酸カルシウム30mL（英国の製剤）",
+      "route": "10分で静注",
+      "basis": "UKKA 2026（16.2a）",
+      "note": "日本の8.5%製剤での液量は、書き手が換算せず照合で決める。心停止・心停止が近いときは、英国では10%塩化カルシウム10mLを5分",
+      "sourceIndexes": [
+        1
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "添付文書の速さ",
+      "recipe": "カルチコール注射液8.5%を毎分1.7〜3.5mLで静注（カルシウム毎分0.68〜1.36mEq）"
+    }
+  ],
+  "cautions": [
+    "禁忌：高カルシウム血症、腎結石、重篤な腎不全",
+    "ジギタリスの作用を強め、徐脈・房室ブロック・心室頻拍などの中毒症状を起こすおそれ。やむを得ない場合を除き併用を避ける",
+    "血管外漏出で組織に石灰が沈着することがある。乳幼児はとくに漏れやすい",
+    "カルシウムは心筋を守るだけで、カリウムは下がらない（UKKA）"
+  ],
+  "topics": [
+    "hyperkalemia"
+  ],
+  "sources": [
+    {
+      "type": "label",
+      "title": "カルチコール注射液8.5% 添付文書（日医工）",
+      "edition": "2026年4月改訂（第2版）",
+      "locator": "効能又は効果、用法及び用量、禁忌、10.2、14.2",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/530169_3213400A2047_2_04",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。規格（1mLにカルシウム7.85mg・0.39mEq）・効能（低カルシウム血症のテタニーなど）・量と速さ・禁忌・ジギタリスとの併用・血管外漏出を確かめた。"
+    },
+    {
+      "type": "guideline",
+      "title": "UK Kidney Association. Clinical practice guideline: Management of hyperkalaemia in adults",
+      "edition": "2026年7月更新（公開PDF。初版2020年、2023年10月更新）",
+      "locator": "14.1、16.2〜16.6、17.1〜17.2、18.1〜18.3、19.6",
+      "url": "https://www.ukkidney.org/sites/default/files/documents/FINAL%20VERSION%20-%20UKKA%20CLINICAL%20PRACTICE%20GUIDELINE%20-%20MANAGEMENT%20OF%20HYPERKALAEMIA%20IN%20ADULTS%20-%20UPDATED%20JULY%202026_0.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。重症度の区分、心電図、カルシウム・インスリンとブドウ糖・サルブタモール・カリウム吸着薬の量、低血糖の予防、血糖とKの測る時刻、透析の基準を拾った。英国の量と製剤。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "販売名・規格・効能・用法用量・禁忌・併用注意（PMDAの添付文書）",
+      "高カリウム血症での英国の量（UKKA 2026）"
+    ],
+    "unverified": [
+      "高カリウム血症での日本の量と液量",
+      "塩化カルシウム製剤の有無（採用薬）"
+    ]
+  },
+  "updatedAt": "2026-11-10",
+  "review": {
+    "level": 0
+  }
+}

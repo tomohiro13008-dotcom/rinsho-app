@@ -1,0 +1,126 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。 本人の方針（2026-11-10）：国内の公開資料で確かめられない部分は海外の公開ガイドラインで下書きし、手元の書籍を照合の正本にする。",
+  "id": "atropine",
+  "generic": "アトロピン硫酸塩水和物",
+  "brands": [
+    {
+      "name": "アトロピン硫酸塩注0.5mg「フソー」",
+      "strength": "1管1mL中 0.5mg",
+      "maker": "扶桑薬品工業"
+    }
+  ],
+  "drugClass": "抗コリン薬（副交感神経遮断薬）",
+  "summary": [
+    "徐脈と房室伝導障害は、日本の効能にある",
+    "添付文書の量は成人0.5mg（皮下・筋注、場合により静注）",
+    "英国の図：命に関わる徐脈に0.5mg静注、繰り返して最大3mg",
+    "有機リン中毒では量がまったく違う（重症は初回2〜4mg静注）"
+  ],
+  "doses": [
+    {
+      "indication": "徐脈・房室伝導障害（迷走神経性を含む）",
+      "population": "成人",
+      "dose": "0.5mg",
+      "route": "皮下注・筋注。場合により静注",
+      "basis": "添付文書",
+      "note": "年齢・症状により適宜増減",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "命に関わる所見のある徐脈（英国）",
+      "population": "成人",
+      "dose": "0.5mg",
+      "route": "静注",
+      "repeat": "効果が足りなければ繰り返す。最大3mg",
+      "basis": "RCUK 徐脈の図（2025）",
+      "note": "英国の図。日本の書籍（JRC2025）で照合する",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "有機リン系殺虫剤中毒：軽症",
+      "population": "成人",
+      "dose": "0.5〜1mg",
+      "route": "皮下注（または経口）",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "同：中等症",
+      "population": "成人",
+      "dose": "1〜2mg",
+      "route": "皮下注・筋注・静注",
+      "repeat": "必要に応じて20〜30分ごと",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "同：重症",
+      "population": "成人",
+      "dose": "初回2〜4mg",
+      "route": "静注",
+      "repeat": "アトロピン飽和の徴候が出るまで、症状に応じて繰り返す",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        0
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "0.5mg",
+      "recipe": "アトロピン硫酸塩注0.5mg 1管（1mL）。希釈するかは施設の手順で決める"
+    }
+  ],
+  "cautions": [
+    "禁忌：閉塞隅角緑内障、前立腺肥大による排尿障害、麻痺性イレウス、成分への過敏症",
+    "心静止の危険（最近の心静止、MobitzⅡ型など）があれば、ペーシングを準備する（英国の図）",
+    "中毒では徐脈の量と比べものにならない量を使う。中毒の量を徐脈に使わない"
+  ],
+  "topics": [
+    "periarrest-arrhythmia"
+  ],
+  "sources": [
+    {
+      "type": "label",
+      "title": "アトロピン硫酸塩注0.5mg「フソー」 添付文書（扶桑薬品工業）",
+      "edition": "2026年10月改訂（第2版）",
+      "locator": "効能又は効果、用法及び用量、禁忌",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/670156_1242405A1070_1_07",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。販売名・規格（1mL中0.5mg）・効能（徐脈・房室伝導障害、有機リン中毒など）・用法用量・禁忌を確かめた。"
+    },
+    {
+      "type": "guideline",
+      "title": "Resuscitation Council UK. Adult bradyarrhythmia algorithm",
+      "edition": "2025（公開PDF）",
+      "url": "https://www.resus.org.uk/sites/default/files/2025-10/Adult%20bradyarrhythmia%202025.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。命に関わる所見、心静止の危険、アトロピン・イソプレナリン・アドレナリンの量、代わりの薬、ペーシングを拾った。英国の量と製剤。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "販売名・規格・効能・用法用量・禁忌（PMDAの添付文書）",
+      "徐脈の量（RCUK 2025）"
+    ],
+    "unverified": [
+      "JRC2025（書籍）の徐脈の記載",
+      "採用薬（他社の製剤）",
+      "静注するときの希釈"
+    ]
+  },
+  "updatedAt": "2026-11-10",
+  "review": {
+    "level": 0
+  }
+}
