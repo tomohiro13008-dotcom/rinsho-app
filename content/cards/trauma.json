@@ -1,0 +1,168 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。 本人の方針（2026-11-10）：国内の公開資料で確かめられない部分は海外の公開ガイドラインで下書きし、手元の書籍を照合の正本にする。",
+  "id": "trauma",
+  "title": "大きなけが（重症外傷）",
+  "states": [
+    "trauma",
+    "shock"
+  ],
+  "scenes": [
+    "clinic",
+    "ward",
+    "secondary",
+    "prehospital"
+  ],
+  "specialties": [],
+  "summary": [
+    "外からの出血は直接圧迫。止まらない手足の大出血には止血帯",
+    "出血していれば、止血するまで輸液は控えめに。血液製剤を優先",
+    "トラネキサム酸はできるだけ早く。受傷3時間を超えたら使わない",
+    "体温を逃がさない"
+  ],
+  "firstActions": [
+    "人を呼び、大出血と気道・呼吸・循環を見る",
+    "外からの出血を直接圧迫する",
+    "静脈路を取り、外傷を診られる施設へ搬送を手配"
+  ],
+  "steps": [
+    {
+      "text": "外からの出血は、ガーゼなどで直接圧迫する",
+      "kind": "procedure",
+      "keyword": "直接圧迫"
+    },
+    {
+      "text": "手足の大出血で直接圧迫が効かなければ止血帯",
+      "kind": "procedure",
+      "keyword": "止血帯"
+    },
+    {
+      "text": "強い衝撃のあと骨盤骨折からの出血を疑えば、専用の骨盤バインダー",
+      "kind": "procedure",
+      "keyword": "骨盤バインダー"
+    },
+    {
+      "text": "緊張性気胸を疑い、血行動態が不安定か呼吸が重ければ減圧（技術があれば開放胸腔ドレナージ）",
+      "kind": "decision",
+      "keyword": "緊張性気胸"
+    },
+    {
+      "text": "開放性気胸は、単純な閉鎖ドレッシングで覆い、緊張性気胸に注意",
+      "kind": "procedure",
+      "keyword": "開放性気胸"
+    },
+    {
+      "text": "出血があればトラネキサム酸をできるだけ早く静注。受傷3時間を超えたら使わない（量は書籍で照合）",
+      "kind": "number",
+      "keyword": "TXA 3時間"
+    },
+    {
+      "text": "止血できるまで輸液は控えめに。頭部外傷が主なら控えめにしすぎない",
+      "kind": "decision",
+      "keyword": "輸液は控えめ"
+    },
+    {
+      "text": "成人の輸血は血漿と赤血球を1:1で。晶質液は血液製剤がないときだけ",
+      "kind": "number",
+      "requires": [
+        "transfusion"
+      ],
+      "ifMissing": "輸血できない：止血と搬送を最優先にする",
+      "keyword": "1:1"
+    },
+    {
+      "text": "FASTが陰性でも、腹腔内・後腹膜の出血は否定できない",
+      "kind": "decision",
+      "requires": [
+        "echo"
+      ],
+      "ifMissing": "エコーがない：所見とバイタルで判断し、早く送る",
+      "keyword": "FAST陰性"
+    },
+    {
+      "text": "成人の鈍的外傷で多発外傷を疑えば全身CT",
+      "kind": "procedure",
+      "requires": [
+        "ct"
+      ],
+      "ifMissing": "CTがない：外傷を診られる施設へ送る",
+      "keyword": "全身CT"
+    },
+    {
+      "text": "体温を逃がさない（濡れた衣服を除き、覆う）",
+      "kind": "procedure",
+      "keyword": "保温"
+    }
+  ],
+  "branches": [
+    {
+      "if": "反応がなく、普段どおりの呼吸がない",
+      "then": "心停止カードへ"
+    },
+    {
+      "if": "頭を強く打った",
+      "then": "頭部外傷カードへ（意識・瞳孔・抗凝固薬）"
+    },
+    {
+      "if": "血圧が低い・脈が速い",
+      "then": "出血源（胸・腹・骨盤・長管骨・外出血）を探し、止血と搬送を急ぐ"
+    }
+  ],
+  "callForHelp": {
+    "criteria": [
+      "止まらない出血",
+      "収縮期血圧90mmHg以下・心拍130/分以上",
+      "呼吸が苦しい・SpO2 92%以下",
+      "意識の低下"
+    ],
+    "whom": "当直医・外科。いなければ救急隊・外傷を診られる施設",
+    "script": "SBARで伝える（SBARカード）。受傷の仕方・時刻、出血、バイタル、意識を先に言う"
+  },
+  "transfer": "重症外傷は、手術・IVR・輸血のできる施設へ早く送る。トラネキサム酸は受傷3時間以内",
+  "pitfalls": [
+    "止血より先に、大量の晶質液を入れる",
+    "トラネキサム酸を受傷3時間を超えて使う",
+    "FASTが陰性なので出血を否定する",
+    "体温低下を放っておく"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "NICE guideline NG39. Major trauma: assessment and initial management",
+      "edition": "2016年2月（Web）",
+      "locator": "1.2–1.6、1.8",
+      "url": "https://www.nice.org.uk/guidance/NG39/chapter/Recommendations",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。気道、胸部外傷（緊張性気胸・開放性気胸）、止血（直接圧迫・止血帯・骨盤バインダー）、トラネキサム酸の時期、輸液の考え方、血漿と赤血球の比、FAST、全身CT、低体温を拾った。トラネキサム酸の量は記載がない。"
+    },
+    {
+      "type": "guideline",
+      "title": "外傷初期診療ガイドライン JATEC（日本外傷学会・日本救急医学会、へるす出版）",
+      "edition": "現行版（書籍）",
+      "public": true,
+      "checkedScope": "未照合。外傷の照合の正本。トラネキサム酸の量や、日本の初期診療の手順はここで確かめる。"
+    },
+    {
+      "type": "guideline",
+      "title": "日本集中治療医学会 Rapid Response System運用指針",
+      "edition": "日集中医誌 2025;32:R15",
+      "locator": "Fig.1 起動基準の例 p.7",
+      "url": "https://www.jsicm.org/publication/pdf/JSICM_RRS_20250315.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。呼ぶ基準の数値（呼吸数・SpO2・収縮期血圧・けいれん）を写した。"
+    }
+  ],
+  "updatedAt": "2026-11-10",
+  "review": {
+    "level": 0
+  },
+  "drills": [
+    "trauma-recall"
+  ],
+  "firstCalls": [
+    "交通事故の人が運ばれてきました。足から血が止まりません",
+    "高いところから落ちて、お腹と腰が痛いと言っています",
+    "けがの人、血圧が80台に下がってきました"
+  ]
+}

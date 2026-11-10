@@ -1,0 +1,9 @@
+{
+  "$comment": "AI下書き（2026-11-10）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "trauma-recall",
+  "cardId": "trauma",
+  "kind": "recall",
+  "prompt": "外傷でトラネキサム酸を使う時期と、使わない時期を言う",
+  "answer": "出血があればできるだけ早く。受傷3時間を超えたら使わない",
+  "targetSeconds": 10
+}
