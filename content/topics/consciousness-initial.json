@@ -127,7 +127,8 @@
     "hypoglycemia",
     "rrs-criteria",
     "stroke-acute",
-    "status-epilepticus"
+    "status-epilepticus",
+    "poisoning"
   ],
   "sources": [
     {
