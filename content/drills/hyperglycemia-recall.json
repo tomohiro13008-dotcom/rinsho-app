@@ -1,0 +1,9 @@
+{
+  "$comment": "AI下書き（2026-11-10）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "hyperglycemia-recall",
+  "cardId": "hyperglycemia",
+  "kind": "recall",
+  "prompt": "DKAでインスリンを始める前に確かめる値と、そのしきい値を言う",
+  "answer": "カリウム。3.5mmol/L未満なら、インスリンを待ってKを補う（英米：10mmol/時）",
+  "targetSeconds": 10
+}

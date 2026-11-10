@@ -1,0 +1,103 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。 本人の方針（2026-11-10）：国内の公開資料で確かめられない部分は海外の公開ガイドラインで下書きし、手元の書籍を照合の正本にする。",
+  "id": "salbutamol-inh",
+  "generic": "サルブタモール（吸入液）",
+  "brands": [
+    {
+      "name": "ベネトリン吸入液0.5%",
+      "strength": "1mL中 サルブタモール5mg",
+      "maker": "グラクソ・スミスクライン"
+    }
+  ],
+  "drugClass": "短時間作用型β2刺激薬",
+  "summary": [
+    "0.5%液。1mLにサルブタモール5mg",
+    "添付文書：成人1回0.3〜0.5mL（1.5〜2.5mg）、小児1回0.1〜0.3mL",
+    "英国の急性喘息は5mg（この製剤なら1mL）で、日本の添付文書より多い",
+    "使い過ぎると不整脈や心停止のおそれ（8.2）"
+  ],
+  "doses": [
+    {
+      "indication": "気管支喘息などの気道閉塞による症状",
+      "population": "成人",
+      "dose": "1回0.3〜0.5mL（サルブタモール1.5〜2.5mg）",
+      "route": "吸入器で吸入",
+      "basis": "添付文書",
+      "note": "年齢・症状により適宜増減",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "同",
+      "population": "小児",
+      "dose": "1回0.1〜0.3mL（サルブタモール0.5〜1.5mg）",
+      "route": "吸入器で吸入",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "重症・命に関わる喘息（英国）",
+      "population": "成人",
+      "dose": "5mg",
+      "route": "酸素で駆動するネブライザー",
+      "repeat": "15〜30分ごと、または持続5〜10mg/時",
+      "basis": "BTS/SIGN 158",
+      "note": "英国の量。日本の添付文書の量より多い。使う量は書籍と施設の手順で照合する",
+      "sourceIndexes": [
+        1
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "添付文書の量（成人）",
+      "recipe": "ベネトリン吸入液0.5%を0.3〜0.5mL。生理食塩液などで薄めるかは施設の手順で"
+    }
+  ],
+  "cautions": [
+    "過度に使い続けると、不整脈、場合により心停止のおそれ。発作時は使い過ぎになりやすい（8.2）",
+    "吸入しても効果が足りない重い発作は、すぐ医師へ",
+    "英国の5mgを使うなら、日本の添付文書の範囲を超える。書籍と施設の手順で決める"
+  ],
+  "topics": [
+    "acute-asthma"
+  ],
+  "sources": [
+    {
+      "type": "label",
+      "title": "ベネトリン吸入液0.5% 添付文書（グラクソ・スミスクライン）",
+      "edition": "2025年8月改訂（第2版）",
+      "locator": "効能又は効果、用法及び用量、8.2",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/340278_2254700G2034_1_08",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。規格（1mL中サルブタモール5mg）・効能・成人と小児の量・過度の使用で不整脈や心停止のおそれ、を確かめた。"
+    },
+    {
+      "type": "guideline",
+      "title": "BTS/SIGN British guideline on the management of asthma（SIGN 158）：Management of acute asthma in adults in hospital（Right Decisions、Healthcare Improvement Scotland）",
+      "edition": "2019（Web。BTS/NICE/SIGN の喘息パスウェイ SIGN 244 の中に掲載）",
+      "url": "https://rightdecisions.scot.nhs.uk/asthma-pathway-bts-nice-sign-sign-244/managing-acute-asthma/management-of-acute-asthma-in-adults/asthma-management-algorithms-for-adults/management-of-acute-asthma-in-adults-in-hospital",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。重症・命に関わる・致死的に近い喘息の所見、酸素の目標、サルブタモール・イプラトロピウム・ステロイド・マグネシウムの量、集中治療へ送る基準を拾った。英国の量と製剤。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "販売名・規格・効能・用法用量・過度の使用の注意（PMDAの添付文書）",
+      "英国の急性喘息での量（BTS/SIGN 158）"
+    ],
+    "unverified": [
+      "喘息予防・管理ガイドライン2024（書籍）での量",
+      "希釈のしかた（施設の手順）"
+    ]
+  },
+  "updatedAt": "2026-11-10",
+  "review": {
+    "level": 0
+  }
+}

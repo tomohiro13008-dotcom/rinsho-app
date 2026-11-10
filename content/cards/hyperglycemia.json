@@ -1,0 +1,140 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。 本人の方針（2026-11-10）：国内の公開資料で確かめられない部分は海外の公開ガイドラインで下書きし、手元の書籍を照合の正本にする。",
+  "id": "hyperglycemia",
+  "title": "血糖が高い（DKA・HHSを疑う）",
+  "states": [
+    "glucose"
+  ],
+  "scenes": [
+    "ward",
+    "clinic",
+    "secondary"
+  ],
+  "specialties": [],
+  "summary": [
+    "意識・脱水・呼吸（深く速い）・ケトンを見る",
+    "DKA・HHSを疑えば、まず輸液と電解質（K）",
+    "Kが3.5未満なら、インスリンを待ってKを補う",
+    "英米の指針で下書き。日本の書籍（糖尿病診療GL2024）で照合する"
+  ],
+  "firstActions": [
+    "バイタル・意識・SpO2、静脈路",
+    "血糖・血液ガス（静脈でよい）・電解質（K）・ケトン・腎機能",
+    "当直医に報告し、誘因（感染・心筋梗塞・インスリンの中断）を探す"
+  ],
+  "steps": [
+    {
+      "text": "DKA：高血糖・ケトン（βヒドロキシ酪酸3.0mmol/L以上）・代謝性アシドーシスがそろう",
+      "kind": "decision",
+      "keyword": "3つそろう"
+    },
+    {
+      "text": "HHS：血糖540mg/dL以上・浸透圧320以上で、強いケトン血症とアシドーシスはない（英国）",
+      "kind": "number",
+      "keyword": "540・320"
+    },
+    {
+      "text": "輸液：心腎に問題なければ、最初の2〜4時間は500〜1000mL/時。高齢者・心不全は250mLずつ",
+      "kind": "number",
+      "keyword": "500〜1000mL/時"
+    },
+    {
+      "text": "K 3.5未満なら、インスリンを始めずにKを補う（英米：10mmol/時）",
+      "kind": "number",
+      "keyword": "K 3.5"
+    },
+    {
+      "text": "インスリン持続静注0.1単位/kg/時（英米）。血糖250mg/dL未満で、ブドウ糖を足して0.05単位/kg/時",
+      "kind": "number",
+      "keyword": "0.1単位/kg/時"
+    },
+    {
+      "text": "HHSは急に下げない：血糖は1時間に90〜120mg/dLまで、Naは24時間で10mmol/Lまで",
+      "kind": "number",
+      "keyword": "下げ過ぎない"
+    },
+    {
+      "text": "血糖は1〜2時間ごと、電解質・ケトン・pHは4時間ごと。Kはインスリン開始の2時間後",
+      "kind": "procedure",
+      "requires": [
+        "bloodGas"
+      ],
+      "ifMissing": "血液ガスがない：電解質と重炭酸（HCO3⁻）で追い、早めにできる施設へ相談する",
+      "keyword": "測る間隔"
+    }
+  ],
+  "branches": [
+    {
+      "if": "意識が悪い・ショック",
+      "then": "ABCDEと意識障害カードへ。集中治療のできる施設に相談する"
+    },
+    {
+      "if": "pH 7.0未満かHCO3⁻ 10未満（重度のDKA）",
+      "then": "専門医へ。重炭酸は英米でもこのときだけ考える"
+    },
+    {
+      "if": "SGLT2阻害薬を飲んでいる",
+      "then": "血糖がそれほど高くなくてもDKAがありうる。ケトンを測る（書籍で照合）"
+    },
+    {
+      "if": "血糖が低い",
+      "then": "低血糖カードへ"
+    }
+  ],
+  "callForHelp": {
+    "criteria": [
+      "意識の低下",
+      "pH 7.0未満かHCO3⁻ 10未満",
+      "Kが3.5未満、または心電図変化",
+      "ショック・尿が出ない"
+    ],
+    "whom": "当直医・内科。集中治療が要れば、できる施設",
+    "script": "SBARで伝える（SBARカード）。血糖・pH（HCO3⁻）・K・ケトン・意識を先に言う"
+  },
+  "transfer": "重度のDKA、HHS、持続静注やこまめな採血ができないときは、できる施設へ送る",
+  "pitfalls": [
+    "Kを見ずにインスリンを始める",
+    "HHSで血糖とNaを急に下げる",
+    "血糖が下がったところでインスリンを止める",
+    "誘因を探さない"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "Umpierrez GE, et al. Hyperglycaemic crises in adults with diabetes: a consensus report（ADA・EASD・JBDS・AACE・DTS）. Diabetologia 2024;67:1455–1479（Diabetes Care 2024 と同時掲載）",
+      "edition": "2024（公開論文、PMC）",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11343900",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。DKAの重症度（表2）、輸液・インスリン・ブドウ糖・カリウム・重炭酸の量、回復の基準、HHSでの下げる速さ、測る間隔を拾った。DKAとHHSの診断基準の図（図2a・2b）は本文から読めなかった。英米の量。"
+    },
+    {
+      "type": "guideline",
+      "title": "Joint British Diabetes Societies. The management of the hyperosmolar hyperglycaemic state (HHS) in adults（Diabetic Medicine 2022）の要約（ACP Diabetes Monthly）",
+      "edition": "2022年12月9日（Web、二次資料）",
+      "url": "https://diabetes.acponline.org/archives/2022/12/09/3.htm",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "二次資料。HHSの診断の目安（血糖30mmol/L（540mg/dL）以上、浸透圧320mOsm/kg以上、強いケトン血症なし、重炭酸15mmol/L以上）と、下げる速さ、インスリンを始める時期を確かめた。原典は未確認。"
+    },
+    {
+      "type": "guideline",
+      "title": "糖尿病診療ガイドライン2024（日本糖尿病学会、南江堂）",
+      "edition": "2024（書籍）",
+      "public": true,
+      "checkedScope": "未照合。DKA・HHSの照合の正本。日本の手順・製剤（速効型インスリン、カリウム製剤）での量を確かめる。"
+    }
+  ],
+  "updatedAt": "2026-11-10",
+  "review": {
+    "level": 0
+  },
+  "drills": [
+    "hyperglycemia-recall"
+  ],
+  "firstCalls": [
+    "血糖が500を超えていて、ぐったりしています",
+    "血糖の測定器でHIと出ました",
+    "糖尿病の方が吐いていて、呼吸が深くて速いです"
+  ]
+}

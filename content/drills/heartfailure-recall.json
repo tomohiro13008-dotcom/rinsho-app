@@ -1,0 +1,9 @@
+{
+  "$comment": "AI下書き（2026-11-10）。カードと同じ根拠から作った。本人の照合前。",
+  "id": "heartfailure-recall",
+  "cardId": "dyspnea",
+  "kind": "recall",
+  "prompt": "急性心不全を除外しやすいBNPとNT-proBNPの値を言う",
+  "answer": "BNP 100ng/L未満、NT-proBNP 300ng/L未満（NICE CG187）",
+  "targetSeconds": 10
+}
