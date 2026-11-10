@@ -180,7 +180,8 @@
     "sepsis-initial",
     "rrs-criteria",
     "hyperkalemia",
-    "dka-hhs"
+    "dka-hhs",
+    "hyponatremia"
   ],
   "sources": [
     {

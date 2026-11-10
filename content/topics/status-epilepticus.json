@@ -252,7 +252,9 @@
     "glucose-50"
   ],
   "related": [
-    "hypoglycemia"
+    "hypoglycemia",
+    "febrile-seizure",
+    "hyponatremia"
   ],
   "sources": [
     {

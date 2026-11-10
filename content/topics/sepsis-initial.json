@@ -183,7 +183,8 @@
     "pediatric-sepsis-shock",
     "febrile-neutropenia",
     "bacterial-meningitis",
-    "nsti"
+    "nsti",
+    "adrenal-crisis"
   ],
   "sources": [
     {
