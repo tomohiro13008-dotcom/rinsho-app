@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
 
 const HOUR = 60 * 60 * 1000;
 const cardIds = readdirSync('content/cards').map((f) => f.replace(/\.json$/, ''));
@@ -159,5 +159,35 @@ test('患者の入力欄がない（数値入力・検査値の欄を置かな�
     await page.goto(`./${h}`);
     await ready(page);
     await expect(page.locator('input[type="number"]')).toHaveCount(0);
+  }
+});
+
+test('新しい版が入ったら知らせる（勝手に読み込み直さない）', async ({ page }) => {
+  await page.goto('./#/settings');
+  await ready(page);
+  await page.evaluate(async () => {
+    await navigator.serviceWorker.ready;
+    if (!navigator.serviceWorker.controller) {
+      await new Promise<void>((r) => navigator.serviceWorker.addEventListener('controllerchange', () => r(), { once: true }));
+    }
+  });
+  // 最初の登録では知らせない
+  await page.reload();
+  await ready(page);
+  await expect(page.getByTestId('update-notice')).toHaveCount(0);
+  await expect(page.getByTestId('build-id')).toContainText('版：');
+  // 配っている sw.js を一時的に書き換えて、新しい版を入れる（終わったら戻す）
+  const swPath = 'dist/sw.js';
+  const original = readFileSync(swPath, 'utf8');
+  try {
+    writeFileSync(swPath, original + '\n// 次の版\n');
+    await page.evaluate(async () => {
+      const reg = await navigator.serviceWorker.getRegistration();
+      await reg?.update();
+    });
+    await expect(page.getByTestId('update-notice')).toBeVisible();
+    await expect(page).toHaveURL(/#\/settings$/);
+  } finally {
+    writeFileSync(swPath, original);
   }
 });

@@ -3,6 +3,7 @@ import { App } from './app';
 import { AppProvider } from './state';
 import { themeCss } from './theme';
 import { setSetting } from './store/db';
+import { registerServiceWorker } from './update';
 import './styles.css';
 
 const style = document.createElement('style');
@@ -23,7 +24,5 @@ if (navigator.storage?.persist) {
 
 // 全資産をキャッシュしてオフラインで動かす（本番ビルドだけ）。
 if (import.meta.env.PROD && 'serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    void navigator.serviceWorker.register('./sw.js');
-  });
+  window.addEventListener('load', () => registerServiceWorker(navigator.serviceWorker));
 }
