@@ -30,6 +30,9 @@
     },
     "note": {
       "type": "string"
+    },
+    "stack": {
+      "type": "boolean"
     }
   }
 }

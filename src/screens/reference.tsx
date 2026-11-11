@@ -14,7 +14,7 @@ import { MarkButtons, progressInput, useRecordView } from './toc';
 export function TableView({ t }: { t: Table }) {
   return (
     <div class="table-wrap">
-      <table class={`ref-table ${t.columns.length > 3 ? 'stack' : ''}`}>
+      <table class={`ref-table ${t.columns.length > 3 || t.stack ? 'stack' : ''}`}>
         {t.caption ? <caption>{t.caption}</caption> : null}
         <thead>
           <tr>

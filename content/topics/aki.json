@@ -156,7 +156,8 @@
     "urinary-retention",
     "sepsis-initial",
     "acute-heart-failure",
-    "obstructive-pyelonephritis"
+    "obstructive-pyelonephritis",
+    "icu-renal"
   ],
   "sources": [
     {

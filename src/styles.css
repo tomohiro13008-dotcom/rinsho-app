@@ -568,7 +568,7 @@ input[type='search'] {
   font: inherit;
   min-height: 48px;
 }
-/* 4列以上の表は、狭い画面では1行ずつの塊に組み替える */
+/* 4列以上の表と、stack をつけた表は、狭い画面では1行ずつの塊に組み替える */
 @media (max-width: 560px) {
   .ref-table.stack thead {
     display: none;

@@ -124,6 +124,8 @@ export interface Table {
   columns: string[];
   rows: string[][];
   note?: string;
+  /** 3列でも文が長い表は、狭い画面で1行ずつの塊に組み替える */
+  stack?: boolean;
 }
 
 export interface TopicSection {
