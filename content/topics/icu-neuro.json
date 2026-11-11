@@ -202,7 +202,8 @@
     "delirium",
     "icu-overview",
     "icu-resp",
-    "icu-intubation-drugs"
+    "icu-intubation-drugs",
+    "icu-sleep-delirium"
   ],
   "sources": [
     {

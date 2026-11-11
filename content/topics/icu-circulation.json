@@ -217,7 +217,8 @@
     "icu-overview",
     "icu-renal",
     "periarrest-arrhythmia",
-    "icu-cardiogenic-shock"
+    "icu-cardiogenic-shock",
+    "icu-af"
   ],
   "sources": [
     {

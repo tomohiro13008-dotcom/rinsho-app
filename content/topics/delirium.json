@@ -121,7 +121,8 @@
     "sepsis-initial",
     "urinary-retention",
     "alcohol-withdrawal",
-    "icu-neuro"
+    "icu-neuro",
+    "icu-sleep-delirium"
   ],
   "sources": [
     {

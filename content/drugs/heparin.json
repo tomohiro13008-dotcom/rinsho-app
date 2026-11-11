@@ -109,7 +109,8 @@
     "icu-heme",
     "icu-crrt",
     "icu-mcs",
-    "anticoagulant-reversal"
+    "anticoagulant-reversal",
+    "icu-af"
   ],
   "sources": [
     {

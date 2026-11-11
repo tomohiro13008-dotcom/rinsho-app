@@ -302,7 +302,8 @@
     "acs-initial",
     "acute-heart-failure",
     "periarrest-arrhythmia",
-    "icu-mcs"
+    "icu-mcs",
+    "icu-af"
   ],
   "sources": [
     {

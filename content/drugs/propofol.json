@@ -133,7 +133,8 @@
   "topics": [
     "icu-neuro",
     "status-epilepticus",
-    "icu-intubation-drugs"
+    "icu-intubation-drugs",
+    "icu-sleep-delirium"
   ],
   "sources": [
     {

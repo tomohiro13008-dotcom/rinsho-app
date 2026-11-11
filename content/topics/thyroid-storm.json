@@ -132,7 +132,8 @@
   "related": [
     "periarrest-arrhythmia",
     "acute-heart-failure",
-    "delirium"
+    "delirium",
+    "icu-af"
   ],
   "sources": [
     {

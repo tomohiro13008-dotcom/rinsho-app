@@ -147,13 +147,16 @@
     "amiodarone",
     "atropine",
     "verapamil",
-    "magnesium-sulfate"
+    "magnesium-sulfate",
+    "landiolol",
+    "digoxin-iv"
   ],
   "related": [
     "als-adult",
     "rrs-criteria",
     "hyperkalemia",
-    "thyroid-storm"
+    "thyroid-storm",
+    "icu-af"
   ],
   "sources": [
     {

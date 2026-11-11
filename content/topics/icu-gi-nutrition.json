@@ -196,12 +196,15 @@
     "下痢のたびに CDI の検査を出す・まったく出さない（確からしさで決める）"
   ],
   "cards": [],
-  "drugs": [],
+  "drugs": [
+    "insulin-human-regular"
+  ],
   "related": [
     "icu-renal",
     "icu-infection",
     "hypoglycemia",
-    "ugib"
+    "ugib",
+    "icu-glucose"
   ],
   "sources": [
     {
