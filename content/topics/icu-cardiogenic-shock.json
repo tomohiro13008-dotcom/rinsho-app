@@ -293,7 +293,10 @@
     "補助の管を入れた足を見ない"
   ],
   "cards": [],
-  "drugs": [],
+  "drugs": [
+    "dobutamine",
+    "noradrenaline"
+  ],
   "related": [
     "icu-circulation",
     "acs-initial",

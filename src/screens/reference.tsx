@@ -283,7 +283,9 @@ export function DrugView({ id }: { id: string }) {
         <Lines items={d.summary} />
       </section>
       <Section title="商品名・規格">
-        <TableView t={{ columns: ['商品名', '規格・含量（製造販売）'], rows: d.brands.map((b) => [b.name, b.maker ? `${b.strength}（${b.maker}）` : b.strength]) }} />
+        <div class="brands">
+          <TableView t={{ columns: ['商品名', '規格・含量（製造販売）'], rows: d.brands.map((b) => [b.name, b.maker ? `${b.strength}（${b.maker}）` : b.strength]) }} />
+        </div>
       </Section>
       <Section title="用法用量">
         <div class="doses">

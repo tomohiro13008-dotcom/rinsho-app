@@ -346,7 +346,9 @@
     "血小板が下がっているのに、回路のヘパリンを疑わない"
   ],
   "cards": [],
-  "drugs": [],
+  "drugs": [
+    "heparin"
+  ],
   "related": [
     "icu-renal",
     "aki",

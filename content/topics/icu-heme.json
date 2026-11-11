@@ -176,7 +176,9 @@
     "出血が落ち着いたあと、血栓の予防を再開するのを忘れる"
   ],
   "cards": [],
-  "drugs": [],
+  "drugs": [
+    "heparin"
+  ],
   "related": [
     "icu-lines-prophylaxis",
     "icu-infection",

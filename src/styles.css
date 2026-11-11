@@ -548,6 +548,11 @@ fieldset {
   font-weight: 700;
   white-space: nowrap;
 }
+/* 商品名は長いものがある（規格つきのシリンジ製剤など）。折り返して、規格の列を画面に残す */
+.brands .ref-table tbody th {
+  white-space: normal;
+  width: 50%;
+}
 .dose {
   border-top: 1px solid var(--border);
   padding: 0.4rem 0;
@@ -578,6 +583,11 @@ input[type='search'] {
   .ref-table.stack tr,
   .ref-table.stack th,
   .ref-table.stack td {
+    display: block;
+    width: 100%;
+  }
+  /* 表を塊に組み替えると、見出し（caption）が細い列に折れる。塊と同じ幅にそろえる */
+  .ref-table.stack caption {
     display: block;
     width: 100%;
   }

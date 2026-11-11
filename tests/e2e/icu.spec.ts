@@ -37,3 +37,19 @@ test('ICU管理：章が順に並び、表が読め、空欄の型を写せる�
   await expect(t2).toContainText('いちばん大事な問題');
   await expect(t2.locator('input, textarea, [contenteditable]')).toHaveCount(0);
 });
+
+test('ICU管理：神経の章から鎮痛・鎮静の薬に届き、出どころ別の行と体重別の表が出る（計算する欄はない）', async ({ page }) => {
+  await page.goto('./#/topic/icu-neuro');
+  const main = page.locator('main[data-topic="icu-neuro"]');
+  await expect(main.locator('a[href="#/drug/fentanyl"]')).toBeVisible();
+  await main.locator('a[href="#/drug/propofol"]').click();
+  const drug = page.locator('main[data-drug="propofol"]');
+  await expect(drug).toBeVisible();
+  // 添付文書の行と、書籍の指示の例の行は、出どころを分けて出す
+  await expect(drug.locator('.dose')).toHaveCount(2);
+  await expect(drug.locator('.dose').first()).toContainText('出どころ：添付文書');
+  await expect(drug.locator('.dose').last()).toContainText('出どころ：書籍（指示の例）');
+  await expect(drug.getByRole('heading', { name: '体重別の早見表' })).toBeVisible();
+  await expect(drug).toContainText('書き手が体重から計算');
+  await expect(drug.locator('input, textarea, select, [contenteditable]')).toHaveCount(0);
+});

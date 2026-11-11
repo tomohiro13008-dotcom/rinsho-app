@@ -98,7 +98,9 @@
     "chestpain"
   ],
   "drugs": [
-    "noradrenaline"
+    "noradrenaline",
+    "heparin",
+    "dobutamine"
   ],
   "related": [
     "aortic-dissection",

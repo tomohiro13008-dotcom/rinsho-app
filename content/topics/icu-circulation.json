@@ -208,7 +208,10 @@
     "型を一つに決めつける（敗血症に心機能の低下や出血が重なる）"
   ],
   "cards": [],
-  "drugs": [],
+  "drugs": [
+    "noradrenaline",
+    "dobutamine"
+  ],
   "related": [
     "sepsis-initial",
     "icu-overview",

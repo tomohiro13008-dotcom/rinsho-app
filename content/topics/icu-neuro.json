@@ -193,7 +193,11 @@
     "せん妄を薬で止めようとして、原因と環境を見ない"
   ],
   "cards": [],
-  "drugs": [],
+  "drugs": [
+    "fentanyl",
+    "propofol",
+    "dexmedetomidine"
+  ],
   "related": [
     "delirium",
     "icu-overview",

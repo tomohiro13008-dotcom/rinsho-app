@@ -292,7 +292,9 @@
     "入れたあと、治療の目標を家族と話していない"
   ],
   "cards": [],
-  "drugs": [],
+  "drugs": [
+    "heparin"
+  ],
   "related": [
     "icu-cardiogenic-shock",
     "icu-circulation",
