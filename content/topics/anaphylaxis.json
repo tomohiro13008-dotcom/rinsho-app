@@ -194,7 +194,8 @@
     "anaphylaxis"
   ],
   "drugs": [
-    "adrenaline"
+    "adrenaline",
+    "glucagon"
   ],
   "related": [
     "rrs-criteria"

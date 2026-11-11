@@ -175,7 +175,8 @@
     "sepsis"
   ],
   "drugs": [
-    "noradrenaline"
+    "noradrenaline",
+    "hydrocortisone-iv"
   ],
   "related": [
     "rrs-criteria",

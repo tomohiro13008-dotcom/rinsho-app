@@ -104,7 +104,9 @@
     "sepsis",
     "abdpain"
   ],
-  "drugs": [],
+  "drugs": [
+    "hydrocortisone-iv"
+  ],
   "related": [
     "sepsis-initial",
     "acute-abdomen",

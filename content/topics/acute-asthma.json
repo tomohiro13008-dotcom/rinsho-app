@@ -128,7 +128,9 @@
     "dyspnea"
   ],
   "drugs": [
-    "salbutamol-inh"
+    "salbutamol-inh",
+    "hydrocortisone-iv",
+    "magnesium-sulfate"
   ],
   "related": [
     "oxygen-acute"

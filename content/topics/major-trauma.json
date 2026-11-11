@@ -121,7 +121,9 @@
   "cards": [
     "trauma"
   ],
-  "drugs": [],
+  "drugs": [
+    "tranexamic-acid-iv"
+  ],
   "related": [
     "head-injury",
     "rrs-criteria",

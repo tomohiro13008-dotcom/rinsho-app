@@ -100,7 +100,9 @@
     "seizure",
     "headache"
   ],
-  "drugs": [],
+  "drugs": [
+    "magnesium-sulfate"
+  ],
   "related": [
     "postpartum-hemorrhage",
     "status-epilepticus",

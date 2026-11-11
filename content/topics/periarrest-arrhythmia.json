@@ -146,7 +146,8 @@
   "drugs": [
     "amiodarone",
     "atropine",
-    "verapamil"
+    "verapamil",
+    "magnesium-sulfate"
   ],
   "related": [
     "als-adult",

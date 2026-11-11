@@ -105,7 +105,9 @@
     "headache",
     "consciousness"
   ],
-  "drugs": [],
+  "drugs": [
+    "ceftriaxone"
+  ],
   "related": [
     "sah",
     "consciousness-initial",

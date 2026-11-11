@@ -89,7 +89,9 @@
   "cards": [
     "dyspnea"
   ],
-  "drugs": [],
+  "drugs": [
+    "ceftriaxone"
+  ],
   "related": [
     "oxygen-acute",
     "anaphylaxis",

@@ -1,0 +1,134 @@
+{
+  "$comment": "AI下書き（2026-11-11）。添付文書と、参照項目で読んだガイドラインから下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "thiamine-iv",
+  "generic": "チアミン塩化物塩酸塩（ビタミンB1）",
+  "brands": [
+    {
+      "name": "メタボリン注射液50mg",
+      "strength": "1管1mL中 50mg",
+      "maker": "T's製薬（販売 武田薬品工業）"
+    },
+    {
+      "name": "チアミン塩化物塩酸塩注10mg「NP」",
+      "strength": "1管1mL中 10mg",
+      "maker": "ニプロ"
+    }
+  ],
+  "drugClass": "ビタミンB1",
+  "summary": [
+    "添付文書：成人1日1〜50mgを皮下・筋注・静注（効能にウェルニッケ脳炎あり）",
+    "てんかん重積（日本神経学会 2018）：血糖60mg/dL以下ならチアミン100mg静注とブドウ糖50% 50mL",
+    "アルコール（NICE）：ウェルニッケ脳症を疑えば注射で少なくとも5日",
+    "規格が1管10mgと50mgで違う。採用薬の規格を確かめる"
+  ],
+  "doses": [
+    {
+      "indication": "ビタミンB1欠乏・ウェルニッケ脳炎など",
+      "population": "成人",
+      "dose": "1日1〜50mg",
+      "route": "皮下・筋注・静注",
+      "basis": "添付文書",
+      "note": "年齢・症状で適宜増減",
+      "sourceIndexes": [
+        0,
+        1
+      ]
+    },
+    {
+      "indication": "てんかん重積状態で血糖60mg/dL以下",
+      "population": "成人",
+      "dose": "100mg",
+      "route": "静注",
+      "basis": "ガイドライン（てんかん診療ガイドライン2018）",
+      "note": "ブドウ糖50% 50mLの静注と組み合わせる",
+      "sourceIndexes": [
+        2
+      ]
+    },
+    {
+      "indication": "ウェルニッケ脳症の疑い（アルコール）",
+      "population": "成人",
+      "dose": "注射で少なくとも5日、その後は経口",
+      "route": "注射",
+      "basis": "ガイドライン（英国 NICE CG100）",
+      "note": "1回量はNICE CG100の本文では確かめていない",
+      "sourceIndexes": [
+        3
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "静注",
+      "recipe": "そのまま、できるだけゆっくり（血管痛）"
+    }
+  ],
+  "cautions": [
+    "禁忌：成分への過敏症",
+    "静注はできるだけゆっくり（血管痛）",
+    "ブドウ糖を入れるときにチアミンを忘れない（アルコール多飲・低栄養）",
+    "1管の量が製剤で5倍違う（10mgと50mg）"
+  ],
+  "topics": [
+    "status-epilepticus",
+    "alcohol-withdrawal",
+    "consciousness-initial"
+  ],
+  "sources": [
+    {
+      "type": "label",
+      "title": "メタボリン注射液50mg 添付文書（T's製薬）",
+      "edition": "2025年9月改訂（第2版）",
+      "locator": "効能又は効果、用法及び用量",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/400061_3121400A4070_2_03",
+      "public": true,
+      "verifiedAt": "2026-11-11",
+      "checkedScope": "販売名・規格・効能（ウェルニッケ脳炎）・用法用量"
+    },
+    {
+      "type": "label",
+      "title": "チアミン塩化物塩酸塩注10mg「NP」 添付文書（ニプロ）",
+      "edition": "2023年10月改訂（第1版）",
+      "locator": "効能又は効果、用法及び用量、禁忌、適用上の注意",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/530100_3121400A2248_3_02",
+      "public": true,
+      "verifiedAt": "2026-11-11",
+      "checkedScope": "販売名・規格・用法用量・禁忌・静注の速度"
+    },
+    {
+      "type": "guideline",
+      "title": "てんかん診療ガイドライン2018 第8章 てんかん重積状態（日本神経学会）",
+      "edition": "2018（公開PDF）",
+      "locator": "p.76–79 図1（治療フローチャート）、p.87 CQ8-3",
+      "url": "https://www.neurology-jp.org/guidelinem/epgl/tenkan_2018_08.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。定義の時間、各段階の薬と量・速度、静脈路がないとき、血糖60以下の対応を公開PDFから拾った。"
+    },
+    {
+      "type": "guideline",
+      "title": "NICE CG100 Alcohol-use disorders: diagnosis and management of physical complications",
+      "edition": "2010（Web）",
+      "locator": "1.1.1.1、1.1.2–1.1.4（離脱・振戦せん妄・けいれん）、1.2.1（チアミン）",
+      "url": "https://www.nice.org.uk/guidance/cg100",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。入院が要る人、ベンゾジアゼピン、症状に合わせた投与、振戦せん妄（経口ロラゼパム、だめなら注射のロラゼパムかハロペリドール）、離脱けいれん（フェニトインを使わない）、チアミンを確かめた。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "用法用量・効能・注意（メタボリン注射液50mg 2025年9月改訂、チアミン塩化物塩酸塩注10mg「NP」2023年10月改訂）",
+      "重積とアルコールの使い方は、それぞれの参照項目で読んだガイドラインから写した"
+    ],
+    "unverified": [
+      "ウェルニッケ脳症の1回量（添付文書の1日50mgより多い量がガイドラインで使われる。日本の正本で照合）",
+      "フルスルチアミンなどほかの製剤",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-11",
+  "review": {
+    "level": 0
+  }
+}

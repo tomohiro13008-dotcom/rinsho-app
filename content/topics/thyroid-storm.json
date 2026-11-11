@@ -126,7 +126,8 @@
     "agitation"
   ],
   "drugs": [
-    "acetaminophen-iv"
+    "acetaminophen-iv",
+    "hydrocortisone-iv"
   ],
   "related": [
     "periarrest-arrhythmia",

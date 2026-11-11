@@ -134,7 +134,8 @@
     "seizure"
   ],
   "drugs": [
-    "glucose-50"
+    "glucose-50",
+    "glucagon"
   ],
   "related": [
     "status-epilepticus",

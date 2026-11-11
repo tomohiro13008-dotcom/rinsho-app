@@ -1,0 +1,114 @@
+{
+  "$comment": "AI下書き（2026-11-11）。添付文書と、参照項目で読んだガイドラインから下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "tranexamic-acid-iv",
+  "generic": "トラネキサム酸",
+  "brands": [
+    {
+      "name": "トランサミン注5%",
+      "strength": "1管5mL中 250mg",
+      "maker": "第一三共"
+    },
+    {
+      "name": "トランサミン注10%",
+      "strength": "1管2.5mL中 250mg／1管10mL中 1g",
+      "maker": "第一三共"
+    }
+  ],
+  "drugClass": "抗プラスミン薬（止血）",
+  "summary": [
+    "添付文書：成人1日250〜500mgを1〜2回に分けて静注・筋注",
+    "術中・術後などは1回500〜1,000mgを静注、または500〜2,500mgを点滴",
+    "重症外傷（英国 NICE）：できるだけ早く。受傷3時間を超えたら使わない",
+    "静注はゆっくり（急ぐと悪心・胸部不快・血圧低下）"
+  ],
+  "doses": [
+    {
+      "indication": "出血傾向・異常出血（全般）",
+      "population": "成人",
+      "dose": "1日250〜500mgを1〜2回に分けて",
+      "route": "静注・筋注",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "術中・術後など",
+      "population": "成人",
+      "dose": "1回500〜1,000mg",
+      "route": "静注",
+      "repeat": "または500〜2,500mgを点滴静注",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "重症外傷の出血",
+      "population": "成人",
+      "dose": "量はNICEに記載なし",
+      "route": "静注",
+      "basis": "ガイドライン（英国 NICE NG39）",
+      "note": "できるだけ早く。受傷3時間を超えたら使わない（線溶亢進の証拠がある場合を除く）",
+      "sourceIndexes": [
+        1
+      ]
+    }
+  ],
+  "preparation": [
+    {
+      "label": "500mg",
+      "recipe": "5%なら2管（10mL）、10%なら2.5mLを2管（5mL）"
+    },
+    {
+      "label": "1g",
+      "recipe": "10%の10mL管を1管"
+    }
+  ],
+  "cautions": [
+    "禁忌：トロンビン投与中、成分への過敏症",
+    "静注はゆっくり（急ぐと悪心・胸内不快・動悸・血圧低下）",
+    "外傷では時間が肝心：受傷3時間を超えたら使わない（NICE）"
+  ],
+  "topics": [
+    "major-trauma",
+    "postpartum-hemorrhage",
+    "epistaxis"
+  ],
+  "sources": [
+    {
+      "type": "label",
+      "title": "トランサミン注5%・10% 添付文書（第一三共）",
+      "edition": "2023年1月改訂（第1版）",
+      "locator": "効能又は効果、用法及び用量、禁忌、適用上の注意",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/430574_3327401A1127_2_07",
+      "public": true,
+      "verifiedAt": "2026-11-11",
+      "checkedScope": "販売名・規格・効能・用法用量・禁忌・静注の速度"
+    },
+    {
+      "type": "guideline",
+      "title": "NICE guideline NG39. Major trauma: assessment and initial management",
+      "edition": "2016年2月（Web）",
+      "locator": "1.2–1.6、1.8",
+      "url": "https://www.nice.org.uk/guidance/NG39/chapter/Recommendations",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。気道、胸部外傷（緊張性気胸・開放性気胸）、止血（直接圧迫・止血帯・骨盤バインダー）、トラネキサム酸の時期、輸液の考え方、血漿と赤血球の比、FAST、全身CT、低体温を拾った。トラネキサム酸の量は記載がない。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "用法用量・禁忌・注意（トランサミン注 添付文書 2023年1月改訂）",
+      "外傷の時期はNICE NG39から写した"
+    ],
+    "unverified": [
+      "外傷・産後出血での1回量（JATEC・産婦人科診療ガイドラインで照合）",
+      "採用薬"
+    ]
+  },
+  "updatedAt": "2026-11-11",
+  "review": {
+    "level": 0
+  }
+}
