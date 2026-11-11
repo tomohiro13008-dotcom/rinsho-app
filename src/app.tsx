@@ -1,4 +1,5 @@
-import { useRoute } from './router';
+import { goBack, useRoute } from './router';
+import { drillById, topicById } from './content';
 import { useAppMaybe } from './state';
 import { CardView, Home, MarkView, StateList } from './screens/field';
 import { DrillView, Learn, Practice, SpecialtyView } from './screens/learn';
@@ -68,6 +69,47 @@ function Nav() {
   );
 }
 
+/** 戻る先がないとき（直接開いたとき）に行く上の階層。タブの入口では null（戻るを出さない）。 */
+export function parentOf(parts: string[]): string | null {
+  const [a, b, c] = parts;
+  switch (a) {
+    case 'state':
+      return '#/';
+    case 'card':
+      return c === 'mark' ? `#/card/${b}` : '#/';
+    case 'practice':
+      return '#/learn';
+    case 'drill': {
+      const d = drillById.get(b);
+      return d && !d.cardId && d.specialty ? `#/specialty/${d.specialty}` : '#/learn';
+    }
+    case 'specialty':
+      return '#/learn';
+    case 'ref':
+      return b === 'field' && c ? '#/ref' : null;
+    case 'topic': {
+      if (c === 'quiz') return `#/topic/${b}`;
+      const t = topicById.get(b);
+      return t ? `#/ref/field/${t.field}` : '#/ref';
+    }
+    case 'drug':
+      return '#/ref';
+    default:
+      return null;
+  }
+}
+
+function BackButton() {
+  const { parts } = useRoute();
+  const up = parentOf(parts);
+  if (!up) return null;
+  return (
+    <button type="button" class="back" data-testid="back" onClick={() => goBack(up)}>
+      <span aria-hidden="true">‹</span> 戻る
+    </button>
+  );
+}
+
 function UpdateNotice() {
   const ready = useUpdateReady();
   if (!ready) return null;
@@ -86,6 +128,7 @@ export function App() {
   return (
     <div class="app">
       <header class="appbar">
+        <BackButton />
         <a href="#/" class="appname">
           臨床力カード
         </a>

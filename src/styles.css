@@ -81,7 +81,24 @@ p {
   border-bottom: 1px solid var(--border);
   background: var(--surface);
 }
+.back {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 0.5rem 0 0;
+  border: 0;
+  background: none;
+  color: var(--primary);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.back span {
+  font-size: 1.4em;
+  line-height: 1;
+}
 .appname {
+  margin-right: auto;
   font-weight: 700;
   color: var(--text);
   text-decoration: none;
