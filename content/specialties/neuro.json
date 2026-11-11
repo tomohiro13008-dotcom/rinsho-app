@@ -1,0 +1,129 @@
+{
+  "$comment": "AI下書き（2026-11-11）。既存の参照項目（それぞれの出典）から、夜に専門医へ相談するときに要る形に書き直した。新しい出典は足していない。朝まで待てる条件は出典で決められないので空けた。本人の照合前。",
+  "id": "neuro",
+  "name": "脳神経（神経内科・脳神経外科）",
+  "mustNotMiss": [
+    {
+      "disease": "急性期脳梗塞",
+      "timeWindow": "静注血栓溶解は発症4.5時間以内、血栓回収は6時間以内を遅れなく",
+      "cardId": "stroke"
+    },
+    {
+      "disease": "くも膜下出血",
+      "timeWindow": "CTは発症6時間以内がもっとも正確",
+      "cardId": "headache"
+    },
+    {
+      "disease": "けいれん重積状態",
+      "timeWindow": "5分以上続けば治療を始める",
+      "cardId": "seizure"
+    },
+    {
+      "disease": "頭部外傷で頭蓋内に出血",
+      "timeWindow": "GCS 12以下などは1時間以内にCT",
+      "cardId": "headinjury"
+    },
+    {
+      "disease": "細菌性髄膜炎",
+      "timeWindow": "培養の結果を待たずに経験的治療",
+      "cardId": "headache"
+    }
+  ],
+  "cannotWait": [
+    "最後に普段どおりだった時刻から4.5時間以内の麻痺・ろれつ・顔のゆがみ",
+    "雷鳴頭痛（1〜5分で最強）、説明のつかない急な激しい頭痛",
+    "5分以上続くけいれん",
+    "頭部外傷でGCS 12以下、2時間後もGCS 15未満など1時間以内にCTが要る",
+    "発熱と頭痛に意識障害・けいれん（髄膜炎を疑う）"
+  ],
+  "doNotDo": [
+    "気づいた時刻を発症時刻にする（最後に普段どおりだった時刻を使う）",
+    "血糖と血小板を測らずに血栓溶解へ進む",
+    "静注血栓溶解の効果を見るために血栓回収を遅らせる",
+    "CTや腰椎穿刺を待って、髄膜炎の抗菌薬を遅らせる",
+    "ミダゾラムの0.1%製剤と0.5%製剤を取り違える"
+  ],
+  "common": [
+    "急な麻痺・ろれつ",
+    "突然の頭痛",
+    "けいれん",
+    "転倒して頭を打った",
+    "意識が悪い"
+  ],
+  "urgencyQuestions": [
+    "最後に普段どおりだった時刻",
+    "抗凝固薬の名前と最終服用（DOACは4時間以内か）",
+    "血糖・血圧",
+    "頭痛は何分で最強になったか",
+    "けいれんは何分続いているか。GCS"
+  ],
+  "procedurePrep": [
+    "血糖・血小板・PT-INRの採血",
+    "静脈路",
+    "体重（血栓溶解の量に要る）",
+    "頭部CTの準備"
+  ],
+  "tips": [
+    "降圧しても収縮期185・拡張期110mmHg以上は血栓溶解の適応外",
+    "6時間以内のCTが陰性なら、腰椎穿刺は決まりごとではしない",
+    "血糖60mg/dL以下のけいれんにはチアミンとブドウ糖",
+    "細菌性髄膜炎のデキサメタゾンは抗菌薬の10〜20分前"
+  ],
+  "consultScript": "◯◯病棟の△△です。□□歳、最後に普段どおりだったのは◯時◯分。症状は◯（麻痺・ろれつ・顔のゆがみ・頭痛・けいれん）。血圧◯/◯、血糖◯、GCS◯。抗凝固薬は◯（最終服用◯時）。CTと治療の適応を相談させてください。",
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "日本脳卒中学会 静注血栓溶解（rt-PA）療法 適正治療指針 第三版（2023年9月追補）",
+      "edition": "第三版 2019年3月、2023年9月追補（公開PDF）",
+      "locator": "p.4–6（推奨）、p.8（表4 チェックリスト）、p.9（図2 時間の目標）",
+      "url": "https://www.jsts.gr.jp/img/rt-pa03_supple.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。4.5時間、最終健常を発症とみなすこと、来院から60分、適応外の項目（血圧・血糖・抗凝固薬・出血・手術の日数）、慎重投与の項目、血栓回収の適応の目安を拾った。"
+    },
+    {
+      "type": "guideline",
+      "title": "NICE guideline NG228. Subarachnoid haemorrhage caused by a ruptured aneurysm: diagnosis and management",
+      "edition": "2022年11月（Web）",
+      "locator": "1.1.1–1.1.18、1.2.1–1.2.2",
+      "url": "https://www.nice.org.uk/guidance/NG228/chapter/recommendations",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。雷鳴頭痛の定義、伴う症状、救急への紹介、CTの精度（6時間以内）、腰椎穿刺の扱い（6時間以内のCT陰性なら決まりごとでは行わない、行うなら12時間以降）、転送の相談、再出血の時期を拾った。ニモジピン（日本では未承認と思われる、照合で確かめる）は載せていない。"
+    },
+    {
+      "type": "guideline",
+      "title": "てんかん診療ガイドライン2018 第8章 てんかん重積状態（日本神経学会）",
+      "edition": "2018（公開PDF）",
+      "locator": "p.76–79 図1（治療フローチャート）、p.87 CQ8-3",
+      "url": "https://www.neurology-jp.org/guidelinem/epgl/tenkan_2018_08.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。定義の時間、各段階の薬と量・速度、静脈路がないとき、血糖60以下の対応を公開PDFから拾った。"
+    },
+    {
+      "type": "guideline",
+      "title": "NICE guideline NG232. Head injury: assessment and early management",
+      "edition": "2023（Web）",
+      "locator": "1.5（成人のCTの基準）",
+      "url": "https://www.nice.org.uk/guidance/NG232/chapter/recommendations",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。成人の1時間以内・8時間以内のCTの基準と、抗凝固薬・抗血小板薬を飲んでいる人の扱いを拾った。推奨番号はページに印字がなく、並びから推定。小児の基準は載せていない。"
+    },
+    {
+      "type": "guideline",
+      "title": "細菌性髄膜炎診療ガイドライン2014（日本神経学会ほか）",
+      "edition": "2014（公開PDF、前付け）",
+      "locator": "p.ix、p.xi–xiii（フローチャートと脚注）、p.xiv",
+      "url": "https://www.neurology-jp.org/guidelinem/pdf/zuimaku_guide_2014_01.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。CTを先にする状態、血液培養2セット、1時間以内の目標、デキサメタゾン（抗菌薬の10〜20分前、0.15mg/kg 6時間ごと）、年齢別の初期の抗菌薬を確かめた。抗菌薬の量の表とCQ本文は読んでいない。"
+    }
+  ],
+  "updatedAt": "2026-11-11",
+  "review": {
+    "level": 0
+  }
+}

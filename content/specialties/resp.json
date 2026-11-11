@@ -1,0 +1,97 @@
+{
+  "$comment": "AI下書き（2026-11-11）。既存の参照項目（それぞれの出典）から、夜に専門医へ相談するときに要る形に書き直した。新しい出典は足していない。朝まで待てる条件は出典で決められないので空けた。本人の照合前。",
+  "id": "resp",
+  "name": "呼吸器",
+  "mustNotMiss": [
+    {
+      "disease": "命に関わる喘息の増悪",
+      "timeWindow": "すぐ上級医と集中治療",
+      "cardId": "dyspnea"
+    },
+    {
+      "disease": "COPDの増悪（CO2がたまる）",
+      "timeWindow": "血液ガスまで目標SpO2 88〜92%",
+      "cardId": "dyspnea"
+    },
+    {
+      "disease": "CO2ナルコーシス",
+      "cardId": "dyspnea"
+    }
+  ],
+  "cannotWait": [
+    "喘息でSpO2 92%未満、PEF 33%未満、呼吸音が聞こえない、意識の変化",
+    "喘息でPaCO2が「正常」（命に関わる所見）",
+    "COPDで、十分な治療でもCO2が高くアシドーシスが続く",
+    "酸素10L/分以上が要る、またはSpO2 92%以下が続く"
+  ],
+  "doNotDo": [
+    "CO2がたまる恐れのある人に、高濃度の酸素を漫然と続ける",
+    "高CO2・アシドーシスのCOPDで、酸素でネブライザーを回す",
+    "SpO2だけを見て安心する（CO2は分からない）"
+  ],
+  "common": [
+    "息が苦しい・SpO2の低下",
+    "喘鳴",
+    "痰が増えた・色が変わった"
+  ],
+  "urgencyQuestions": [
+    "一息で話せるか",
+    "呼吸数・SpO2・いまの酸素の量",
+    "喘息かCOPDか（既往・在宅酸素）",
+    "意識・眠気（CO2）"
+  ],
+  "procedurePrep": [
+    "血液ガス",
+    "ネブライザー（空気で回せるように）",
+    "ベンチュリーマスク・NPPVの準備"
+  ],
+  "tips": [
+    "喘息の呼吸音が静かになったのは改善ではないことがある",
+    "COPDはCO2が正常なら目標を94〜98%に戻す",
+    "PaCO2を急に下げると血圧低下・不整脈が起こりうる"
+  ],
+  "consultScript": "◯◯病棟の△△です。□□歳、喘息（COPD）で、◯時から呼吸が苦しい。呼吸数◯、SpO2◯%（酸素◯L）、一息で話せる（話せない）。血液ガスはpH◯、PaCO2◯。意識は◯。治療と、NPPV・集中治療の要否を相談させてください。",
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "BTS/SIGN British guideline on the management of asthma（SIGN 158）：Management of acute asthma in adults in hospital（Right Decisions、Healthcare Improvement Scotland）",
+      "edition": "2019（Web。BTS/NICE/SIGN の喘息パスウェイ SIGN 244 の中に掲載）",
+      "url": "https://rightdecisions.scot.nhs.uk/asthma-pathway-bts-nice-sign-sign-244/managing-acute-asthma/management-of-acute-asthma-in-adults/asthma-management-algorithms-for-adults/management-of-acute-asthma-in-adults-in-hospital",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。重症・命に関わる・致死的に近い喘息の所見、酸素の目標、サルブタモール・イプラトロピウム・ステロイド・マグネシウムの量、集中治療へ送る基準を拾った。英国の量と製剤。"
+    },
+    {
+      "type": "guideline",
+      "title": "NHS Highland COPD Guidelines（Right Decisions, Respiratory Department）",
+      "edition": "2021年12月3日見直し（次の見直し予定2024年を過ぎている。Web）",
+      "url": "https://rightdecisions.scot.nhs.uk/tam-treatments-and-medicines-nhs-highland/therapeutic-guidelines/respiratory/copd-chronic-obstructive-pulmonary-disease-guidelines",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。見直しの期限を過ぎた地域の手順。目標SpO2、吸入の量、プレドニゾロン30mg 5日、抗菌薬を始める条件、NIVの考え方を確かめた。NICE NG115はこの環境から開けなかった。"
+    },
+    {
+      "type": "guideline",
+      "title": "Resuscitation Council UK: The ABCDE Approach",
+      "edition": "2015年10月公開・2024年7月更新",
+      "url": "https://resus.org.uk/node/123",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "目標SpO2、リザーバーマスク15L/分、SpO2では高CO2が分からないこと"
+    },
+    {
+      "type": "guideline",
+      "title": "日本集中治療医学会 Rapid Response System運用指針",
+      "edition": "日集中医誌 2025;32:R15",
+      "locator": "Fig.1 p.7、p.8–11",
+      "url": "https://www.jsicm.org/publication/pdf/JSICM_RRS_20250315.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "呼ぶ基準の数値（Fig.1）"
+    }
+  ],
+  "updatedAt": "2026-11-11",
+  "review": {
+    "level": 0
+  }
+}
