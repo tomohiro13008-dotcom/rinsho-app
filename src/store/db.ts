@@ -1,12 +1,12 @@
 // 端末内だけの保存（IndexedDB）。通信はしない。
 // 学習記録・施設プロフィール・自施設メモをここに置き、JSONで書き出し・読み込みできる。
 
-import type { DayLog, DrillLog, FacilityProfile, LearningState, Lookup, Mark, Snapshot, Trouble } from '../types';
+import type { DayLog, DrillLog, FacilityProfile, Flag, LearningState, Lookup, Mark, Snapshot, Trouble, View } from '../types';
 
 const DB_NAME = 'rinsho-app';
-const DB_VERSION = 2;
+const DB_VERSION = 3;
 
-export const STORES = ['profiles', 'settings', 'learning', 'lookups', 'drillLogs', 'days', 'snapshots', 'marks', 'troubles'] as const;
+export const STORES = ['profiles', 'settings', 'learning', 'lookups', 'drillLogs', 'days', 'snapshots', 'marks', 'troubles', 'flags', 'views'] as const;
 export type StoreName = (typeof STORES)[number];
 
 let dbp: Promise<IDBDatabase> | null = null;
@@ -30,6 +30,8 @@ function open(): Promise<IDBDatabase> {
       make('snapshots', { keyPath: 'date' });
       make('marks', { keyPath: 'id', autoIncrement: true });
       make('troubles', { keyPath: 'id', autoIncrement: true });
+      make('flags', { keyPath: 'key' });
+      make('views', { keyPath: 'key' });
     };
     req.onsuccess = () => resolve(req.result);
     req.onerror = () => reject(req.error);
@@ -100,6 +102,24 @@ export async function addMarks(ms: Mark[]): Promise<void> {
 export const listTroubles = () => getAll<Trouble>('troubles');
 export const addTrouble = async (t: Trouble): Promise<number> => (await put('troubles', t)) as number;
 export const deleteTrouble = (id: number) => del('troubles', id);
+export async function listFlags(): Promise<Map<string, Flag>> {
+  return new Map((await getAll<Flag>('flags')).map((f) => [f.key, f]));
+}
+/** 印が全部なくなった行は消す */
+export async function saveFlag(f: Flag): Promise<void> {
+  if (!f.important && !f.weak && !f.reviewAt) await del('flags', f.key);
+  else await put('flags', f);
+}
+export async function listViews(): Promise<Map<string, View>> {
+  return new Map((await getAll<View>('views')).map((v) => [v.key, v]));
+}
+/** 開いた記録。10分以内の開き直しは数えない。数えたら true。 */
+export async function touchView(key: string, now: number): Promise<boolean> {
+  const v = await get<View>('views', key);
+  if (v && now - v.lastAt < 10 * 60 * 1000) return false;
+  await put('views', v ? { ...v, lastAt: now, count: v.count + 1 } : { key, firstAt: now, lastAt: now, count: 1 });
+  return true;
+}
 export const listSnapshots = () => getAll<Snapshot>('snapshots');
 export const saveSnapshot = (s: Snapshot) => put('snapshots', s);
 

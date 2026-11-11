@@ -5,6 +5,8 @@ import { Disclaimer, Icon, Lines, ReviewBadge, Section, Sources } from '../compo
 import { resolveStep } from '../logic/facility';
 import { addLookup, addMarks } from '../store/db';
 import { markLines } from '../logic/checklist';
+import { cardStatus } from '../logic/progress';
+import { MarkButtons, progressInput } from './toc';
 import { needsExportReminder, useApp } from '../state';
 import type { Card, FacilityProfile } from '../types';
 
@@ -216,6 +218,7 @@ export function CardView({ cardId, from }: { cardId: string; from: string | null
     <main class="page card" data-card={card.id}>
       <CardHeader card={card} profile={data.active} />
       <CardBody card={card} profile={data.active} />
+      <MarkButtons status={cardStatus(card, progressInput(data, Date.now()))} />
       {from === 'study' ? null : (
         <p class="after-use">
           <a class="btn" href={`#/card/${card.id}/mark`} data-testid="to-mark">

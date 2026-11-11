@@ -4,6 +4,8 @@ import { cardById, cards, drillById, drills, drillsForCard, specialties, special
 import { Icon, Lines, ReviewBadge, Section, Sources } from '../components';
 import { buildTodayQueue, type QueueItem } from '../logic/queue';
 import { DEFAULT_TARGET_SECONDS, LEVEL_LABELS, displayFor, nextLevel } from '../logic/mastery';
+import { cardFlagsForQueue, plainStatus } from '../logic/progress';
+import { MarkButtons, progressInput, useRecordView } from './toc';
 import { getScheduler } from '../logic/srs';
 import { dayKey, formatDateTime } from '../logic/time';
 import { addDrillLog, recordDayIfFirst, saveLearning } from '../store/db';
@@ -14,7 +16,8 @@ import { CardBody, ExportReminder } from './field';
 import { topicQuizTopics } from './reference';
 
 export function todayQueue(d: AppData, now: number): QueueItem[] {
-  return buildTodayQueue({ cards, learning: d.learning, lookups: d.lookups, marks: d.marks, now });
+  const { important, review } = cardFlagsForQueue(d.flags, d.learning);
+  return buildTodayQueue({ cards, learning: d.learning, lookups: d.lookups, marks: d.marks, now, important, reviewFlags: review });
 }
 
 const SOURCE_LABEL: Record<QueueSource, string> = {
@@ -529,6 +532,7 @@ function ConsultScript({ text }: { text: string }) {
 export function SpecialtyView({ id }: { id: string }) {
   const { data } = useApp();
   const s = specialtyById.get(id);
+  useRecordView('spec', id, !!s);
   if (!s) return <main class="page"><p>科が見つかりません。</p></main>;
   const ds = drills.filter((d) => d.specialty === id);
   const doneIds = new Set(data.drillLogs.map((l) => l.drillId));
@@ -539,6 +543,7 @@ export function SpecialtyView({ id }: { id: string }) {
         科の学習｜{s.name} <ReviewBadge review={s.review} />
       </p>
       <h1>{s.name}</h1>
+      <MarkButtons status={plainStatus('spec', s.id, progressInput(data, Date.now()))} />
       {s.externalLink ? (
         <p>
           <a href={s.externalLink.url}>{s.externalLink.label}</a>

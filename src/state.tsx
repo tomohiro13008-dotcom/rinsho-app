@@ -2,7 +2,7 @@
 import { createContext } from 'preact';
 import { useCallback, useContext, useEffect, useState } from 'preact/hooks';
 import type { ComponentChildren } from 'preact';
-import type { DayLog, DrillLog, FacilityProfile, LearningState, Lookup, Mark, Snapshot, Trouble } from './types';
+import type { DayLog, DrillLog, FacilityProfile, Flag, LearningState, Lookup, Mark, Snapshot, Trouble, View } from './types';
 import * as db from './store/db';
 import { registry } from './content';
 import { newProfile } from './logic/facility';
@@ -18,6 +18,8 @@ export interface AppData {
   snapshots: Snapshot[];
   marks: Mark[];
   troubles: Trouble[];
+  flags: Map<string, Flag>;
+  views: Map<string, View>;
   lastExportAt: number | null;
   firstUseAt: number;
   persisted: boolean | null;
@@ -55,6 +57,8 @@ async function load(): Promise<AppData> {
     snapshots: await db.listSnapshots(),
     marks: await db.listMarks(),
     troubles: await db.listTroubles(),
+    flags: await db.listFlags(),
+    views: await db.listViews(),
     lastExportAt: (await db.getSetting<number>('lastExportAt')) ?? null,
     firstUseAt,
     persisted: (await db.getSetting<boolean>('persisted')) ?? null,

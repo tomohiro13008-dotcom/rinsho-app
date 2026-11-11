@@ -96,6 +96,25 @@
               "type": "integer",
               "minimum": 0
             }
+          },
+          "template": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "lines"
+            ],
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "lines": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       }
@@ -139,6 +158,10 @@
     },
     "review": {
       "$ref": "review.schema.json"
+    },
+    "order": {
+      "type": "integer",
+      "minimum": 0
     }
   }
 }

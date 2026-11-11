@@ -6,6 +6,7 @@ import { DrillView, Learn, Practice, SpecialtyView } from './screens/learn';
 import { Dashboard } from './screens/dashboard';
 import { Settings } from './screens/settings';
 import { DrugView, FieldView, RefHome, TopicQuiz, TopicView } from './screens/reference';
+import { Toc } from './screens/toc';
 import type { QueueSource } from './types';
 import { useUpdateReady } from './update';
 
@@ -35,6 +36,8 @@ function Screen() {
       return c === 'quiz' ? <TopicQuiz key={b} id={b} /> : <TopicView key={b} id={b} />;
     case 'drug':
       return <DrugView key={b} id={b} />;
+    case 'index':
+      return <Toc />;
     case 'dash':
       return <Dashboard />;
     case 'settings':
@@ -58,6 +61,9 @@ function Nav() {
       </a>
       <a href="#/ref" aria-current={cur(['ref', 'topic', 'drug'])}>
         参照
+      </a>
+      <a href="#/index" aria-current={cur(['index'])}>
+        目次
       </a>
       <a href="#/dash" aria-current={cur(['dash'])}>
         記録
