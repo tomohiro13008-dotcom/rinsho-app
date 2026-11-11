@@ -233,7 +233,8 @@
     "icu-overview",
     "icu-neuro",
     "copd-exacerbation",
-    "icu-vent-modes"
+    "icu-vent-modes",
+    "icu-peep-asynchrony"
   ],
   "sources": [
     {

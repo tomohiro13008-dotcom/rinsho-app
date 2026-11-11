@@ -298,7 +298,8 @@
     "icu-circulation",
     "acs-initial",
     "acute-heart-failure",
-    "periarrest-arrhythmia"
+    "periarrest-arrhythmia",
+    "icu-mcs"
   ],
   "sources": [
     {
@@ -323,11 +324,11 @@
       "type": "guideline",
       "title": "2023年 JCS/JSCVS/JCC/CVIT ガイドライン フォーカスアップデート版 PCPS/ECMO/循環補助用心内留置型ポンプカテーテルの適応・操作（日本循環器学会ほか）",
       "edition": "2023年3月11日発行、2024年7月17日更新（公開PDF）",
-      "locator": "図1〜図3とその注、SCAI ステージの本文",
+      "locator": "図1（p.12）、図2（p.15）、図3（p.16）とその注、本文 p.15–16",
       "url": "https://www.j-circ.or.jp/cms/wp-content/uploads/2023/03/JCS2023_nishimura.pdf",
       "public": true,
       "verifiedAt": "2026-11-11",
-      "checkedScope": "AI下書き。本人の照合は未。SCAI のステージ A〜E の定義、ステージ C・D と E の対応の流れ、低灌流の目安の数字（図の注）を拾った。図は書籍に引用されたものを画像でも見た。本文のページ番号は要約の道具を通して読んだので、確かめ直す。"
+      "checkedScope": "AI下書き。本人の照合は未。SCAI のステージ A〜E の定義、ステージ C・D と E の対応の流れ、低灌流の目安の数字（図の注）を拾った。図は書籍に引用されたものを画像でも見た。ページ番号は要約の道具を通して読み直した（2026-11-11）。原本での照合は未。"
     }
   ],
   "verification": {

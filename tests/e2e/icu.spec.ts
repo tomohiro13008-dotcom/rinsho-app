@@ -4,12 +4,15 @@ test('ICU管理：章が順に並び、表が読め、空欄の型を写せる�
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto('./#/ref/field/icu');
   const items = page.locator('a[href^="#/topic/icu-"]');
-  await expect(items).toHaveCount(15);
+  await expect(items).toHaveCount(18);
   await expect(items.first()).toContainText('ICU患者の見方');
   await expect(items.last()).toContainText('カルテの型');
   // 足した章は、もとの臓器の章のすぐ後ろに並ぶ
   await expect(items.nth(3)).toContainText('心原性ショック');
-  await expect(items.nth(5)).toContainText('人工呼吸器のモードと波形');
+  await expect(items.nth(4)).toContainText('補助循環');
+  await expect(items.nth(6)).toContainText('人工呼吸器のモードと波形');
+  await expect(items.nth(7)).toContainText('PEEP');
+  await expect(items.nth(14)).toContainText('治療期間');
 
   // 臓器の章：「何を評価しているか」「次の一手」が項目ごとに読める
   await page.goto('./#/topic/icu-circulation');
