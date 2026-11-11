@@ -2,7 +2,7 @@
   "$comment": "AI下書き（2026-11-11）。書籍の要点を自分の言葉でまとめた。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
   "id": "icu-renal",
   "field": "icu",
-  "order": 5,
+  "order": 50,
   "title": "ICU 腎・In/Out・電解質・酸塩基",
   "tags": [
     "ICU",
@@ -208,7 +208,8 @@
     "hyperkalemia",
     "hyponatremia",
     "icu-circulation",
-    "icu-gi-nutrition"
+    "icu-gi-nutrition",
+    "icu-crrt"
   ],
   "sources": [
     {

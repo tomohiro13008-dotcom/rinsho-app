@@ -2,7 +2,7 @@
   "$comment": "AI下書き（2026-11-11）。書籍の要点を自分の言葉でまとめた。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
   "id": "icu-neuro",
   "field": "icu",
-  "order": 2,
+  "order": 20,
   "title": "ICU 神経：意識・痛み・不穏・せん妄",
   "tags": [
     "ICU",

@@ -2,7 +2,7 @@
   "$comment": "AI下書き（2026-11-11）。書籍の要点を自分の言葉でまとめた。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
   "id": "icu-heme",
   "field": "icu",
-  "order": 7,
+  "order": 70,
   "title": "ICU 血液・凝固",
   "tags": [
     "ICU",

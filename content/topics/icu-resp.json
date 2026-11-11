@@ -2,7 +2,7 @@
   "$comment": "AI下書き（2026-11-11）。書籍の要点を自分の言葉でまとめた。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
   "id": "icu-resp",
   "field": "icu",
-  "order": 4,
+  "order": 40,
   "title": "ICU 呼吸：酸素化・換気・呼吸の仕事量",
   "tags": [
     "ICU",
@@ -232,7 +232,8 @@
     "oxygen-acute",
     "icu-overview",
     "icu-neuro",
-    "copd-exacerbation"
+    "copd-exacerbation",
+    "icu-vent-modes"
   ],
   "sources": [
     {

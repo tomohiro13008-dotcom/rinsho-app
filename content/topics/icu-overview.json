@@ -2,7 +2,7 @@
   "$comment": "AI下書き（2026-11-11）。書籍の要点を自分の言葉でまとめた。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
   "id": "icu-overview",
   "field": "icu",
-  "order": 1,
+  "order": 10,
   "title": "ICU患者の見方：by system と by problem、回診の流れ",
   "tags": [
     "ICU",

@@ -2,7 +2,7 @@
   "$comment": "AI下書き（2026-11-11）。書籍の要点を自分の言葉でまとめた。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
   "id": "icu-note-templates",
   "field": "icu",
-  "order": 11,
+  "order": 110,
   "title": "ICU カルテの型：by system・by problem（空欄）",
   "tags": [
     "ICU",

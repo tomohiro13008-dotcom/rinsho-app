@@ -2,7 +2,7 @@
   "$comment": "AI下書き（2026-11-11）。書籍の要点を自分の言葉でまとめた。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
   "id": "icu-circulation",
   "field": "icu",
-  "order": 3,
+  "order": 30,
   "title": "ICU 循環：灌流圧と酸素の需給",
   "tags": [
     "ICU",
@@ -213,7 +213,8 @@
     "sepsis-initial",
     "icu-overview",
     "icu-renal",
-    "periarrest-arrhythmia"
+    "periarrest-arrhythmia",
+    "icu-cardiogenic-shock"
   ],
   "sources": [
     {
