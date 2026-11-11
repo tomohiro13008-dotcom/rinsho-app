@@ -12,7 +12,8 @@
     "check": "node scripts/check.mjs",
     "check:strict": "node scripts/check.mjs --strict",
     "test": "vitest run",
-    "e2e": "playwright test --trace off"
+    "e2e": "playwright test --trace off",
+    "review-order": "node scripts/review-order.mjs"
   },
   "dependencies": {
     "preact": "^10.29.8"
