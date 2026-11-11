@@ -177,12 +177,14 @@
   ],
   "cards": [],
   "drugs": [
-    "heparin"
+    "heparin",
+    "menatetrenone-iv"
   ],
   "related": [
     "icu-lines-prophylaxis",
     "icu-infection",
-    "ugib"
+    "ugib",
+    "anticoagulant-reversal"
   ],
   "sources": [
     {

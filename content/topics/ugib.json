@@ -158,7 +158,8 @@
     "omeprazole-iv"
   ],
   "related": [
-    "rrs-criteria"
+    "rrs-criteria",
+    "anticoagulant-reversal"
   ],
   "sources": [
     {

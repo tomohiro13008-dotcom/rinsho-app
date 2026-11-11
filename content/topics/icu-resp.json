@@ -234,7 +234,8 @@
     "icu-neuro",
     "copd-exacerbation",
     "icu-vent-modes",
-    "icu-peep-asynchrony"
+    "icu-peep-asynchrony",
+    "icu-intubation-drugs"
   ],
   "sources": [
     {
