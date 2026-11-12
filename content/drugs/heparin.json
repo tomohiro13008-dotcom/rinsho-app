@@ -113,7 +113,8 @@
     "icu-af",
     "icu-antithrombotic-hold",
     "icu-covid",
-    "icu-vte-sup"
+    "icu-vte-sup",
+    "icu-vv-ecmo"
   ],
   "sources": [
     {

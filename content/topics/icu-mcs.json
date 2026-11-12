@@ -299,7 +299,8 @@
     "icu-cardiogenic-shock",
     "icu-circulation",
     "icu-heme",
-    "icu-peep-asynchrony"
+    "icu-peep-asynchrony",
+    "icu-vv-ecmo"
   ],
   "sources": [
     {

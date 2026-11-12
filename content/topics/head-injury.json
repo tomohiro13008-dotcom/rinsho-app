@@ -128,7 +128,8 @@
     "major-trauma",
     "consciousness-initial",
     "anticoagulant-reversal",
-    "icu-icp"
+    "icu-icp",
+    "icu-temperature"
   ],
   "sources": [
     {

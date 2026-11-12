@@ -249,7 +249,8 @@
     "icu-vent-modes",
     "icu-resp",
     "icu-cardiogenic-shock",
-    "icu-inhaled"
+    "icu-inhaled",
+    "icu-vv-ecmo"
   ],
   "sources": [
     {

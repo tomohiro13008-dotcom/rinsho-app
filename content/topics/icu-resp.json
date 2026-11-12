@@ -237,7 +237,8 @@
     "icu-peep-asynchrony",
     "icu-intubation-drugs",
     "icu-steroids",
-    "icu-inhaled"
+    "icu-inhaled",
+    "icu-vv-ecmo"
   ],
   "sources": [
     {

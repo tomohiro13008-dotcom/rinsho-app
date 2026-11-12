@@ -254,7 +254,8 @@
     "icu-lines-prophylaxis",
     "icu-by-problem",
     "icu-antimicrobials",
-    "icu-covid"
+    "icu-covid",
+    "icu-temperature"
   ],
   "sources": [
     {

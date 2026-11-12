@@ -154,7 +154,8 @@
   ],
   "related": [
     "rrs-criteria",
-    "death-certificate"
+    "death-certificate",
+    "icu-temperature"
   ],
   "sources": [
     {
