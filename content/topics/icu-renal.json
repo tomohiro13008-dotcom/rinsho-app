@@ -202,14 +202,17 @@
     "透析を始める条件・やめる条件を決めずに経過を見る"
   ],
   "cards": [],
-  "drugs": [],
+  "drugs": [
+    "furosemide-iv"
+  ],
   "related": [
     "aki",
     "hyperkalemia",
     "hyponatremia",
     "icu-circulation",
     "icu-gi-nutrition",
-    "icu-crrt"
+    "icu-crrt",
+    "icu-diuretics"
   ],
   "sources": [
     {

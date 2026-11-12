@@ -143,12 +143,14 @@
     "dyspnea"
   ],
   "drugs": [
-    "furosemide-iv"
+    "furosemide-iv",
+    "carperitide"
   ],
   "related": [
     "oxygen-acute",
     "acs-initial",
-    "periarrest-arrhythmia"
+    "periarrest-arrhythmia",
+    "icu-diuretics"
   ],
   "sources": [
     {
