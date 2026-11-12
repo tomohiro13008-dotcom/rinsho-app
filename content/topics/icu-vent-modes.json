@@ -218,7 +218,8 @@
     "icu-resp",
     "oxygen-acute",
     "icu-neuro",
-    "icu-peep-asynchrony"
+    "icu-peep-asynchrony",
+    "icu-inhaled"
   ],
   "sources": [
     {

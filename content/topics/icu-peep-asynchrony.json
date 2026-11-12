@@ -248,7 +248,8 @@
   "related": [
     "icu-vent-modes",
     "icu-resp",
-    "icu-cardiogenic-shock"
+    "icu-cardiogenic-shock",
+    "icu-inhaled"
   ],
   "sources": [
     {

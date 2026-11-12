@@ -130,10 +130,13 @@
   "drugs": [
     "salbutamol-inh",
     "hydrocortisone-iv",
-    "magnesium-sulfate"
+    "magnesium-sulfate",
+    "dexamethasone-iv"
   ],
   "related": [
-    "oxygen-acute"
+    "oxygen-acute",
+    "icu-steroids",
+    "icu-inhaled"
   ],
   "sources": [
     {

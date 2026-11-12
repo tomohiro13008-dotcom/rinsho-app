@@ -108,7 +108,9 @@
   "related": [
     "oxygen-acute",
     "acute-asthma",
-    "acute-heart-failure"
+    "acute-heart-failure",
+    "icu-steroids",
+    "icu-inhaled"
   ],
   "sources": [
     {

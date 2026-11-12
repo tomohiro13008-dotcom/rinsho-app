@@ -4,7 +4,7 @@ test('ICU管理：章が順に並び、表が読め、空欄の型を写せる�
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto('./#/ref/field/icu');
   const items = page.locator('a[href^="#/topic/icu-"]');
-  await expect(items).toHaveCount(25);
+  await expect(items).toHaveCount(28);
   await expect(items.first()).toContainText('ICU患者の見方');
   await expect(items.last()).toContainText('カルテの型');
   // 足した章は、もとの臓器の章のすぐ後ろに並ぶ
@@ -14,12 +14,15 @@ test('ICU管理：章が順に並び、表が読め、空欄の型を写せる�
   await expect(items.nth(8)).toContainText('高血圧緊急症');
   await expect(items.nth(6)).toContainText('心原性ショック');
   await expect(items.nth(7)).toContainText('補助循環');
-  await expect(items.nth(10)).toContainText('気管挿管');
-  await expect(items.nth(11)).toContainText('人工呼吸器のモードと波形');
-  await expect(items.nth(12)).toContainText('PEEP');
-  await expect(items.nth(17)).toContainText('血糖');
-  await expect(items.nth(14)).toContainText('利尿薬');
-  await expect(items.nth(21)).toContainText('治療期間');
+  await expect(items.nth(11)).toContainText('気管挿管');
+  await expect(items.nth(12)).toContainText('人工呼吸器のモードと波形');
+  await expect(items.nth(14)).toContainText('PEEP');
+  await expect(items.nth(19)).toContainText('血糖');
+  await expect(items.nth(16)).toContainText('利尿薬');
+  await expect(items.nth(24)).toContainText('治療期間');
+  await expect(items.nth(10)).toContainText('ステロイド');
+  await expect(items.nth(13)).toContainText('吸入薬');
+  await expect(items.nth(21)).toContainText('休薬');
 
   // 臓器の章：「何を評価しているか」「次の一手」が項目ごとに読める
   await page.goto('./#/topic/icu-circulation');
@@ -120,5 +123,20 @@ test('頭蓋内圧の章：浸透圧利尿薬の表から薬に届き、体重�
   await expect(drug.locator('.dose').last()).toContainText('出どころ：書籍（指示の例）');
   await expect(drug.getByRole('heading', { name: '体重別の早見表' })).toBeVisible();
   await expect(drug).toContainText('300mL（60g）');
+  await expect(drug.locator('input, textarea, select, [contenteditable]')).toHaveCount(0);
+});
+
+test('ステロイドの章：病気ごとの表から薬に届き、添付文書と書籍の行が分かれて出る（計算する欄はない）', async ({ page }) => {
+  await page.goto('./#/topic/icu-steroids');
+  const main = page.locator('main[data-topic="icu-steroids"]');
+  await expect(main).toBeVisible();
+  await expect(main).toContainText('リン酸エステル');
+  await expect(main).toContainText('6.6〜9.9mg');
+  await expect(main.getByTestId('note-template')).toHaveCount(1);
+  await main.locator('a[href="#/drug/dexamethasone-iv"]').first().click();
+  const drug = page.locator('main[data-drug="dexamethasone-iv"]');
+  await expect(drug).toBeVisible();
+  await expect(drug.locator('.dose').first()).toContainText('出どころ：添付文書');
+  await expect(drug.locator('.dose').last()).toContainText('出どころ：書籍（ガイドラインの引用）');
   await expect(drug.locator('input, textarea, select, [contenteditable]')).toHaveCount(0);
 });

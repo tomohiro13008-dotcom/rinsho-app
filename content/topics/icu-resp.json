@@ -235,7 +235,9 @@
     "copd-exacerbation",
     "icu-vent-modes",
     "icu-peep-asynchrony",
-    "icu-intubation-drugs"
+    "icu-intubation-drugs",
+    "icu-steroids",
+    "icu-inhaled"
   ],
   "sources": [
     {

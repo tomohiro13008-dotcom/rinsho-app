@@ -217,7 +217,8 @@
     "head-injury",
     "stroke-acute",
     "major-trauma",
-    "icu-heme"
+    "icu-heme",
+    "icu-antithrombotic-hold"
   ],
   "sources": [
     {

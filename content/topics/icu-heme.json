@@ -184,7 +184,8 @@
     "icu-lines-prophylaxis",
     "icu-infection",
     "ugib",
-    "anticoagulant-reversal"
+    "anticoagulant-reversal",
+    "icu-antithrombotic-hold"
   ],
   "sources": [
     {

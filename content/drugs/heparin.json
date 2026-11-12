@@ -110,7 +110,8 @@
     "icu-crrt",
     "icu-mcs",
     "anticoagulant-reversal",
-    "icu-af"
+    "icu-af",
+    "icu-antithrombotic-hold"
   ],
   "sources": [
     {
