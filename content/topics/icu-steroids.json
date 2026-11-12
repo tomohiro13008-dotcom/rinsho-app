@@ -209,7 +209,8 @@
     "adrenal-crisis",
     "icu-glucose",
     "icu-infection",
-    "icu-inhaled"
+    "icu-inhaled",
+    "icu-covid"
   ],
   "sources": [
     {

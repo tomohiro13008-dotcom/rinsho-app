@@ -204,7 +204,8 @@
     "icu-infection",
     "hypoglycemia",
     "ugib",
-    "icu-glucose"
+    "icu-glucose",
+    "icu-enteral-nutrition"
   ],
   "sources": [
     {

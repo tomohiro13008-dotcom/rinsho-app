@@ -185,7 +185,8 @@
     "icu-infection",
     "ugib",
     "anticoagulant-reversal",
-    "icu-antithrombotic-hold"
+    "icu-antithrombotic-hold",
+    "icu-vte-sup"
   ],
   "sources": [
     {

@@ -253,7 +253,8 @@
     "febrile-neutropenia",
     "icu-lines-prophylaxis",
     "icu-by-problem",
-    "icu-antimicrobials"
+    "icu-antimicrobials",
+    "icu-covid"
   ],
   "sources": [
     {

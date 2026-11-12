@@ -4,7 +4,7 @@ test('ICU管理：章が順に並び、表が読め、空欄の型を写せる�
   await context.grantPermissions(['clipboard-read', 'clipboard-write']);
   await page.goto('./#/ref/field/icu');
   const items = page.locator('a[href^="#/topic/icu-"]');
-  await expect(items).toHaveCount(28);
+  await expect(items).toHaveCount(31);
   await expect(items.first()).toContainText('ICU患者の見方');
   await expect(items.last()).toContainText('カルテの型');
   // 足した章は、もとの臓器の章のすぐ後ろに並ぶ
@@ -17,12 +17,15 @@ test('ICU管理：章が順に並び、表が読め、空欄の型を写せる�
   await expect(items.nth(11)).toContainText('気管挿管');
   await expect(items.nth(12)).toContainText('人工呼吸器のモードと波形');
   await expect(items.nth(14)).toContainText('PEEP');
-  await expect(items.nth(19)).toContainText('血糖');
+  await expect(items.nth(20)).toContainText('血糖');
   await expect(items.nth(16)).toContainText('利尿薬');
-  await expect(items.nth(24)).toContainText('治療期間');
+  await expect(items.nth(25)).toContainText('治療期間');
   await expect(items.nth(10)).toContainText('ステロイド');
   await expect(items.nth(13)).toContainText('吸入薬');
-  await expect(items.nth(21)).toContainText('休薬');
+  await expect(items.nth(22)).toContainText('休薬');
+  await expect(items.nth(19)).toContainText('経腸栄養');
+  await expect(items.nth(26)).toContainText('COVID-19');
+  await expect(items.nth(28)).toContainText('静脈血栓とストレス潰瘍');
 
   // 臓器の章：「何を評価しているか」「次の一手」が項目ごとに読める
   await page.goto('./#/topic/icu-circulation');
@@ -138,5 +141,20 @@ test('ステロイドの章：病気ごとの表から薬に届き、添付文�
   await expect(drug).toBeVisible();
   await expect(drug.locator('.dose').first()).toContainText('出どころ：添付文書');
   await expect(drug.locator('.dose').last()).toContainText('出どころ：書籍（ガイドラインの引用）');
+  await expect(drug.locator('input, textarea, select, [contenteditable]')).toHaveCount(0);
+});
+
+test('予防のルーチンの章：ストレス潰瘍の表から薬に届き、効能のある行が出る（書き込む欄はない）', async ({ page }) => {
+  await page.goto('./#/topic/icu-vte-sup');
+  const main = page.locator('main[data-topic="icu-vte-sup"]');
+  await expect(main).toBeVisible();
+  await expect(main).toContainText('ヘパリンカルシウム');
+  await expect(main).toContainText('侵襲ストレス');
+  await expect(main.getByTestId('note-template')).toHaveCount(1);
+  await main.locator('a[href="#/drug/famotidine-iv"]').first().click();
+  const drug = page.locator('main[data-drug="famotidine-iv"]');
+  await expect(drug).toBeVisible();
+  await expect(drug.locator('.dose').first()).toContainText('出どころ：添付文書');
+  await expect(drug.locator('.dose').last()).toContainText('出どころ：書籍（指示の例）');
   await expect(drug.locator('input, textarea, select, [contenteditable]')).toHaveCount(0);
 });
