@@ -76,10 +76,13 @@
   "cards": [
     "chestpain"
   ],
-  "drugs": [],
+  "drugs": [
+    "nicardipine"
+  ],
   "related": [
     "acs-initial",
-    "pulmonary-embolism"
+    "pulmonary-embolism",
+    "icu-hypertensive-emergency"
   ],
   "sources": [
     {

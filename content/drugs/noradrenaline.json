@@ -60,6 +60,17 @@
       "sourceIndexes": [
         2
       ]
+    },
+    {
+      "indication": "急性心不全で臓器の灌流圧が保てないとき（書籍の指示の例）",
+      "population": "成人",
+      "dose": "5mg＋生理食塩液45mL（0.1mg/mL）。1〜5mL/時で開始、10mL/時まで",
+      "route": "持続静注",
+      "basis": "書籍（指示の例）",
+      "note": "体重50kg で 1mL/時 ≒ 0.033μg/kg/分。0.03〜0.3μg/kg/分ほど（p.90）",
+      "sourceIndexes": [
+        3
+      ]
     }
   ],
   "preparation": [
@@ -82,7 +93,8 @@
     "sepsis-initial",
     "pulmonary-embolism",
     "icu-circulation",
-    "icu-cardiogenic-shock"
+    "icu-cardiogenic-shock",
+    "acute-heart-failure"
   ],
   "sources": [
     {
@@ -113,6 +125,15 @@
       "public": true,
       "verifiedAt": "2026-11-11",
       "checkedScope": "AI下書き。本人の照合は未。本人の蔵書のスキャンを文字認識と画像で読んだ。指示の例（薄め方、初期量と維持量、体重50kgでの速さ）、増減の刻み、末梢の静脈から入れるときの考え方を読んだ。"
+    },
+    {
+      "type": "book",
+      "title": "ICU頻用薬 使い方のリアル（川上大裕 編著、日本医事新報社）",
+      "edition": "2022年10月26日 第1版",
+      "locator": "p.90（心不全治療：ノルアドレナリン）",
+      "public": true,
+      "verifiedAt": "2026-11-12",
+      "checkedScope": "AI下書き。本人の照合は未。本人の蔵書のスキャンを文字認識と画像で読んだ。指示の例（頁の画像で確かめた）と注意を読んだ。"
     }
   ],
   "verification": {
@@ -128,7 +149,7 @@
       "採用薬"
     ]
   },
-  "updatedAt": "2026-11-11",
+  "updatedAt": "2026-11-12",
   "review": {
     "level": 0
   },

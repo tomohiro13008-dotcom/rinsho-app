@@ -203,7 +203,8 @@
     "icu-overview",
     "icu-resp",
     "icu-intubation-drugs",
-    "icu-sleep-delirium"
+    "icu-sleep-delirium",
+    "icu-icp"
   ],
   "sources": [
     {

@@ -127,7 +127,8 @@
   "topics": [
     "icu-cardiogenic-shock",
     "icu-circulation",
-    "pulmonary-embolism"
+    "pulmonary-embolism",
+    "acute-heart-failure"
   ],
   "sources": [
     {

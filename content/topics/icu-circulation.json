@@ -219,7 +219,8 @@
     "periarrest-arrhythmia",
     "icu-cardiogenic-shock",
     "icu-af",
-    "icu-diuretics"
+    "icu-diuretics",
+    "icu-hypertensive-emergency"
   ],
   "sources": [
     {
