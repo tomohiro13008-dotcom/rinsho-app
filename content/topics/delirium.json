@@ -120,7 +120,9 @@
     "hypoglycemia",
     "sepsis-initial",
     "urinary-retention",
-    "alcohol-withdrawal"
+    "alcohol-withdrawal",
+    "icu-neuro",
+    "icu-sleep-delirium"
   ],
   "sources": [
     {

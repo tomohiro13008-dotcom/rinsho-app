@@ -1,0 +1,190 @@
+{
+  "$comment": "AI下書き（2026-11-11）。添付文書と、参照項目で読んだガイドラインから下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。",
+  "id": "hydrocortisone-iv",
+  "generic": "ヒドロコルチゾンコハク酸エステルナトリウム",
+  "brands": [
+    {
+      "name": "ソル・コーテフ注射用100mg",
+      "strength": "1瓶 ヒドロコルチゾンとして100mg（溶解液 注射用水2mL付き）",
+      "maker": "ファイザー"
+    }
+  ],
+  "drugClass": "副腎皮質ステロイド（静注）",
+  "summary": [
+    "添付文書：1回50〜100mgを1日1〜4回。緊急時は1回100〜200mg",
+    "副腎クリーゼ（日本内分泌学会）：まず100mg静注。採血したら結果を待たない",
+    "甲状腺クリーゼ（日本甲状腺学会など）：300mg/日（100mgを8時間ごと）",
+    "静注はゆっくり（100mgあたり少なくとも1分〜数分）"
+  ],
+  "doses": [
+    {
+      "indication": "全般（静注・点滴・筋注）",
+      "population": "成人",
+      "dose": "1回50〜100mg、1日1〜4回",
+      "route": "静注・点滴静注・筋注",
+      "repeat": "緊急時は1回100〜200mg",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "気管支喘息",
+      "population": "成人",
+      "dose": "初回100〜500mgをゆっくり",
+      "route": "静注・点滴静注",
+      "repeat": "改善しなければ1回50〜200mgを4〜6時間ごと",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "気管支喘息",
+      "population": "小児2歳以上",
+      "dose": "初回5〜7mg/kgをゆっくり",
+      "route": "静注・点滴静注",
+      "repeat": "改善しなければ1回5〜7mg/kgを6時間ごと",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "気管支喘息",
+      "population": "小児2歳未満",
+      "dose": "初回5mg/kgをゆっくり",
+      "route": "静注・点滴静注",
+      "repeat": "改善しなければ1回5mg/kgを6〜8時間ごと",
+      "basis": "添付文書",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "indication": "副腎クリーゼ",
+      "population": "成人",
+      "dose": "100mg",
+      "route": "静注",
+      "repeat": "その後24時間で100〜200mgを5%ブドウ糖液に混ぜて、または6時間ごとに25〜50mg",
+      "basis": "ガイドライン（日本内分泌学会 2016）",
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "indication": "甲状腺クリーゼ",
+      "population": "成人",
+      "dose": "300mg/日（100mgを8時間ごと）",
+      "route": "静注",
+      "basis": "ガイドライン（日本甲状腺学会・日本内分泌学会 2016）",
+      "note": "デキサメタゾン8mg/日でもよい",
+      "sourceIndexes": [
+        2
+      ]
+    },
+    {
+      "indication": "敗血症性ショック（輸液と昇圧薬に反応しない）",
+      "population": "成人",
+      "dose": "200〜300mg/日",
+      "route": "静注",
+      "basis": "ガイドライン（J-SSCG2024、2C）",
+      "sourceIndexes": [
+        3,
+        4
+      ],
+      "note": "本は、細菌性肺炎に敗血症性ショックを伴うときに 200〜300mg/日、血糖の面から持続静注がよく、昇圧薬が切れたら止めることを考えると書く（p.169–171）"
+    }
+  ],
+  "preparation": [
+    {
+      "label": "溶かし方",
+      "recipe": "添付の注射用水2mLで用時溶解（1瓶100mg）"
+    },
+    {
+      "label": "点滴に混ぜるとき",
+      "recipe": "5%ブドウ糖液か生理食塩液。溶かしたら速やかに、保存しても24時間以内"
+    }
+  ],
+  "cautions": [
+    "禁忌：成分への過敏症、デスモプレシン（男性の夜間頻尿用）投与中、生ワクチン（免疫抑制量のとき）",
+    "静注は速度をできるだけ遅く（100mgあたり少なくとも1分〜数分）",
+    "高用量を数日以上続けると高ナトリウム血症に注意（ほかのステロイドへの置き換えを考える）",
+    "感染症・消化性潰瘍・高血糖・精神症状",
+    "長く使ったあと急にやめない",
+    "コハク酸エステル。アスピリン喘息（AERD）の人では発作を誘ったり悪化させたりすることがある。疑えばリン酸エステル（デキサメタゾンなど）に（書籍 p.161–162）"
+  ],
+  "topics": [
+    "adrenal-crisis",
+    "thyroid-storm",
+    "acute-asthma",
+    "sepsis-initial",
+    "icu-steroids"
+  ],
+  "sources": [
+    {
+      "type": "label",
+      "title": "ソル・コーテフ注射用100mg 添付文書（ファイザー）",
+      "edition": "2026年3月改訂（第6版）",
+      "locator": "効能又は効果、用法及び用量、禁忌、重要な基本的注意、適用上の注意",
+      "url": "https://www.pmda.go.jp/PmdaSearch/iyakuDetail/672212_2452400D1084_3_08",
+      "public": true,
+      "verifiedAt": "2026-11-11",
+      "checkedScope": "販売名・規格・用法用量（全般・喘息の成人と小児）・禁忌・溶解と速度"
+    },
+    {
+      "type": "guideline",
+      "title": "Yanase T, et al. Diagnosis and treatment of adrenal insufficiency including adrenal crisis: a Japan Endocrine Society clinical practice guideline. Endocr J 2016;63(9):765-784",
+      "edition": "2016（公開論文。日本語版は日本内分泌学会雑誌 2015;91(suppl)）",
+      "locator": "p.769–771（I-3.3、I-4.1、I-5.0）、p.775–776（II-1.0〜II-3.2、表4）",
+      "url": "https://www.jstage.jst.go.jp/article/endocrj/63/9/63_EJ16-0242/_article",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。J-STAGEのPDFはこの環境から開けず、論文の写し（scispace）で読んだ。症状、きっかけ、採血してすぐ治療、ヒドロコルチゾンと生理食塩液の量、シックデイ、緊急カードを確かめた。"
+    },
+    {
+      "type": "guideline",
+      "title": "Satoh T, et al. 2016 Guidelines for the management of thyroid storm from The Japan Thyroid Association and Japan Endocrine Society (First edition). Endocr J 2016;63(12):1025-1064",
+      "edition": "2016（公開論文）",
+      "locator": "表3（p.1029 診断基準）、推奨1〜6・8・11（p.1028–1044）",
+      "url": "https://www.jstage.jst.go.jp/article/endocrj/63/12/63_EJ16-0336/_article",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。機関リポジトリの写しで読んだ。診断基準（TS1・TS2）、抗甲状腺薬・無機ヨウ素・ステロイドの量、解熱薬（アセトアミノフェン、NSAIDs・アスピリンを避ける）、β遮断薬と目標心拍、ICUへの入室を確かめた。"
+    },
+    {
+      "type": "guideline",
+      "title": "日本版敗血症診療ガイドライン2024（J-SSCG2024）英語版 J Intensive Care 2025;13:15",
+      "edition": "2024（公開論文、2025年3月）",
+      "locator": "CQ1-2〜1-4、CQ2-2、CQ3-1、3-3〜3-8",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11907869",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。定義、血液培養、抗菌薬の時期、輸液の種類と量、目標の平均血圧、昇圧薬、ステロイドの推奨と強さを拾った。"
+    },
+    {
+      "type": "book",
+      "title": "ICU頻用薬 使い方のリアル（川上大裕 編著、日本医事新報社）",
+      "edition": "2022年10月26日 第1版",
+      "locator": "p.161–172（呼吸不全とステロイド）",
+      "public": true,
+      "verifiedAt": "2026-11-12",
+      "checkedScope": "AI下書き。本人の照合は未。本人の蔵書のスキャンを文字認識と画像で読んだ。糖質コルチコイドの比べ方（表1は頁の画像で確かめた）、エステルの違い、投与経路、副作用の予防、喘息・COPD・特発性肺線維症・重症肺炎・敗血症性ショック・COVID-19・ARDS での量と期間を読んだ。副作用の一覧（表2）、吸入ステロイドの表（表3）、COPD 安定期の図、IPF 慢性期の表（表4）、ARDS の定義と原因の表（表5・表6）は載せていない。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "用法用量・禁忌・溶解（ソル・コーテフ注射用100mg 添付文書 2026年3月改訂）",
+      "副腎クリーゼ・甲状腺クリーゼ・敗血症性ショックの量は、それぞれの参照項目で読んだガイドラインから写した",
+      "AERD での使い分けと敗血症性ショックの使い方（ICU頻用薬 p.161–171）"
+    ],
+    "unverified": [
+      "副腎クリーゼ・甲状腺クリーゼの量を日本語版の指針で照合",
+      "採用薬（ソル・コーテフ以外の製剤）"
+    ]
+  },
+  "updatedAt": "2026-11-12",
+  "review": {
+    "level": 0
+  }
+}

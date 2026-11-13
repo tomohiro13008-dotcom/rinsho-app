@@ -1,0 +1,105 @@
+{
+  "$comment": "AI下書き（2026-11-11）。既存の参照項目（それぞれの出典）から、夜に専門医へ相談するときに要る形に書き直した。新しい出典は足していない。朝まで待てる条件は出典で決められないので空けた。本人の照合前。",
+  "id": "endocrine",
+  "name": "内分泌・代謝",
+  "mustNotMiss": [
+    {
+      "disease": "低血糖",
+      "timeWindow": "70mg/dL未満なら症状がなくても対応",
+      "cardId": "hypoglycemia"
+    },
+    {
+      "disease": "糖尿病ケトアシドーシス・高浸透圧高血糖状態",
+      "cardId": "hyperglycemia"
+    },
+    {
+      "disease": "副腎クリーゼ",
+      "timeWindow": "採血したら結果を待たずにヒドロコルチゾン",
+      "cardId": "sepsis"
+    },
+    {
+      "disease": "甲状腺クリーゼ",
+      "timeWindow": "全員入院",
+      "cardId": "arrhythmia"
+    }
+  ],
+  "cannotWait": [
+    "意識が悪い・ショックを伴う高血糖",
+    "pH 7.0未満かHCO3⁻ 10未満（重度のDKA）",
+    "ステロイドを飲んでいる・副腎の病気がある人の低血圧・嘔吐・意識障害",
+    "甲状腺中毒症に意識・精神の症状、熱、頻脈、心不全"
+  ],
+  "doNotDo": [
+    "Kを見ずにインスリンを始める（3.5未満ならKを先に）",
+    "HHSで血糖とNaを急に下げる",
+    "副腎クリーゼで検査の結果を待って治療が遅れる",
+    "甲状腺クリーゼでアスピリン・NSAIDsで解熱する"
+  ],
+  "common": [
+    "血糖が低い・高い",
+    "嘔吐・脱水",
+    "発熱と頻脈"
+  ],
+  "urgencyQuestions": [
+    "血糖・ケトン・pH・K",
+    "インスリン・SU薬・SGLT2阻害薬",
+    "ステロイドを飲んでいるか（量・中断）",
+    "甲状腺の病気・薬"
+  ],
+  "procedurePrep": [
+    "血液ガス・K",
+    "コルチゾール・ACTHの採血（治療は待たない）",
+    "12誘導心電図"
+  ],
+  "tips": [
+    "SU薬の低血糖は30分ほどで再び下がることがある",
+    "SGLT2阻害薬では血糖が高くなくてもDKAがある",
+    "甲状腺クリーゼのヨウ素は抗甲状腺薬から1時間以上あけて"
+  ],
+  "consultScript": "◯◯病棟の△△です。□□歳、血糖◯、pH◯、HCO3⁻◯、K◯。意識◯、血圧◯/◯。糖尿病の薬は◯、ステロイドは◯。（甲状腺の病気は◯。）治療と入院先を相談させてください。",
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "重篤副作用疾患別対応マニュアル 低血糖（厚生労働省）",
+      "edition": "平成23年3月作成、令和5年12月改定（公開PDF）",
+      "locator": "p.7、p.13、p.17–18、p.20",
+      "url": "https://www.pmda.go.jp/files/000265665.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-09",
+      "checkedScope": "AI下書き。本人の照合は未。目安の血糖値、症状、経口と静注の量、遷延性低血糖の対応を拾った。"
+    },
+    {
+      "type": "guideline",
+      "title": "Umpierrez GE, et al. Hyperglycaemic crises in adults with diabetes: a consensus report（ADA・EASD・JBDS・AACE・DTS）. Diabetologia 2024;67:1455–1479（Diabetes Care 2024 と同時掲載）",
+      "edition": "2024（公開論文、PMC）",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11343900",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。DKAの重症度（表2）、輸液・インスリン・ブドウ糖・カリウム・重炭酸の量、回復の基準、HHSでの下げる速さ、測る間隔を拾った。DKAとHHSの診断基準の図（図2a・2b）は本文から読めなかった。英米の量。"
+    },
+    {
+      "type": "guideline",
+      "title": "Yanase T, et al. Diagnosis and treatment of adrenal insufficiency including adrenal crisis: a Japan Endocrine Society clinical practice guideline. Endocr J 2016;63(9):765-784",
+      "edition": "2016（公開論文。日本語版は日本内分泌学会雑誌 2015;91(suppl)）",
+      "locator": "p.769–771（I-3.3、I-4.1、I-5.0）、p.775–776（II-1.0〜II-3.2、表4）",
+      "url": "https://www.jstage.jst.go.jp/article/endocrj/63/9/63_EJ16-0242/_article",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。J-STAGEのPDFはこの環境から開けず、論文の写し（scispace）で読んだ。症状、きっかけ、採血してすぐ治療、ヒドロコルチゾンと生理食塩液の量、シックデイ、緊急カードを確かめた。"
+    },
+    {
+      "type": "guideline",
+      "title": "Satoh T, et al. 2016 Guidelines for the management of thyroid storm from The Japan Thyroid Association and Japan Endocrine Society (First edition). Endocr J 2016;63(12):1025-1064",
+      "edition": "2016（公開論文）",
+      "locator": "表3（p.1029 診断基準）、推奨1〜6・8・11（p.1028–1044）",
+      "url": "https://www.jstage.jst.go.jp/article/endocrj/63/12/63_EJ16-0336/_article",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。機関リポジトリの写しで読んだ。診断基準（TS1・TS2）、抗甲状腺薬・無機ヨウ素・ステロイドの量、解熱薬（アセトアミノフェン、NSAIDs・アスピリンを避ける）、β遮断薬と目標心拍、ICUへの入室を確かめた。"
+    }
+  ],
+  "updatedAt": "2026-11-11",
+  "review": {
+    "level": 0
+  }
+}

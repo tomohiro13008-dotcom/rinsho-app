@@ -1,0 +1,123 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。 本人の方針（2026-11-10）：国内の公開資料で確かめられない部分は海外の公開ガイドラインで下書きし、手元の書籍を照合の正本にする。",
+  "id": "aortic-dissection",
+  "field": "cardio",
+  "title": "急性大動脈解離を疑う",
+  "tags": [
+    "大動脈解離",
+    "胸痛",
+    "背部痛",
+    "Stanford",
+    "造影CT",
+    "降圧"
+  ],
+  "summary": [
+    "突然の裂けるような痛み。移ることがある",
+    "前胸部はA型、背部・腹部はB型に多い",
+    "痛みのない例が約6%、典型的な痛みのない失神が9〜20%",
+    "胸部X線は約20%で異常がない。疑いが残ればCT"
+  ],
+  "points": [
+    "左右の腕の血圧差（20mmHg超）は手足の虚血のしるし",
+    "D-ダイマー（500ng/mL）は感度が高い。若い人・偽腔が詰まった型では低くなりうる",
+    "造影CT（単純と早期相）が要",
+    "降圧：収縮期100〜120mmHg以下が目標（2011年版）",
+    "Stanford A型は緊急手術、B型は原則保存的（2011年版）"
+  ],
+  "sections": [
+    {
+      "id": "find",
+      "title": "見つけ方（2020年版 英語版 III章）",
+      "bullets": [
+        "突然の、鋭い・裂けるような痛み",
+        "解離が広がると痛みが移る",
+        "痛みのない例が約6%、典型的な痛みのない失神が9〜20%",
+        "左右の腕の血圧差が20mmHgを超える",
+        "胸部X線は約20%で異常がない"
+      ],
+      "question": "急性大動脈解離で、胸部X線が正常な人の割合は？",
+      "answer": "約20%。疑いが残ればCTかMRへ。",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "id": "do",
+      "title": "すること（2011年版 p.16–17）",
+      "bullets": [
+        "鎮痛薬を使って検査室へ",
+        "降圧：収縮期100〜120mmHg以下（静注のカルシウム拮抗薬・β遮断薬）",
+        "できる限り造影CT（腎機能が悪ければ利点と危険を比べる）",
+        "A型：緊急手術。すぐ心臓血管外科へ",
+        "B型：原則保存的。破裂・治らない痛み・臓器の虚血は手術も"
+      ],
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "id": "japan",
+      "title": "照合すること",
+      "bullets": [
+        "2020年版の治療の章（VI章）での降圧の目標と薬",
+        "夜に心臓血管外科へ送る経路"
+      ],
+      "sourceIndexes": [
+        0
+      ]
+    }
+  ],
+  "pitfalls": [
+    "急性冠症候群として抗血小板薬・抗凝固薬を急ぐ",
+    "胸部X線が正常なので否定する",
+    "痛みのない失神で考えない",
+    "送り先に解離の疑いを伝えない"
+  ],
+  "cards": [
+    "chestpain"
+  ],
+  "drugs": [
+    "nicardipine"
+  ],
+  "related": [
+    "acs-initial",
+    "pulmonary-embolism",
+    "icu-hypertensive-emergency"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "Ogino H, et al. 2020年改訂版 大動脈瘤・大動脈解離診療ガイドライン 英語版（JCS/JSCVS/JATS/JSVS 2020 Guideline on Diagnosis and Treatment of Aortic Aneurysm and Aortic Dissection）Circ J 2023;87(10)",
+      "edition": "2020年改訂版（英語版の早期公開、J-STAGE）",
+      "locator": "III.1.2.1（症状）、III.2.2（D-ダイマー）、III.3.1.2（胸部X線）、III.3.2.1（CT）",
+      "url": "https://www.jstage.jst.go.jp/article/circj/advpub/0/advpub_CJ-22-0794/_html/",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。症状（突然の裂けるような痛み、移動する痛み、痛みのない例約6%、失神9〜20%）、D-ダイマー、胸部X線で約20%は異常なし、CTを確かめた。治療の章（VI章）は読めた範囲になかった。"
+    },
+    {
+      "type": "guideline",
+      "title": "大動脈瘤・大動脈解離診療ガイドライン（2011年改訂版）日本循環器学会ほか",
+      "edition": "2011年改訂版（旧版、公開PDF）",
+      "locator": "p.16–17、p.20",
+      "url": "https://plaza.umin.ac.jp/~jscvs/wordpress/wp-content/uploads/2020/06/JCS2011_takamoto_h.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。旧版。降圧の目標（収縮期100〜120mmHg以下）、静注薬、鎮痛、造影CT、Stanford A型は緊急手術・B型は原則保存的を確かめた。2020年版で変わっていないかを照合する。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "症状・D-ダイマー・胸部X線・CT（2020年版 英語版）",
+      "降圧の目標・薬・病型ごとの方針（2011年版）"
+    ],
+    "unverified": [
+      "2020年版の治療の章",
+      "ACSと取り違える危険（書き手の追記）"
+    ]
+  },
+  "updatedAt": "2026-11-10",
+  "review": {
+    "level": 0
+  }
+}

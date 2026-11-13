@@ -119,10 +119,13 @@
     "搬送の判断が遅れる"
   ],
   "cards": [],
-  "drugs": [],
+  "drugs": [
+    "tranexamic-acid-iv"
+  ],
   "related": [
     "ectopic-pregnancy",
-    "ugib"
+    "ugib",
+    "preeclampsia"
   ],
   "sources": [
     {

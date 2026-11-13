@@ -2,8 +2,8 @@
 // 燃料はこの順で並べる：
 //   0. 本番の後に「迷った行」へ印を付けてから8時間以上たち、その後まだ練習していないカード
 //   1. 現場で引いて（または当直前ブリーフィングで開いて）から8時間以上たち、その後まだ練習していないカード
-//   2. 期日の来た復習
-//   3. まだ一度も練習していないカードの順送り（1日1枚）
+//   2. 目次で「要復習」の印を付けたカード（付けた順）、期日の来た復習
+//   3. まだ一度も練習していないカードの順送り（1日1枚）。「重要」の印があるカードを先に
 // 今日すでに練習したカードは並べない（1と2は練習すると消える。3は1日1枚まで）。
 
 import type { Card, LearningState, Lookup, Mark, QueueSource } from '../types';
@@ -24,6 +24,10 @@ export interface QueueInput {
   marks?: Mark[];
   now: number;
   newPerDay?: number;
+  /** 目次で「重要」を付けたカード。順送りで先に出す */
+  important?: Set<string>;
+  /** 目次で「要復習」を付けたカードと付けた時刻（付けたあと未練習のものだけ） */
+  reviewFlags?: Map<string, number>;
 }
 
 function lastPracticeAt(st: LearningState | undefined): number {
@@ -31,7 +35,7 @@ function lastPracticeAt(st: LearningState | undefined): number {
   return st.history[st.history.length - 1].at;
 }
 
-export function buildTodayQueue({ cards, learning, lookups, marks = [], now, newPerDay = 1 }: QueueInput): QueueItem[] {
+export function buildTodayQueue({ cards, learning, lookups, marks = [], now, newPerDay = 1, important, reviewFlags }: QueueInput): QueueItem[] {
   const known = new Set(cards.map((c) => c.id));
   const today = startOfDay(now);
   const out: QueueItem[] = [];
@@ -54,6 +58,13 @@ export function buildTodayQueue({ cards, learning, lookups, marks = [], now, new
     out.push({ cardId: l.cardId, source: l.mode, lookupAt: l.at });
   }
 
+  // 2. 手で付けた「要復習」（付けた順）
+  for (const [id] of [...(reviewFlags ?? [])].sort((a, b) => a[1] - b[1])) {
+    if (!known.has(id) || used.has(id) || practicedToday(id)) continue;
+    used.add(id);
+    out.push({ cardId: id, source: 'review' });
+  }
+
   // 2. 期日の来た復習（期日の古い順）
   const due = [...learning.values()]
     .filter((s) => known.has(s.cardId) && s.due !== null && s.due <= now && s.history.length > 0)
@@ -71,7 +82,8 @@ export function buildTodayQueue({ cards, learning, lookups, marks = [], now, new
     if (first && first.at >= today && first.source === 'new') introducedToday++;
   }
   let slots = Math.max(0, newPerDay - introducedToday);
-  for (const c of cards) {
+  const ordered = important?.size ? [...cards.filter((c) => important.has(c.id)), ...cards.filter((c) => !important.has(c.id))] : cards;
+  for (const c of ordered) {
     if (slots <= 0) break;
     const st = learning.get(c.id);
     if (st && st.history.length > 0) continue;

@@ -124,6 +124,10 @@
       "if": "ROSC後にST上昇か新しい左脚ブロック",
       "then": "早期の冠動脈造影とPCIを考える",
       "else": "PCIができない施設は搬送を相談する"
+    },
+    {
+      "if": "心停止時に蘇生しない指示（DNAR）がカルテにある",
+      "then": "指示を確かめられれば心肺蘇生をしない。「急変時」などのあいまいな記載では決めない。参照「夜の死亡確認と死亡診断書」"
     }
   ],
   "callForHelp": {
@@ -165,6 +169,16 @@
       "url": "https://www.fdma.go.jp/laws/tutatsu/items/20261023_kyuuki_01.pdf",
       "public": true,
       "checkedScope": "AI下書き。本人の照合は未。 BLSの変更点（中断は可能なかぎり短く、訓練を受けた救助者は30:2）と、圧迫のテンポ・深さの目安を確かめた。"
+    },
+    {
+      "type": "guideline",
+      "title": "日本集中治療医学会 Do Not Attempt Resuscitation（DNAR）指示のあり方についての勧告（日集中医誌 2017;24:208-9）",
+      "edition": "2017年1月採択（公開PDF）",
+      "locator": "勧告1〜7と注",
+      "url": "https://www.jsicm.org/pdf/DNAR20170105.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-11",
+      "checkedScope": "AI下書き。本人の照合は未。DNARは心停止時だけに有効で、酸素・人工呼吸・輸液・昇圧薬などを自動的にやめないこと、「急変時」など曖昧な言葉に置き換えないこと、終末期医療とは別に合意すること、繰り返し話し合うこと、部分的DNARをしないことを確かめた。"
     }
   ],
   "updatedAt": "2026-11-09",

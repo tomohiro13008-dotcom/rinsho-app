@@ -1,0 +1,117 @@
+{
+  "$comment": "AI下書き（2026-11-11）。既存の参照項目（それぞれの出典）から、夜に専門医へ相談するときに要る形に書き直した。新しい出典は足していない。朝まで待てる条件は出典で決められないので空けた。本人の照合前。",
+  "id": "renal",
+  "name": "腎臓",
+  "mustNotMiss": [
+    {
+      "disease": "高カリウム血症（K 6.5以上は重度）",
+      "timeWindow": "心電図変化があればまずカルシウム静注",
+      "cardId": "panic"
+    },
+    {
+      "disease": "急性腎障害（尿閉・水腎症を含む）",
+      "cardId": "panic"
+    },
+    {
+      "disease": "症状のある低ナトリウム血症",
+      "timeWindow": "1時間でNa 5mmol/Lの上昇を目標",
+      "cardId": "panic"
+    },
+    {
+      "disease": "結石で詰まった腎の感染",
+      "timeWindow": "抗菌薬とすぐ減圧",
+      "cardId": "sepsis"
+    }
+  ],
+  "cannotWait": [
+    "K 6.0以上で心電図変化がある",
+    "透析中の患者でK 6.5以上（緊急透析）",
+    "治療しても戻らない高K・代謝性アシドーシス・体液過剰・肺水腫・尿毒症",
+    "閉塞した腎に感染・無尿",
+    "低Naで嘔吐が続く・けいれん・意識低下"
+  ],
+  "doNotDo": [
+    "カルシウムでKが下がったと思う",
+    "予防・治療のためにループ利尿薬を使う（体液過剰の補正は別）",
+    "Naを24時間で10mmol/Lより速く上げる",
+    "1つの検査値だけで透析を決める"
+  ],
+  "common": [
+    "検査室からのK・Na・クレアチニンの電話",
+    "尿が出ない",
+    "むくみ・息切れ（体液過剰）"
+  ],
+  "urgencyQuestions": [
+    "K・Na・クレアチニンの値と前回の値",
+    "12誘導心電図の変化",
+    "尿量、膀胱に尿がたまっていないか",
+    "透析中か。ACE阻害薬・ARB・NSAIDs・利尿薬"
+  ],
+  "procedurePrep": [
+    "12誘導心電図とモニター",
+    "血液ガス（K・pH）",
+    "膀胱の超音波か導尿の準備"
+  ],
+  "tips": [
+    "インスリンの後は0〜6時間、低血糖をくり返し確かめる",
+    "Kは治療後1・2・4・6・24時間に測って再上昇を見る",
+    "尿閉（腎後性）を見落とさない"
+  ],
+  "consultScript": "◯◯病棟の△△です。□□歳、K◯（前回◯）、クレアチニン◯（前回◯）。心電図は◯。尿量は◯時間で◯mL。透析は（あり／なし）。飲んでいる薬は◯。治療と透析の要否を相談させてください。",
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "UK Kidney Association. Clinical practice guideline: Management of hyperkalaemia in adults",
+      "edition": "2026年7月更新（公開PDF。初版2020年、2023年10月更新）",
+      "locator": "14.1、16.2〜16.6、17.1〜17.2、18.1〜18.3、19.6",
+      "url": "https://www.ukkidney.org/sites/default/files/documents/FINAL%20VERSION%20-%20UKKA%20CLINICAL%20PRACTICE%20GUIDELINE%20-%20MANAGEMENT%20OF%20HYPERKALAEMIA%20IN%20ADULTS%20-%20UPDATED%20JULY%202026_0.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。重症度の区分、心電図、カルシウム・インスリンとブドウ糖・サルブタモール・カリウム吸着薬の量、低血糖の予防、血糖とKの測る時刻、透析の基準を拾った。英国の量と製剤。"
+    },
+    {
+      "type": "guideline",
+      "title": "AKI（急性腎障害）診療ガイドライン2016（日本腎臓学会ほか）",
+      "edition": "2016（日腎会誌 2017;59(4):419-533、公開PDF）",
+      "locator": "CQ1（原因の分け方の表）、CQ2-1 表3（KDIGOの基準）、CQ6-2、CQ6-3、CQ7-1",
+      "url": "https://cdn.jsn.or.jp/guideline/pdf/419-533.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。KDIGOの基準（クレアチニンと尿量）、腎前性・腎性・腎後性の分け方、ループ利尿薬と低用量ドパミンの推奨、透析開始の時期の考え方を確かめた。薬剤性腎障害と造影剤は別のガイドライン。"
+    },
+    {
+      "type": "guideline",
+      "title": "NICE NG148 Acute kidney injury: prevention, detection and management",
+      "edition": "2019（各推奨は2013、1.2.9は2024改訂）",
+      "locator": "1.3.1、1.4.2–1.4.6、1.2.14、1.5.3–1.5.4、1.5.8–1.5.9、1.5.11、1.5.15",
+      "url": "https://www.nice.org.uk/guidance/ng148",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。尿試験紙、超音波の時間（膿腎症6時間・原因不明24時間）、ACE阻害薬・ARBの一時中止、ループ利尿薬、腎代替療法へ紹介する状態を確かめた。"
+    },
+    {
+      "type": "guideline",
+      "title": "Society for Endocrinology Endocrine Emergency Guidance: Emergency management of severe and moderately severely symptomatic hyponatraemia in adult patients",
+      "edition": "2022（公開PDF。版の日付は本文になし）",
+      "locator": "Figure 1、Figure 2",
+      "url": "https://www.endocrinology.org/media/xhrhxhxm/emergency-management-of-severe-and-moderately-severely-symptomatic-hyponatraemia-in-adult-patients-2022.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。症状の重さの分け方、3%食塩液150mLを20分で、1時間で5mmol/Lの上昇を目標、補正の上限、過補正のときの対応を確かめた。"
+    },
+    {
+      "type": "guideline",
+      "title": "EAU Pocket Guidelines on Urolithiasis（欧州泌尿器科学会）",
+      "edition": "2026（公開PDF）",
+      "locator": "p.415–416、p.419–420",
+      "url": "https://d56bochluxqnz.cloudfront.net/documents/pocket-guidelines/EAU-Pocket-on-Urolithiasis-2026.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。閉塞した腎の感染・無尿は泌尿器の緊急、すぐ減圧（腎瘻か尿管ステント）、結石の治療は敗血症が治るまで待つ、尿培養、すぐ抗菌薬、疝痛にはNSAIDsが第一、発熱・単腎はすぐ画像を確かめた。"
+    }
+  ],
+  "updatedAt": "2026-11-11",
+  "review": {
+    "level": 0
+  }
+}

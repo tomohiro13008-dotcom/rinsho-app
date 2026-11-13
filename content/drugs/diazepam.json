@@ -66,6 +66,18 @@
       "sourceIndexes": [
         0
       ]
+    },
+    {
+      "indication": "てんかん重積状態の第1段（書籍の指示の例）",
+      "population": "成人",
+      "dose": "体重50kg 以上 10mg（2mL）、50kg 未満 5mg（1mL）を1分で静注",
+      "route": "静注",
+      "repeat": "残る・再燃すれば5分あけて同じ量をもう1回",
+      "basis": "書籍（指示の例）",
+      "note": "添付文書は2分以上かけてと書く。5mg/1mL と 10mg/2mL のアンプルがあるので取り違えない。続けて第2段を入れる（p.34–35）",
+      "sourceIndexes": [
+        3
+      ]
     }
   ],
   "preparation": [
@@ -86,7 +98,8 @@
   ],
   "topics": [
     "status-epilepticus",
-    "alcohol-withdrawal"
+    "alcohol-withdrawal",
+    "febrile-seizure"
   ],
   "sources": [
     {
@@ -117,6 +130,15 @@
       "public": true,
       "verifiedAt": "2026-11-09",
       "checkedScope": "販売名・規格（10mgは1管2mL）・製造販売元だけを確かめた。用法用量はホリゾンの添付文書による。"
+    },
+    {
+      "type": "book",
+      "title": "ICU頻用薬 使い方のリアル（川上大裕 編著、日本医事新報社）",
+      "edition": "2022年10月26日 第1版",
+      "locator": "p.34–35（てんかん重積状態：1st line）",
+      "public": true,
+      "verifiedAt": "2026-11-12",
+      "checkedScope": "AI下書き。本人の照合は未。本人の蔵書のスキャンを文字認識と画像で読んだ。指示の例（頁の画像で確かめた）、2回目のタイミング、ロラゼパムとの比較を読んだ。"
     }
   ],
   "verification": {
@@ -128,10 +150,11 @@
     "unverified": [
       "てんかん診療ガイドライン2026（書籍）",
       "セルシン注射液の添付文書本文",
-      "採用薬"
+      "採用薬",
+      "書籍の速さ（1分）と添付文書（2分以上）の違い"
     ]
   },
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-12",
   "review": {
     "level": 0
   }

@@ -22,6 +22,7 @@
   ],
   "fields": [
     { "id": "emergency", "label": "救急・急変（共通）" },
+    { "id": "icu", "label": "ICU管理（by system・by problem）" },
     { "id": "cardio", "label": "循環器" },
     { "id": "resp", "label": "呼吸器" },
     { "id": "gi", "label": "消化器" },

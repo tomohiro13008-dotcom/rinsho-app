@@ -173,7 +173,8 @@
     "sepsis-initial",
     "acs-initial",
     "ectopic-pregnancy",
-    "testicular-torsion"
+    "testicular-torsion",
+    "adrenal-crisis"
   ],
   "sources": [
     {

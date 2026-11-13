@@ -159,7 +159,8 @@
   ],
   "drugs": [
     "calcium-gluconate",
-    "glucose-50"
+    "glucose-50",
+    "insulin-human-regular"
   ],
   "related": [
     "panic-values",

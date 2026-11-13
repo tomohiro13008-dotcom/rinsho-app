@@ -175,7 +175,8 @@
     "sepsis"
   ],
   "drugs": [
-    "noradrenaline"
+    "noradrenaline",
+    "hydrocortisone-iv"
   ],
   "related": [
     "rrs-criteria",
@@ -183,7 +184,10 @@
     "pediatric-sepsis-shock",
     "febrile-neutropenia",
     "bacterial-meningitis",
-    "nsti"
+    "nsti",
+    "adrenal-crisis",
+    "obstructive-pyelonephritis",
+    "icu-circulation"
   ],
   "sources": [
     {

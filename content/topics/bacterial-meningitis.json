@@ -105,11 +105,15 @@
     "headache",
     "consciousness"
   ],
-  "drugs": [],
+  "drugs": [
+    "ceftriaxone"
+  ],
   "related": [
     "sah",
     "consciousness-initial",
-    "sepsis-initial"
+    "sepsis-initial",
+    "pediatric-fever-infant",
+    "febrile-seizure"
   ],
   "sources": [
     {

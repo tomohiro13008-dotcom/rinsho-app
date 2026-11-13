@@ -124,6 +124,8 @@ export interface Table {
   columns: string[];
   rows: string[][];
   note?: string;
+  /** 3列でも文が長い表は、狭い画面で1行ずつの塊に組み替える */
+  stack?: boolean;
 }
 
 export interface TopicSection {
@@ -132,6 +134,8 @@ export interface TopicSection {
   paragraphs?: string[];
   bullets?: string[];
   table?: Table;
+  /** カルテなどの空欄の型。患者の情報は入れない。そのまま写して使う骨組み。 */
+  template?: { label?: string; lines: string[] };
   /** 確認問題（学習の「参照の確認問題」に出る） */
   question?: string;
   answer?: string;
@@ -149,6 +153,8 @@ export interface Verification {
 export interface Topic {
   id: string;
   field: string;
+  /** 分野の中での並び順（小さい順。なければ題名の順で後ろ） */
+  order?: number;
   title: string;
   tags: string[];
   summary: string[];
@@ -280,6 +286,28 @@ export interface Trouble {
   id?: number;
   field: string;
   at: number;
+}
+
+/** 目次で付ける印。項目のキーは `card:<id>` `topic:<id>` `drug:<id>` `spec:<id>`。 */
+export type ItemKind = 'card' | 'topic' | 'drug' | 'spec';
+
+export interface Flag {
+  key: string;
+  /** 重要（自分で付ける） */
+  important?: boolean;
+  /** 苦手（自分で付ける。記録からの自動の分は保存しない） */
+  weak?: boolean;
+  /** 要復習を付けた時刻。カードはこのあと練習すると消える */
+  reviewAt?: number | null;
+  at: number;
+}
+
+/** 参照・薬・科のページを開いた記録（読んだかどうかを目次に出すため）。 */
+export interface View {
+  key: string;
+  firstAt: number;
+  lastAt: number;
+  count: number;
 }
 
 export interface DrillLog {

@@ -155,7 +155,9 @@
     "hyperkalemia",
     "urinary-retention",
     "sepsis-initial",
-    "acute-heart-failure"
+    "acute-heart-failure",
+    "obstructive-pyelonephritis",
+    "icu-renal"
   ],
   "sources": [
     {

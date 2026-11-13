@@ -8,11 +8,13 @@ import { addDrillLog } from '../store/db';
 import { useApp } from '../state';
 import type { Rating, Table, Topic, Verification } from '../types';
 import { RatingButtons } from './learn';
+import { plainStatus, topicStatus } from '../logic/progress';
+import { MarkButtons, progressInput, useRecordView } from './toc';
 
 export function TableView({ t }: { t: Table }) {
   return (
     <div class="table-wrap">
-      <table class={`ref-table ${t.columns.length > 3 ? 'stack' : ''}`}>
+      <table class={`ref-table ${t.columns.length > 3 || t.stack ? 'stack' : ''}`}>
         {t.caption ? <caption>{t.caption}</caption> : null}
         <thead>
           <tr>
@@ -146,8 +148,11 @@ export function FieldView({ id }: { id: string }) {
 }
 
 export function TopicView({ id }: { id: string }) {
+  const { data } = useApp();
   const t = topicById.get(id);
   const [open, setOpen] = useState<Record<string, boolean>>({});
+  const [copied, setCopied] = useState('');
+  useRecordView('topic', id, !!t);
   if (!t) return <main class="page"><p>項目が見つかりません。</p></main>;
   return (
     <main class="page" data-topic={t.id}>
@@ -157,6 +162,7 @@ export function TopicView({ id }: { id: string }) {
         </p>
         <h1>{t.title}</h1>
         <Disclaimer />
+        <MarkButtons status={topicStatus(t, progressInput(data, Date.now()))} />
       </header>
       <section class="summary-box" aria-labelledby="sum-h" data-testid="topic-summary">
         <h2 id="sum-h">要約</h2>
@@ -191,6 +197,25 @@ export function TopicView({ id }: { id: string }) {
           ))}
           {s.bullets ? <Lines items={s.bullets} /> : null}
           {s.table ? <TableView t={s.table} /> : null}
+          {s.template ? (
+            <div data-testid="note-template">
+              {s.template.label ? <p class="small muted">{s.template.label}</p> : null}
+              <pre class="note-template">{s.template.lines.join('\n')}</pre>
+              <button
+                type="button"
+                class="btn btn-small"
+                onClick={() =>
+                  void navigator.clipboard
+                    ?.writeText(s.template!.lines.join('\n'))
+                    .then(() => setCopied(s.id))
+                    .catch(() => setCopied(''))
+                }
+              >
+                {copied === s.id ? <Icon name="check" /> : null}
+                {copied === s.id ? '型を写しました' : '空欄の型を写す（コピー）'}
+              </button>
+            </div>
+          ) : null}
           {s.question ? (
             <div class="qa">
               <p class="small">
@@ -239,7 +264,9 @@ export function TopicView({ id }: { id: string }) {
 }
 
 export function DrugView({ id }: { id: string }) {
+  const { data } = useApp();
   const d = drugById.get(id);
+  useRecordView('drug', id, !!d);
   if (!d) return <main class="page"><p>薬が見つかりません。</p></main>;
   return (
     <main class="page" data-drug={d.id}>
@@ -249,13 +276,16 @@ export function DrugView({ id }: { id: string }) {
         </p>
         <h1>{d.generic}</h1>
         <Disclaimer />
+        <MarkButtons status={plainStatus('drug', d.id, progressInput(data, Date.now()))} />
       </header>
       <section class="summary-box" aria-labelledby="dsum-h">
         <h2 id="dsum-h">要約</h2>
         <Lines items={d.summary} />
       </section>
       <Section title="商品名・規格">
-        <TableView t={{ columns: ['商品名', '規格・含量（製造販売）'], rows: d.brands.map((b) => [b.name, b.maker ? `${b.strength}（${b.maker}）` : b.strength]) }} />
+        <div class="brands">
+          <TableView t={{ columns: ['商品名', '規格・含量（製造販売）'], rows: d.brands.map((b) => [b.name, b.maker ? `${b.strength}（${b.maker}）` : b.strength]) }} />
+        </div>
       </Section>
       <Section title="用法用量">
         <div class="doses">

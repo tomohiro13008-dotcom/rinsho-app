@@ -20,7 +20,8 @@ export const drugs: Drug[] = Object.values(drugMods).sort((a, b) => a.generic.lo
 export const topicById = new Map(topics.map((t) => [t.id, t]));
 export const drugById = new Map(drugs.map((d) => [d.id, d]));
 export const fieldLabel = (id: string) => registry.fields.find((f) => f.id === id)?.label ?? id;
-export const topicsForField = (id: string) => topics.filter((t) => t.field === id);
+/** 分野の中は order の小さい順（なければ後ろ）、同じなら題名の順 */
+export const topicsForField = (id: string) => topics.filter((t) => t.field === id).sort((a, b) => (a.order ?? 1000) - (b.order ?? 1000));
 export const topicsForCard = (cardId: string) => topics.filter((t) => t.cards?.includes(cardId));
 
 export const cardById = new Map(cards.map((c) => [c.id, c]));

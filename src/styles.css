@@ -81,7 +81,24 @@ p {
   border-bottom: 1px solid var(--border);
   background: var(--surface);
 }
+.back {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 0.5rem 0 0;
+  border: 0;
+  background: none;
+  color: var(--primary);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.back span {
+  font-size: 1.4em;
+  line-height: 1;
+}
 .appname {
+  margin-right: auto;
   font-weight: 700;
   color: var(--text);
   text-decoration: none;
@@ -104,7 +121,7 @@ p {
   right: 0;
   bottom: 0;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   background: var(--surface);
   border-top: 1px solid var(--border);
   padding-bottom: env(safe-area-inset-bottom);
@@ -531,6 +548,11 @@ fieldset {
   font-weight: 700;
   white-space: nowrap;
 }
+/* 商品名は長いものがある（規格つきのシリンジ製剤など）。折り返して、規格の列を画面に残す */
+.brands .ref-table tbody th {
+  white-space: normal;
+  width: 50%;
+}
 .dose {
   border-top: 1px solid var(--border);
   padding: 0.4rem 0;
@@ -551,7 +573,7 @@ input[type='search'] {
   font: inherit;
   min-height: 48px;
 }
-/* 4列以上の表は、狭い画面では1行ずつの塊に組み替える */
+/* 4列以上の表と、stack をつけた表は、狭い画面では1行ずつの塊に組み替える */
 @media (max-width: 560px) {
   .ref-table.stack thead {
     display: none;
@@ -561,6 +583,11 @@ input[type='search'] {
   .ref-table.stack tr,
   .ref-table.stack th,
   .ref-table.stack td {
+    display: block;
+    width: 100%;
+  }
+  /* 表を塊に組み替えると、見出し（caption）が細い列に折れる。塊と同じ幅にそろえる */
+  .ref-table.stack caption {
     display: block;
     width: 100%;
   }
@@ -661,4 +688,97 @@ input[type='search'] {
   text-decoration: underline;
   cursor: pointer;
   min-height: 44px;
+}
+
+/* 目次と印（v1.3） */
+.marks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+.marks-compact {
+  margin: 0;
+  justify-content: flex-end;
+}
+.mark-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  min-height: 44px;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--label);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mark-btn[aria-pressed='true'] {
+  border: 2px solid var(--primary);
+  color: var(--primary);
+}
+.mark-btn.mark-auto {
+  border: 2px dashed var(--text);
+  color: var(--text);
+}
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.75rem 0 0.5rem;
+}
+.meter-row {
+  display: grid;
+  grid-template-columns: 1fr 5rem auto;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0.3rem 0;
+  font-size: 0.9375rem;
+}
+.meter {
+  display: block;
+  height: 0.6rem;
+  border: 1px solid var(--text);
+  background: var(--surface);
+}
+.meter span {
+  display: block;
+  height: 100%;
+  background: var(--primary);
+}
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.toc-row {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.toc-row > a {
+  display: block;
+  padding: 0.35rem 0;
+  font-weight: 600;
+}
+.toc-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.note-template {
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 0.75rem;
+  margin: 0.5rem 0;
 }

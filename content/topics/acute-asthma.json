@@ -128,10 +128,15 @@
     "dyspnea"
   ],
   "drugs": [
-    "salbutamol-inh"
+    "salbutamol-inh",
+    "hydrocortisone-iv",
+    "magnesium-sulfate",
+    "dexamethasone-iv"
   ],
   "related": [
-    "oxygen-acute"
+    "oxygen-acute",
+    "icu-steroids",
+    "icu-inhaled"
   ],
   "sources": [
     {

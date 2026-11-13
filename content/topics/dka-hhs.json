@@ -236,13 +236,15 @@
     "hyperglycemia"
   ],
   "drugs": [
-    "glucose-50"
+    "glucose-50",
+    "insulin-human-regular"
   ],
   "related": [
     "hypoglycemia",
     "panic-values",
     "hyperkalemia",
-    "sepsis-initial"
+    "sepsis-initial",
+    "icu-glucose"
   ],
   "sources": [
     {

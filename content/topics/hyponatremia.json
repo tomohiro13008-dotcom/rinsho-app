@@ -1,0 +1,158 @@
+{
+  "$comment": "AI下書き（2026-11-09）。公開資料と添付文書から下書きした。本人の照合前。照合して review.level を上げるまで、現場の判断に使わない。 本人の方針（2026-11-10）：国内の公開資料で確かめられない部分は海外の公開ガイドラインで下書きし、手元の書籍を照合の正本にする。",
+  "id": "hyponatremia",
+  "field": "renal",
+  "title": "症状のある低ナトリウム血症（成人）",
+  "tags": [
+    "低ナトリウム血症",
+    "低Na",
+    "高張食塩液",
+    "浸透圧性脱髄症候群",
+    "けいれん",
+    "意識障害"
+  ],
+  "summary": [
+    "重い症状：嘔吐が続く、心肺停止、けいれん、意識が下がる（GCS 8以下）",
+    "重い・やや重い症状なら、原因にかかわらず3%食塩液150mLを20分で",
+    "1時間でNa 5mmol/Lの上昇を目標",
+    "上げすぎない：最初の24時間で10mmol/Lまで、その後は24時間ごとに8まで"
+  ],
+  "points": [
+    "やや重い症状：吐き気（嘔吐なし）、混乱、頭痛",
+    "Naは1時間以内に測り、6時間・12時間・毎日と見ていく",
+    "Naが合計10上がるか130になったら高張液を止める",
+    "上がりすぎたら止めて、経験のある医師に相談する",
+    "日本には3%の製剤がない見込み。作り方は施設の手順で"
+  ],
+  "sections": [
+    {
+      "id": "sev",
+      "title": "重さの分け方（欧州 2014）",
+      "table": {
+        "columns": [
+          "分類",
+          "Na（mmol/L）"
+        ],
+        "rows": [
+          [
+            "軽度",
+            "130〜135"
+          ],
+          [
+            "中等度",
+            "125〜129"
+          ],
+          [
+            "高度",
+            "125未満"
+          ]
+        ],
+        "note": "治療は数値よりも症状で決める。48時間未満を急性とする。"
+      },
+      "sourceIndexes": [
+        1
+      ]
+    },
+    {
+      "id": "first",
+      "title": "最初の1時間（英国内分泌学会 2022）",
+      "bullets": [
+        "3%食塩液150mL（同じ量の食塩）を20分で静注",
+        "20分の間にNaを測る",
+        "Naが5上がるまで、2回まで繰り返す",
+        "塊で入れる。持続点滴より塊を選ぶ"
+      ],
+      "question": "重い症状のある低ナトリウム血症で、最初に入れる高張食塩液は？",
+      "answer": "3%食塩液150mLを20分で。1時間で5mmol/Lの上昇を目標。",
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "id": "limit",
+      "title": "上げすぎない",
+      "bullets": [
+        "最初の24時間は10mmol/Lまで",
+        "その後は24時間ごとに8mmol/Lまで",
+        "合計10上がるか130になったら高張液を止める",
+        "上がりすぎ：高張液を止め、尿量を見て、経験のある医師に相談（低張液やデスモプレシンを考える）"
+      ],
+      "sourceIndexes": [
+        0
+      ]
+    },
+    {
+      "id": "japan",
+      "title": "照合すること",
+      "bullets": [
+        "3%食塩液の作り方（施設の手順）",
+        "日本の書籍での補正の上限",
+        "バプタン（トルバプタン）を使わないこと（英国の資料）"
+      ],
+      "sourceIndexes": [
+        2
+      ]
+    }
+  ],
+  "pitfalls": [
+    "けいれん・意識障害なのに高張液をためらう",
+    "上げすぎて浸透圧性脱髄症候群を起こす",
+    "Naを測らずに続ける",
+    "作り方の違う『3%』を入れる"
+  ],
+  "cards": [
+    "panic",
+    "consciousness"
+  ],
+  "drugs": [],
+  "related": [
+    "panic-values",
+    "aki",
+    "delirium",
+    "status-epilepticus"
+  ],
+  "sources": [
+    {
+      "type": "guideline",
+      "title": "Society for Endocrinology Endocrine Emergency Guidance: Emergency management of severe and moderately severely symptomatic hyponatraemia in adult patients",
+      "edition": "2022（公開PDF。版の日付は本文になし）",
+      "locator": "Figure 1、Figure 2",
+      "url": "https://www.endocrinology.org/media/xhrhxhxm/emergency-management-of-severe-and-moderately-severely-symptomatic-hyponatraemia-in-adult-patients-2022.pdf",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。症状の重さの分け方、3%食塩液150mLを20分で、1時間で5mmol/Lの上昇を目標、補正の上限、過補正のときの対応を確かめた。"
+    },
+    {
+      "type": "guideline",
+      "title": "Spasovski G, et al. Clinical practice guideline on diagnosis and treatment of hyponatraemia. Eur J Endocrinol 2014;170:G1-G47",
+      "edition": "2014（公開論文）",
+      "locator": "5.2 表5（症状）、6.1.1（重症度）",
+      "url": "https://academic.oup.com/ejendo/article/170/3/G1/6668028",
+      "public": true,
+      "verifiedAt": "2026-11-10",
+      "checkedScope": "AI下書き。本人の照合は未。生化学的な重さ（軽度130〜135、中等度125〜129、高度125未満）、症状の分け方、急性と慢性の境目（48時間）を確かめた。7章（治療）の本文は読めなかった。"
+    },
+    {
+      "type": "guideline",
+      "title": "日本の低ナトリウム血症の診療（腎臓内科・内分泌の書籍・施設の手順）",
+      "edition": "—",
+      "public": true,
+      "checkedScope": "未照合。日本には3%食塩液の製剤がない見込みで、作り方は施設の手順で照合する。"
+    }
+  ],
+  "verification": {
+    "checked": [
+      "症状の分け方・最初の量・目標・上限・過補正（英国内分泌学会 2022）",
+      "重さの分け方・症状・急性の境目（欧州 2014）"
+    ],
+    "unverified": [
+      "欧州ガイドラインの治療の章（読めなかった）",
+      "日本の3%食塩液の作り方",
+      "日本の書籍"
+    ]
+  },
+  "updatedAt": "2026-11-10",
+  "review": {
+    "level": 0
+  }
+}

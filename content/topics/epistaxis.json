@@ -72,7 +72,9 @@
     "抗凝固薬の確認を忘れる"
   ],
   "cards": [],
-  "drugs": [],
+  "drugs": [
+    "tranexamic-acid-iv"
+  ],
   "related": [
     "ugib",
     "epiglottitis"

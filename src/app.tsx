@@ -1,10 +1,12 @@
-import { useRoute } from './router';
+import { goBack, useRoute } from './router';
+import { drillById, topicById } from './content';
 import { useAppMaybe } from './state';
 import { CardView, Home, MarkView, StateList } from './screens/field';
 import { DrillView, Learn, Practice, SpecialtyView } from './screens/learn';
 import { Dashboard } from './screens/dashboard';
 import { Settings } from './screens/settings';
 import { DrugView, FieldView, RefHome, TopicQuiz, TopicView } from './screens/reference';
+import { Toc } from './screens/toc';
 import type { QueueSource } from './types';
 import { useUpdateReady } from './update';
 
@@ -34,6 +36,8 @@ function Screen() {
       return c === 'quiz' ? <TopicQuiz key={b} id={b} /> : <TopicView key={b} id={b} />;
     case 'drug':
       return <DrugView key={b} id={b} />;
+    case 'index':
+      return <Toc />;
     case 'dash':
       return <Dashboard />;
     case 'settings':
@@ -58,6 +62,9 @@ function Nav() {
       <a href="#/ref" aria-current={cur(['ref', 'topic', 'drug'])}>
         参照
       </a>
+      <a href="#/index" aria-current={cur(['index'])}>
+        目次
+      </a>
       <a href="#/dash" aria-current={cur(['dash'])}>
         記録
       </a>
@@ -65,6 +72,47 @@ function Nav() {
         設定
       </a>
     </nav>
+  );
+}
+
+/** 戻る先がないとき（直接開いたとき）に行く上の階層。タブの入口では null（戻るを出さない）。 */
+export function parentOf(parts: string[]): string | null {
+  const [a, b, c] = parts;
+  switch (a) {
+    case 'state':
+      return '#/';
+    case 'card':
+      return c === 'mark' ? `#/card/${b}` : '#/';
+    case 'practice':
+      return '#/learn';
+    case 'drill': {
+      const d = drillById.get(b);
+      return d && !d.cardId && d.specialty ? `#/specialty/${d.specialty}` : '#/learn';
+    }
+    case 'specialty':
+      return '#/learn';
+    case 'ref':
+      return b === 'field' && c ? '#/ref' : null;
+    case 'topic': {
+      if (c === 'quiz') return `#/topic/${b}`;
+      const t = topicById.get(b);
+      return t ? `#/ref/field/${t.field}` : '#/ref';
+    }
+    case 'drug':
+      return '#/ref';
+    default:
+      return null;
+  }
+}
+
+function BackButton() {
+  const { parts } = useRoute();
+  const up = parentOf(parts);
+  if (!up) return null;
+  return (
+    <button type="button" class="back" data-testid="back" onClick={() => goBack(up)}>
+      <span aria-hidden="true">‹</span> 戻る
+    </button>
   );
 }
 
@@ -86,6 +134,7 @@ export function App() {
   return (
     <div class="app">
       <header class="appbar">
+        <BackButton />
         <a href="#/" class="appname">
           臨床力カード
         </a>
